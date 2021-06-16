@@ -4,17 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>inputMemID</title>
+<title>会員ID入力画面</title>
 </head>
 <body>
 <h1>新宿図書館 図書管理システム</h1>
 <h3>会員管理</h3>
-会員ID：<input type="text" name="MenID">
+<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
+会員ID：<input type="text" name="MenID"><br>
+<input type="submit" value="変更">
+</form>
+<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
+会員ID：<input type="text" name="MenID"><br>
+<input type="submit" value="削除">
+</form>
 
-<br>
-<br>
-<a>変更する</a>
-<a>削除する</a>
 
 </body>
 </html>
