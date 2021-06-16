@@ -1,58 +1,49 @@
 package ls.bean;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class MemberBean {
+public class MemberBean implements Serializable{
 
-	int user_id;
-	String user_name;
+	int userId;
+	String userName;
 	String address;
 	String tel;
 	String email;
 	Date birth;
-	Date enter_day;
-	Date leave_day;
+	Date enterDay;
+	Date leaveDay;
 
 	public MemberBean() {}
 
-
-	public MemberBean(int user_id, String user_name, String address, String tel, String email, Date birth,
-			Date enter_day, Date leave_day) {
+	public MemberBean(int userId, String userName, String address, String tel, String email, Date birth, Date enterDay,
+			Date leaveDay) {
 		super();
-		this.user_id = user_id;
-		this.user_name = user_name;
+		this.userId = userId;
+		this.userName = userName;
 		this.address = address;
 		this.tel = tel;
 		this.email = email;
 		this.birth = birth;
-		this.enter_day = enter_day;
-		this.leave_day = leave_day;
+		this.enterDay = enterDay;
+		this.leaveDay = leaveDay;
 	}
 
-
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-
-
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-
-
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-
 
 	public String getAddress() {
 		return address;
@@ -86,20 +77,20 @@ public class MemberBean {
 		this.birth = birth;
 	}
 
-	public Date getEnter_day() {
-		return enter_day;
+	public Date getEnterDay() {
+		return enterDay;
 	}
 
-	public void setEnter_day(Date enter_day) {
-		this.enter_day = enter_day;
+	public void setEnterDay(Date enterDay) {
+		this.enterDay = enterDay;
 	}
 
-	public Date getLeave_day() {
-		return leave_day;
+	public Date getLeaveDay() {
+		return leaveDay;
 	}
 
-	public void setLeave_day(Date leave_day) {
-		this.leave_day = leave_day;
+	public void setLeaveDay(Date leaveDay) {
+		this.leaveDay = leaveDay;
 	}
 
 
