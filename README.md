@@ -8,7 +8,7 @@ powershellを起動します。
 
 `\i initialize.sql`
 
-(postgresから抜ける）
+postgresから抜ける
 
 `\q`
 
@@ -22,7 +22,7 @@ powershellを起動します
 
 `\i start.sql`
 
-(postgresから抜ける）
+postgresから抜ける
 
 `\q`
 
