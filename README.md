@@ -42,6 +42,6 @@ postgresから抜ける
 
 `github上でpullRequestを送る`
 
-##LibrarySystemに移動する
+## LibrarySystemに移動する
 
 `cd /c/Eclipse_JAVA/workspace/LibrarySystem`
