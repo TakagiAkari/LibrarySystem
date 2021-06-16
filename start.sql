@@ -45,7 +45,7 @@ INSERT INTO member(user_name, address, tel, email, enter_day) VALUES('—é–Ø ˜a•v'
 INSERT INTO member(user_name, address, tel, email, enter_day) VALUES('“c’† ^‹|', '“Œ‹“s¢“c’J‹æ','222-2222', '5656@email.com', '20200503');
 INSERT INTO member(user_name, address, tel, email, enter_day, leave_day) VALUES('“n•Ó _“ñ', '“Œ‹“s`‹æ','333-3333', '2929@email.com', '20210520', '20210601');
 
-ALTER TABLE lending OWNER TO student;
-ALTER TABLE catalog OWNER TO student;
-ALTER TABLE record OWNER TO student;
-ALTER TABLE member OWNER TO student;
+ALTER TABLE lending OWNER TO admin;
+ALTER TABLE catalog OWNER TO admin;
+ALTER TABLE record OWNER TO admin;
+ALTER TABLE member OWNER TO admin;
