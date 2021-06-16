@@ -8,6 +8,10 @@ powershellを起動します。
 
 `\i initialize.sql`
 
+postgresから抜ける
+
+`\q`
+
 ### データベースを初期状態にする
 
 powershellを起動します
@@ -17,3 +21,27 @@ powershellを起動します
 `psql library_system admin`
 
 `\i start.sql`
+
+postgresから抜ける
+
+`\q`
+
+## 作業中のブランチを最新にする
+
+`git fetch origin master`
+
+`git merge origin master`
+
+## ブランチで編集した情報を反映させてpullRequestを送る
+
+`git add (編集したファイル名)`
+
+`git commit -m "コメント"`
+
+`git push origin (ブランチ名)`
+
+`github上でpullRequestを送る`
+
+## LibrarySystemに移動する
+
+`cd /c/Eclipse_JAVA/workspace/LibrarySystem`
