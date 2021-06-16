@@ -7,7 +7,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
-	<form action="LoginServlet" method="post">
+	<form action="/LibrarySystem/LoginServlet" method="post">
 		ユーザ名:<input type="text" name="userName"><br>
 		パスワード：<input type="password" name="password"><br>
 		<input type="submit" value="ログイン">
