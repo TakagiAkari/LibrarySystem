@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS lending;
-DROP TABLE IF EXISTS catalog;
 DROP TABLE IF EXISTS record;
+DROP TABLE IF EXISTS catalog;
 DROP TABLE IF EXISTS member;
 
 CREATE TABLE lending (
@@ -13,15 +13,6 @@ CREATE TABLE lending (
   memo TEXT
 );
 
-CREATE TABLE catalog (
-  isbn INTEGER PRIMARY KEY NOT NULL,
-  book_name TEXT NOT NULL,
-  category INTEGER NOT NULL,
-  author TEXT NOT NULL,
-  publisher TEXT NOT NULL,
-  publish_day DATE NOT NULL
-);
-
 CREATE TABLE record (
   book_id INTEGER PRIMARY KEY,
   isbn INTEGER NOT NULL REFERENCES catalog,
@@ -29,6 +20,15 @@ CREATE TABLE record (
   stock_day DATE NOT NULL,
   throwout_day DATE,
   memo TEXT
+);
+
+CREATE TABLE catalog (
+  isbn INTEGER PRIMARY KEY NOT NULL,
+  book_name TEXT NOT NULL,
+  category INTEGER NOT NULL,
+  author TEXT NOT NULL,
+  publisher TEXT NOT NULL,
+  publish_day DATE NOT NULL
 );
 
 CREATE TABLE member(
@@ -46,6 +46,6 @@ INSERT INTO member(user_name, address, tel, email, enter_day) VALUES('ìcíÜ ê^ã|'
 INSERT INTO member(user_name, address, tel, email, enter_day, leave_day) VALUES('ìnï” ç_ìÒ', 'ìåãûìsç`ãÊ','333-3333', '2929@email.com', '20210520', '20210601');
 
 ALTER TABLE lending OWNER TO admin;
-ALTER TABLE catalog OWNER TO admin;
 ALTER TABLE record OWNER TO admin;
+ALTER TABLE catalog OWNER TO admin;
 ALTER TABLE member OWNER TO admin;
