@@ -16,13 +16,13 @@ import ls.dao.DAOException;
  * Servlet implementation class SearchMemberServlet
  */
 @WebServlet("/SearchMemberServlet")
-public class SearchMemberServlet extends HttpServlet {
+public class SearchMemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchMemberServlet() {
+    public SearchMemberInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
