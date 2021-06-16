@@ -41,3 +41,7 @@ postgresから抜ける
 `git push origin (ブランチ名)`
 
 `github上でpullRequestを送る`
+
+##LibrarySystemに移動する
+
+`cd /c/Eclipse_JAVA/workspace/LibrarySystem`
