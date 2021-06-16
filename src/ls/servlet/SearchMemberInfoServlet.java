@@ -15,7 +15,7 @@ import ls.dao.DAOException;
 /**
  * Servlet implementation class SearchMemberServlet
  */
-@WebServlet("/SearchMemberServlet")
+@WebServlet("/SearchMemberInfoServlet")
 public class SearchMemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
