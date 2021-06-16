@@ -8,6 +8,10 @@ powershellを起動します。
 
 `\i initialize.sql`
 
+(postgresから抜ける）
+
+`\q`
+
 ### データベースを初期状態にする
 
 powershellを起動します
@@ -17,6 +21,10 @@ powershellを起動します
 `psql library_system admin`
 
 `\i start.sql`
+
+(postgresから抜ける）
+
+`\q`
 
 ## 作業中のブランチを最新にする
 
