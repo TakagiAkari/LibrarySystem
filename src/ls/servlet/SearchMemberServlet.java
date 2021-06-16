@@ -45,7 +45,7 @@ public class SearchMemberServlet extends HttpServlet {
 				List<MemberBean> list = dao.findByEmail(email);
 
 				request.setAttribute("members", list);
-				gotoPage(request, response, "/resultMem");
+				gotoPage(request, response, "/resultMem.jsp");
 			}
 			else {
 				request.setAttribute("message","正しく操作してしてください。");
