@@ -8,9 +8,11 @@
 </head>
 <body>
 
-<form>
-E-mail<input type="email" name="email">
+<form action="/LibrarySystem/SearchMemberInfoServlet" method="post">
+E-mail：<input type="email" name="email" size="50">
+<br>
 <input type="submit" value="検索">
+<input type="hidden" name="action" value="search">
 </form>
 
 </body>
