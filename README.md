@@ -20,16 +20,16 @@ powershellを起動します
 
 ## 作業中のブランチを最新にする
 
-'git fetch origin master'
+`git fetch origin master`
 
-'git merge origin master'
+`git merge origin master`
 
 ## ブランチで編集した情報を反映させてpullRequestを送る
 
-'git add (編集したファイル名)'
+`git add (編集したファイル名)`
 
-'git commit -m "コメント"
+`git commit -m "コメント"`
 
-'git push origin (ブランチ名)'
+`git push origin (ブランチ名)`
 
-github上でpullRequestを送る
+`github上でpullRequestを送る`
