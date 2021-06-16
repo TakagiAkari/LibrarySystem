@@ -1,8 +1,9 @@
 package ls.bean;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class MemberBean {
+public class MemberBean implements Serializable{
 
 	int userId;
 	String userName;
