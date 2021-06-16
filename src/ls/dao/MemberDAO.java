@@ -19,7 +19,7 @@ public class MemberDAO {
 
 		try {
 			Class.forName("org.postgresql.Driver");
-			String url ="jdbc:postgresql:library-system";
+			String url ="jdbc:postgresql:library_system";
 			String user ="admin";
 			String pass ="himitu";
 			con = DriverManager.getConnection(url, user, pass);
