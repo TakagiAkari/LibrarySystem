@@ -1,6 +1,7 @@
 package ls.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -75,9 +76,9 @@ public class RegisterMemberServlet extends HttpServlet {
 				String birthD = request.getParameter("birthD");
 				String birthDay = birthY + "-" + birthM + "-" + birthD;
 
-				System.out.println(birthDay);
+				//System.out.println(birthDay);
 
-				/*java.sql.Date birth = java.sql.Date.valueOf(birthDay);
+				java.sql.Date birth = java.sql.Date.valueOf(birthDay);
 				Date entryDay = new Date();
 		        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		        String formattedDate = simpleDateFormat.format(entryDay);
@@ -85,7 +86,7 @@ public class RegisterMemberServlet extends HttpServlet {
 
 		        dao.addMember(name, address, tel, email, birth, enterDaysql);
 		        request.setAttribute("message", "会員登録");
-				gotoPage(request, response, "/complete.jsp");*/
+				gotoPage(request, response, "/complete.jsp");
 
 				}
 		}catch(DAOException e) {
