@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ls.bean.MemberBean;
+
 public class MemberDAO {
 
 	private Connection con;
@@ -36,7 +38,7 @@ public class MemberDAO {
 
 
 
-		public boolean ExistsUserID(String userID) {
+		public MemberBean findMemberByUserID(int userID) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		 try {
@@ -44,16 +46,24 @@ public class MemberDAO {
 			String sql = "SELECT * FROM member WHERE user_id = ?";
 			st = con.prepareStatement(sql);
 			//SQLをデータベースへ
+			st.setInt(1, userID);
 			rs = st.executeQuery();
 
 			if (rs.next()) {
+				int userId = rs.getInt("user_id");
+				String userName = rs.getString("user_name");
+				String address = rs.getString("address");
+				String tel = rs.getString("tel");
+				String email = rs.getString("email");
+				Date birth = rs.getDate("birthday");
+				Date enterDay =rs.getDate("enter_day");
 
-				Date leaveDay = rs.getDate("leaveDay");
+				MemberBean bean = new MemberBean(userId,userName, address, tel, email,birth, enterDay);
 
-			} else {
-				return false;
+				return bean;
+
 			}
-		 }
+		}
 		 catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,8 +77,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		return false;
-
+		 return null;
 	}
 }
 
