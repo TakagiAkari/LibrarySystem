@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp"/>
+
 <h1>検索結果</h1>
 
 <br>会員ID：${member.userId }
@@ -22,7 +24,8 @@
 <br>入会日：${member.enterDay }
 <br>
 <br>
-<p style="text-align:center"><a href="/LibrarySystem/top.jsp">トップページ画面に戻る</a></p>
+
+<jsp:include page="footer.jsp"/>
 
 </body>
 </html>

@@ -66,7 +66,7 @@ public class MemberDAO {
 				String address = rs.getString("address");
 				String tel = rs.getString("tel");
 				email = rs.getString("email");
-				Date birth= rs.getDate("birthday");
+				Date birth = rs.getDate("birthday");
 				Date enterDay = rs.getDate("enter_day");
 				Date leaveDay = rs.getDate("leave_day");
 				MemberBean bean = new MemberBean(userId, userName, address, tel, email, birth, enterDay, leaveDay);

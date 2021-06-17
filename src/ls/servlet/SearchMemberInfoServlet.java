@@ -41,20 +41,31 @@ public class SearchMemberInfoServlet extends HttpServlet {
 
 			MemberDAO dao = new MemberDAO();
 
+			//サーブレットに直接飛んできた場合
 			if (action == null || action.length() == 0 ) {
-				gotoPage(request, response, "/top.jsp");
+				gotoPage(request, response, "/inputMail.jsp");
 			}
+			//email入力画面で検索ボタンを押した場合
 			else if (action.equals("search")) {
 				String email = request.getParameter("email");
-
 				MemberBean member = dao.findByEail(email);
 
-				request.setAttribute("member", member);
-				gotoPage(request, response, "/resultMem.jsp");
+				//該当者が存在する
+				if (member != null) {
+					request.setAttribute("member", member);
+					gotoPage(request, response, "/resultMem.jsp");
+					return;
+				}
+				//該当者が存在しない
+				else {
+					request.setAttribute("message","該当者がいません。");
+					gotoPage(request, response, "/errInternal.jsp");
+				}
 			}
+			//その他
 			else {
 				request.setAttribute("message","正しく操作してしてください。");
-				gotoPage(request, response, "/errIntenal.jsp");
+				gotoPage(request, response, "/errInternal.jsp");
 			}
 		}
 		catch (DAOException e) {
