@@ -27,6 +27,8 @@ postgresから抜ける
 `\q`
 
 ## 作業中のブランチを最新にする
+Git Bashを起動。
+作業中のブランチにいることを確認してください。
 
 `git fetch origin master`
 
@@ -40,8 +42,8 @@ postgresから抜ける
 
 `git push origin (ブランチ名)`
 
-`github上でpullRequestを送る`
+github上でpullRequestを送る
 
-## LibrarySystemに移動する
+## Git BashでLibrarySystemに移動する
 
 `cd /c/Eclipse_JAVA/workspace/LibrarySystem`
