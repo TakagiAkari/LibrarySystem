@@ -7,6 +7,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<form action="/LibrarySystem/LoginServlet" method="post">
 		ユーザ名:<input type="text" name="userName"><br>
 		パスワード：<input type="password" name="password"><br>
