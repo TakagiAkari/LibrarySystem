@@ -59,17 +59,29 @@ public class MemberDAO {
 				Date enterDay =rs.getDate("enter_day");
 
 				MemberBean bean = new MemberBean(userId,userName, address, tel, email,birth, enterDay);
-
 				return bean;
-
 			}
+		} catch (Exception e) {
+					e.printStackTrace();
+		  }
+		return null;
+	   }
+
+		public void updateLeaveDay(int userId) {
+		PreparedStatement st = null;
+		 try {
+			String sql = "UPDATE member SET leave_day = CURRENT_DATE WHERE user_id = ?";
+			st = con.prepareStatement(sql);
+			st.setInt(1, userId);
+			st.executeUpdate();
+
+			return;
 		}
 		 catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
 			try {
-				if(rs != null) rs.close();
 				if(st != null) st.close();
 				close();
 			}
@@ -77,7 +89,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		 return null;
+
 	}
 }
 
