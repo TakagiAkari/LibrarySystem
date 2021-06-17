@@ -46,7 +46,8 @@ public class SearchMemberInfoServlet extends HttpServlet {
 			}
 			else if (action.equals("search")) {
 				String email = request.getParameter("email");
-				MemberBean member = new MemberBean();
+
+				MemberBean member = dao.findByEail(email);
 
 				request.setAttribute("member", member);
 				gotoPage(request, response, "/resultMem.jsp");
