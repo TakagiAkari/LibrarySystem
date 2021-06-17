@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Complete message</title>
 </head>
 <body>
-
-<h1>${message }</h1>
-
+<h1>${message}が完了しました。</h1>
 </body>
 </html>

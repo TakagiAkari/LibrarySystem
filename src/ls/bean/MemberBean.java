@@ -5,14 +5,14 @@ import java.sql.Date;
 
 public class MemberBean implements Serializable{
 
-	int userId;
-	String userName;
-	String address;
-	String tel;
-	String email;
-	Date birth;
-	Date enterDay;
-	Date leaveDay;
+	private int userId;
+	private String userName;
+	private String address;
+	private String tel;
+	private String email;
+	private Date birth;
+	private Date enterDay;
+	private Date leaveDay;
 
 	public MemberBean() {}
 
