@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
-;
+import ls.dao.MemberDAO;
+
 /**
  * Servlet implementation class SearchMemberServlet
  */
@@ -36,22 +37,42 @@ public class SearchMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("acttion");
+			String action = request.getParameter("action");
 
 			MemberDAO dao = new MemberDAO();
 
-			if (action.equals("search")) {
-				String email = request.getParameter("email");
-				List<MemberBean> list = dao.findByEmail(email);
-
-				request.setAttribute("members", list);
-				gotoPage(request, response, "/resultMem.jsp");
+			//サーブレットに直接飛んできた場合
+			if (action == null || action.length() == 0 ) {
+				gotoPage(request, response, "/inputMail.jsp");
 			}
+			//email入力画面で検索ボタンを押した場合
+			else if (action.equals("search")) {
+				String email = request.getParameter("email");
+
+				if (email == null || email.length() == 0) {
+					request.setAttribute("message","メールアドレスを入力してください。");
+					gotoPage(request, response, "/errInternal.jsp");
+				}
+
+				MemberBean member = dao.findByEail(email);
+
+				//該当者が存在する
+				if (member != null) {
+					request.setAttribute("member", member);
+					gotoPage(request, response, "/resultMem.jsp");
+					return;
+				}
+				//該当者が存在しない
+				else {
+					request.setAttribute("message","該当者がいません。");
+					gotoPage(request, response, "/errInternal.jsp");
+				}
+			}
+			//その他
 			else {
 				request.setAttribute("message","正しく操作してしてください。");
-				gotoPage(request, response, "/errIntenal.jsp");
+				gotoPage(request, response, "/errInternal.jsp");
 			}
-
 		}
 		catch (DAOException e) {
 			e.printStackTrace();
