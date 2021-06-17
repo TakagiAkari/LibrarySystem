@@ -31,16 +31,34 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			//削除するものをリクエストスコープに入れる
 			request.setAttribute("member", member);
 			//例外処理
-			request.getRequestDispatcher("DeleteMem.jsp").forward(request, response);
+			request.getRequestDispatcher("/deleteMem.jsp").forward(request, response);
+
+		if (action == null || action.length() == 0) {
+			gotoPage(request,response,"/deleteMem.jsp");
+		}
+		else if(action.equals("delete")) {
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			memDao.updateLeaveDay(userId);
+			request.setAttribute("member", member);
+			request.getRequestDispatcher("/complete.jsp").forward(request, response);
+
+		}
 
 		}catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
 			//gotoPage(request, response, "/errInternal.jsp");
+			request.getRequestDispatcher("/errInternal.jsp").forward(request, response);
 		}finally {
 			//request.setAttribute("error", error);
 			//request.getRequestDispatcher("/LibrarySystem/DeleteComplete").forward(request, response);
 		}
+	}
+
+
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 
 
