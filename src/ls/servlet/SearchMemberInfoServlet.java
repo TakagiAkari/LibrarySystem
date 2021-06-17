@@ -48,6 +48,12 @@ public class SearchMemberInfoServlet extends HttpServlet {
 			//email入力画面で検索ボタンを押した場合
 			else if (action.equals("search")) {
 				String email = request.getParameter("email");
+
+				if (email == null || email.length() == 0) {
+					request.setAttribute("message","メールアドレスを入力してください。");
+					gotoPage(request, response, "/errInternal.jsp");
+				}
+
 				MemberBean member = dao.findByEail(email);
 
 				//該当者が存在する
