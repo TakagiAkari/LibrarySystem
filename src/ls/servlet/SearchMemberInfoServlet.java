@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
-;
+import ls.dao.MemberDAO;
+
 /**
  * Servlet implementation class SearchMemberServlet
  */
@@ -36,22 +37,24 @@ public class SearchMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("acttion");
+			String action = request.getParameter("action");
 
 			MemberDAO dao = new MemberDAO();
 
-			if (action.equals("search")) {
+			if (action == null || action.length() == 0 ) {
+				gotoPage(request, response, "/top.jsp");
+			}
+			else if (action.equals("search")) {
 				String email = request.getParameter("email");
-				List<MemberBean> list = dao.findByEmail(email);
+				MemberBean member = new MemberBean();
 
-				request.setAttribute("members", list);
+				request.setAttribute("member", member);
 				gotoPage(request, response, "/resultMem.jsp");
 			}
 			else {
 				request.setAttribute("message","正しく操作してしてください。");
 				gotoPage(request, response, "/errIntenal.jsp");
 			}
-
 		}
 		catch (DAOException e) {
 			e.printStackTrace();
