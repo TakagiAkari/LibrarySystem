@@ -53,8 +53,7 @@ public class LoginServlet extends HttpServlet {
 
 			// sessionを持っていなければログインしていないためログイン処理に入る
 			if(userName == null || userName.length() == 0 || password == null || password.length() == 0) {
-				request.setAttribute("message", "emailとパスワードを入力してください");
-				gotoPage(request, response, "/errInternal.jsp");
+				gotoPage(request, response, "/login.jsp");
 				return ;
 			}
 
@@ -77,9 +76,7 @@ public class LoginServlet extends HttpServlet {
 			gotoPage(request, response, "/login.jsp");
 			return ;
 		}
-
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
