@@ -12,7 +12,7 @@
 <body>
 
 <jsp:include page="header.jsp"/>
-
+<br>
 <h1>検索結果</h1>
 
 <br>会員ID：${member.userId }
@@ -24,7 +24,6 @@
 <br>入会日：${member.enterDay }
 <br>
 <br>
-
 <jsp:include page="footer.jsp"/>
 
 </body>
