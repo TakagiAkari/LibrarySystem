@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>書籍IDの入力</title>
 </head>
 <body>
-
-<jsp:include page="header.jsp"/>
-
-<h1>${message }</h1>
-
-<jsp:include page="footer.jsp"/>
-
+書籍ID：<input type="text" name="bookID">
 </body>
 </html>
