@@ -8,7 +8,15 @@
 </head>
 <body>
 
+<<<<<<< HEAD:WebContent/errMessage.jsp
 <h2>${errMessage}</h2>
+=======
+<jsp:include page="header.jsp"/>
+
+<h1>${message }</h1>
+>>>>>>> origin:WebContent/errInternal.jsp
+
+<jsp:include page="footer.jsp"/>
 
 </body>
 </html>
