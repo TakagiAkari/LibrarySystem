@@ -23,10 +23,10 @@
 </ul>
 <h2>資料管理</h2>
 <ul>
-	<li><a>検索</a></li>
-	<li><a>登録</a></li>
-	<li><a>変更</a></li>
-	<li><a>退会</a></li>
+	<li><a href="/LibrarySystem/SearchBookInfoServlet">検索</a></li>
+	<li><a href="/LibrarySystem/RegisterBookInfoServlet">登録</a></li>
+	<li><a href="/LibrarySystem/ChangeBookInfoServlet">変更</a></li>
+	<li><a href="/LibrarySystem/DeleteBookInfoServlet">退会</a></li>
 </ul>
 
 <jsp:include page="footer.jsp"/>
