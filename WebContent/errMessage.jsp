@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 
+	<h1>${message }</h1>
 
-<jsp:include page="header.jsp"/>
-
-<h1>${message }</h1>
-
-<jsp:include page="footer.jsp"/>
-
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>
