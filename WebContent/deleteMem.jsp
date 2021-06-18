@@ -20,6 +20,7 @@
 <br>
 <input type="submit" value="削除">
 <input type="hidden" name="action" value="delete">
+<input type="hidden" name="userId" value="${member.userId }">
 
 </form>
 <h1>貸出中</h1>
