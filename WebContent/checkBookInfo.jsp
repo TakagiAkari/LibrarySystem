@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>資料全情報確認画面</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
 ISBN番号：${BookInfo.isbn}<br>
 題名：${BookInfo.title}<br>
@@ -22,4 +25,7 @@ ISBN番号：${BookInfo.isbn}<br>
 </form>
 <a href="RegisterBookInfoServlet?action=reInput">入力をやり直す</a>
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>

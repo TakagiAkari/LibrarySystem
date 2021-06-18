@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>書籍IDの入力</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
 
 <form>
@@ -16,4 +19,7 @@
 </form>
 
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>
