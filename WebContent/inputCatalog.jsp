@@ -17,6 +17,8 @@ ISBN番号：<input type="text" name="isbn"><br>
 著者:<input type="text" name="author"><br>
 出版社：<input type="text" name="publisher"><br>
 出版年月日：<input type="text" name="publishedY">年<input type="text" name="publishedM">月<input type="text" name="publishedD">日<br>
+<input type="hidden" name="action" value="registerCatalog">
+<input type="submit" value="登録">
 </form>
 
 <jsp:include page="footer.jsp"/>
