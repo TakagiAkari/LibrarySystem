@@ -11,7 +11,6 @@
 <jsp:include page="header.jsp"/>
 
 <form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
-ISBN番号：<input type="text" name="isbn"><br>
 題名：<input type="text" name="title"><br>
 分類コード：<input type="text" name="category"><br>
 著者:<input type="text" name="author"><br>

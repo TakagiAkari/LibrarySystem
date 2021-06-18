@@ -70,6 +70,7 @@ public class CatalogDAO {
 			}
 		}
 	}
+
 	public boolean addCatalogInfo(CatalogBean cBean) throws DAOException{
 
 		if(con == null)
@@ -78,30 +79,29 @@ public class CatalogDAO {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
-			String sql = "INSERT INTO message";
+			String sql = "INSERT INTO catalog VALUES(?,?,?,?,?,?)";
 			st = con.prepareStatement(sql);
+
+			st.setLong(1, cBean.getIsbn());
+			st.setString(2, cBean.getBookName());
+			st.setInt(3, cBean.getCategory());
+			st.setString(4, cBean.getAuthor());
+			st.setString(5, cBean.getPublisher());
+			st.setDate(6, cBean.getPublishDay());
 			// SQLの実行
-			rs = st.executeQuery();
+			int rows = st.executeUpdate();
 			// 結果の取得
 
-			if(rs.next()) {
-				int category = rs.getInt("category");
-				String bookName = rs.getString("book_name");
-				String author = rs.getString("author");
-				String publisher = rs.getString("publisher");
-				Date publishDay = rs.getDate("publish_day");
+			if(rows > 0) {
+				return true;
+			}else {
+				return false;
+			}
 
-				CatalogBean bean = new CatalogBean(isbn, bookName,category,author,publisher,publishDay);
-				return bean;
-			}
-			// 検索結果がない場合
-			else {
-				return null;
-			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			throw new DAOException("");
+			return false;
 		}
 		finally {
 			try {

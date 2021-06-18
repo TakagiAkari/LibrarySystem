@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ls.bean.CatalogBean;
+import ls.bean.RecordBean;
 import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
+import ls.dao.RecordDAO;
 import ls.module.OperateDate;
 
 /**
@@ -39,6 +41,8 @@ public class RegisterBookInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
+			CatalogDAO catalogDao = new CatalogDAO();
+			RecordDAO recordDao = new RecordDAO();
 			String action = request.getParameter("action");
 			HttpSession session = request.getSession(false);
 			if(session == null) {
@@ -48,22 +52,23 @@ public class RegisterBookInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/inputRecord.jsp");
 			}else if(action.equals("checkIsbn")) {
 				long isbn = Long.parseLong(request.getParameter("isbn"));
-
-				session.setAttribute("isbnForRegisterBook", isbn);
 				String memo = request.getParameter("memo");
 
-				CatalogDAO catalogDao = new CatalogDAO();
+				session.setAttribute("isbnForRegisterBook", isbn);
+				session.setAttribute("memoForRegisterBook", memo);
+
 				boolean existsIsbn = catalogDao.existsIsbn(isbn);
 
 				if(existsIsbn) {
-					// isbnの検索結果が存在しないということは書籍情報が登録されていないということ
-					// 書籍情報を登録するところから始める
+					// isbnの検索結果が存在する場合は既にある目録の情報から情報を登録する
 					gotoPage(request, response, "/checkBookInfo.jsp");
 				}else {
+					// isbnの検索結果が存在しないということは書籍情報が登録されていないということ
+					// 書籍情報を登録するところから始める
 					gotoPage(request, response, "/inputCatalog.jsp");
 				}
 			}else if(action.equals("registerCatalog")) {
-				long isbn = Long.parseLong(request.getParameter("isbn"));
+				long isbn = (long)session.getAttribute("isbnForRegisterBook");
 				String bookName = request.getParameter("title");
 				int category= Integer.parseInt(request.getParameter("category"));
 				String author = request.getParameter("author");
@@ -75,24 +80,46 @@ public class RegisterBookInfoServlet extends HttpServlet {
 				try {
 					Date publishDay = OperateDate.getJavaSqlDateOfYMD(publishedY,publishedM,publishedD);
 
-					CatalogDAO catalogDao = new CatalogDAO();
 					CatalogBean cBean = new CatalogBean(isbn,bookName,category,author,publisher,publishDay);
 
-					catalogDao.addCatalogInfo(cBean);
+					String memo = (String) session.getAttribute("memo");
 
+					// catalogテーブルに追加出来ていたらisAddはtrueになる
+					// catalogテーブルに情報を追加
+					//boolean isAdd = catalogDao.addCatalogInfo(cBean);
+					//if(isAdd) {
 
+						// RecordBeanに情報を追加。この段階ではrecordを追加しない
+						//int bookId = recordDao.addRecordInfo(isbn, memo);
+						//RecordBean rBean = recordDao.getRecordInfoByBookId(bookId);
+						// データベースに追加していないためまだ次の資料IDが分からない
+					RecordBean rBean = new RecordBean(isbn, OperateDate.getDateNow(),memo);
+
+					session.setAttribute("recordBeanForRegisterBook", rBean);
+
+					session.setAttribute("catalogBeanForRegisterBook", cBean);
+					gotoPage(request, response, "/checkBookInfo.jsp");
+					//}else {
+					//	request.setAttribute("message", "目録を登録できませんでした。");
+					//	gotoPage(request, response, "/errMessage.jsp");
+					//}
 					// parse出来ない時(日付の入力に不正な値が入っている時)
 				}catch (ParseException e) {
 					e.printStackTrace();
 					request.setAttribute("message", "不正な日付です");
 					gotoPage(request, response, "/errMessage.jsp");
 				}
+			}else if(action.equals("complete")) {
+				long isbn = (long)session.getAttribute("isbnForRegisterBook");
+				String memo = (String) session.getAttribute("memoForRegisterBook");
+				CatalogBean cBean = (CatalogBean) session.getAttribute("catalogBeanForRegisterBook");
 
-
-
-
-
-
+				// 既にisbn番号があれば追加しません
+				catalogDao.addCatalogInfo(cBean);
+				recordDao.addRecordInfo(isbn, memo);
+				//RecordBean rBean = recordDao.getRecordInfoByBookId(bookId);
+				request.setAttribute("message", "書籍登録");
+				gotoPage(request, response, "/complete.jsp");
 			}
 		}catch(DAOException e) {
 			e.printStackTrace();
