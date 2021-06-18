@@ -1,14 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Complete message</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
+
 	<jsp:include page="header.jsp"/>
 		<h1>${message}が完了しました。</h1>
 	<jsp:include page="footer.jsp"/>
+
+<c:if test="${act == lend}">
+
+<a href="/LibrarySystem/LendingBookServlet?action=continue">続けて貸出をする</a>
+
+<form action="/LibrarySystem/LendingBookServlet" method="post">
+<input type="hidden" name="lendingAct" value="finish">
+<input type="submit" value="終了">
+</form>
+
+</c:if>
+
+<c:if test="${act == return}">
+
+<a href="/LibrarySystem/ReturnBookServlet?action=continue">続けて返却をする</a>
+
+<form action="/LibrarySystem/ReturnBookServlet" method="post">
+<input type="hidden" name="returnAct" value="finish">
+<input type="submit" value="終了">
+</form>
+
+</c:if>
+
+
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>

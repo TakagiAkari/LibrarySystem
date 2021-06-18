@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>削除確認画面</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
-	<jsp:include page="header.jsp"/>
 
-	<h1>${message }</h1>
-
-	<jsp:include page="footer.jsp"/>
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>

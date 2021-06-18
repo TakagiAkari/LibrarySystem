@@ -6,19 +6,17 @@ import java.sql.Date;
 public class RecordBean implements Serializable {
 
 	int bookId;
-	int isbn;
-	String bookName;
+	long isbn;
 	Date stockDay;
 	Date throwoutDay;
 	String memo;
 
 	public RecordBean() {}
 
-	public RecordBean(int bookId, int isbn, String bookName, Date stockDay, Date throwoutDay, String memo) {
+	public RecordBean(int bookId, long isbn, Date stockDay, Date throwoutDay, String memo) {
 		super();
 		this.bookId = bookId;
 		this.isbn = isbn;
-		this.bookName = bookName;
 		this.stockDay = stockDay;
 		this.throwoutDay = throwoutDay;
 		this.memo = memo;
@@ -32,20 +30,12 @@ public class RecordBean implements Serializable {
 		this.bookId = bookId;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
-	}
-
-	public String getBookName() {
-		return bookName;
-	}
-
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
 	}
 
 	public Date getStockDay() {
@@ -71,6 +61,8 @@ public class RecordBean implements Serializable {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
+
 
 
 }
