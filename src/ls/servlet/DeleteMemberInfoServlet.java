@@ -22,27 +22,25 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			String action = request.getParameter("action");
-
-
-			if (action == null || action.length() == 0) {
-				MemberDAO memDao = new MemberDAO();
-
-				HttpSession userIdforDeleteMember =request.getSession();
-				String test = request.getParameter("userId");
-				int userId = Integer.parseInt(test);
-				MemberBean member = memDao.findMemberByUserID(userId);
-				gotoPage(request,response,"/deleteMem.jsp");
-				userIdforDeleteMember.setAttribute("test",userId);
+			HttpSession session = request.getSession(false);
+			if(action == null || action.length() == 0 ) {
+				gotoPage(request, response, "/inputMemID.jsp");
 			}
-			else if(action.equals("delete")) {
-				String test = request.getParameter("userId");
-				int userId = Integer.parseInt(test);
-				MemberDAO memDao = new MemberDAO();
-				memDao.updateLeaveDay(userId);
-				request.setAttribute("messege", "削除");
-				request.getRequestDispatcher("/complete.jsp").forward(request, response);
-				return;
+			else if(action.equals("delete") ) {
 
+				MemberDAO memDao = new MemberDAO();
+				int userId = Integer.parseInt(request.getParameter("userId"));
+				MemberBean bean = memDao.findMemberByUserID(userId);
+				request.setAttribute("member", bean);
+				gotoPage(request, response, "/deleteMem.jsp");
+
+			}
+			else if(action.equals("complete")) {
+				MemberDAO memDao = new MemberDAO();
+				int userId = Integer.parseInt(request.getParameter("userId"));
+				memDao.updateLeaveDay(userId);
+				request.setAttribute("message", "削除");
+				request.getRequestDispatcher("/complete.jsp").forward(request, response);
 			}
 		}catch (DAOException e) {
 			e.printStackTrace();
@@ -56,9 +54,13 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 	}
 
 
-	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String strUrl) {
+		try {
+			request.getRequestDispatcher(strUrl).forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 	}
 
 
