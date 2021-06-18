@@ -19,7 +19,7 @@
 <br>
 <br>
 <input type="submit" value="削除">
-<input type="hidden" name="action" value="delete">
+<input type="hidden" name="action" value="complete">
 <input type="hidden" name="userId" value="${member.userId }">
 
 </form>
