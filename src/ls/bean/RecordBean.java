@@ -6,14 +6,14 @@ import java.sql.Date;
 public class RecordBean implements Serializable {
 
 	int bookId;
-	int isbn;
+	long isbn;
 	Date stockDay;
 	Date throwoutDay;
 	String memo;
 
 	public RecordBean() {}
 
-	public RecordBean(int bookId, int isbn, Date stockDay, Date throwoutDay, String memo) {
+	public RecordBean(int bookId, long isbn, Date stockDay, Date throwoutDay, String memo) {
 		super();
 		this.bookId = bookId;
 		this.isbn = isbn;
@@ -30,11 +30,11 @@ public class RecordBean implements Serializable {
 		this.bookId = bookId;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 
