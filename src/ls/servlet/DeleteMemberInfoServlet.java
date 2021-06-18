@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
@@ -21,29 +22,28 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			String action = request.getParameter("action");
-			//パラメーターの取得
-			int userID = Integer.parseInt(request.getParameter("userID"));
 
-			//DAOが入る
-			MemberDAO memDao = new MemberDAO();
-			//削除メソッドを呼び出す
-			MemberBean member = memDao.findMemberByUserID(userID);
-			//削除するものをリクエストスコープに入れる
-			request.setAttribute("member", member);
-			//例外処理
-			request.getRequestDispatcher("/deleteMem.jsp").forward(request, response);
 
-		if (action == null || action.length() == 0) {
-			gotoPage(request,response,"/deleteMem.jsp");
-		}
-		else if(action.equals("delete")) {
-			int userId = Integer.parseInt(request.getParameter("userId"));
-			memDao.updateLeaveDay(userId);
-			request.setAttribute("member", member);
-			request.getRequestDispatcher("/complete.jsp").forward(request, response);
+			if (action == null || action.length() == 0) {
+				MemberDAO memDao = new MemberDAO();
 
-		}
+				HttpSession userIdforDeleteMember =request.getSession();
+				String test = request.getParameter("userId");
+				int userId = Integer.parseInt(test);
+				MemberBean member = memDao.findMemberByUserID(userId);
+				gotoPage(request,response,"/deleteMem.jsp");
+				userIdforDeleteMember.setAttribute("test",userId);
+			}
+			else if(action.equals("delete")) {
+				String test = request.getParameter("userId");
+				int userId = Integer.parseInt(test);
+				MemberDAO memDao = new MemberDAO();
+				memDao.updateLeaveDay(userId);
+				request.setAttribute("messege", "削除");
+				request.getRequestDispatcher("/complete.jsp").forward(request, response);
+				return;
 
+			}
 		}catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
