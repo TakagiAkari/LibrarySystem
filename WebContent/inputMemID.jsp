@@ -12,12 +12,13 @@
 
 <h3>会員管理</h3>
 <form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
-会員ID：<input type="text" name="MenID"><br>
+会員ID：<input type="text" name="userId"><br>
 <input type="submit" value="変更">
 </form>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
-会員ID：<input type="text" name="MenID"><br>
+会員ID：<input type="text" name="userId"><br>
 <input type="submit" value="削除">
+<input type="hidden" name="action" value="delete">
 </form>
 
 <jsp:include page="footer.jsp"/>
