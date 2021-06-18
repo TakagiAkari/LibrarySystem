@@ -41,7 +41,7 @@ public class SearchBookInfoServlet extends HttpServlet {
 			}
 
 			//BookID入力画面で検索ボタンを押した場合
-			else if (action.equals("search")) {
+			else if (action.equals("work")) {
 				int bookId = Integer.parseInt(request.getParameter("bookId"));
 
 				RecordDAO RD = new RecordDAO();
@@ -73,7 +73,7 @@ public class SearchBookInfoServlet extends HttpServlet {
 
 			//その他
 			else {
-				request.setAttribute("message","正しく操作してしてください。");
+				request.setAttribute("message","書籍IDを正しく入力してください。");
 				gotoPage(request, response, "/errMessage.jsp");
 			}
 		}
