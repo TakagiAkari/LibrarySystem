@@ -111,8 +111,7 @@ public class RecordDAO {
 			st2.setLong(1, isbn);
 			// 現在時刻を取得
 			st2.setDate(2, OperateDate.getDateNow());
-			// TODO:なおして
-			//st2.setDate(3, OperateDate.getDateNow());
+			// 廃棄日は決まっていないためnullをセットする
 			st2.setNull(3, java.sql.Types.NULL);
 			st2.setString(4, memo);
 
