@@ -28,6 +28,15 @@ public class MemberBean implements Serializable{
 		this.enterDay = enterDay;
 		this.leaveDay = leaveDay;
 	}
+	public MemberBean(int userId, String userName, String address, String tel, String email, Date birth, Date enterDay) {
+		this.userId = userId;
+		this.userName = userName;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.birth = birth;
+		this.enterDay = enterDay;
+	}
 
 	public int getUserId() {
 		return userId;

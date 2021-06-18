@@ -17,7 +17,7 @@
 		<h1>${message}が完了しました。</h1>
 	<jsp:include page="footer.jsp"/>
 
-<c:if test="${act == lend}">
+<c:if test="${act eq 'lend'}">
 
 <a href="/LibrarySystem/LendingBookServlet?action=continue">続けて貸出をする</a>
 
@@ -28,7 +28,7 @@
 
 </c:if>
 
-<c:if test="${act == return}">
+<c:if test="${act eq 'return'}">
 
 <a href="/LibrarySystem/ReturnBookServlet?action=continue">続けて返却をする</a>
 
