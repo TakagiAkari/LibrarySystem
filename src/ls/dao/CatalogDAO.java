@@ -1,10 +1,13 @@
 package ls.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//CatalogBeanの実装
+import ls.bean.CatalogBean;
 
 public class CatalogDAO {
 
@@ -34,8 +37,7 @@ public class CatalogDAO {
 		}
 	}
 
-	/*機能実装原型
-	public CatalogBean 機能名() throws DAOException{
+	public CatalogBean findByIsbn(long isbn) throws DAOException{
 
 		if(con == null)
 			getConnection();
@@ -44,11 +46,34 @@ public class CatalogDAO {
 		ResultSet rs = null;
 
 		try {
-
+			//emailが一致する会員の検索
+			String sql = "SELECT * FROM catalog WHERE isbn = ?";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			//資料IDの設定
+			st.setLong(1, isbn);
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+			if (rs.next()) {
+				isbn = rs.getLong("isbn");
+				String bookName = rs.getString("book_name");
+				int category = rs.getInt("category");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				Date publishDay = rs.getDate("publish_day");
+				CatalogBean bean = new CatalogBean(isbn, bookName, category, author, publisher, publishDay);
+				//会員情報を返す
+				return bean;
+			}
+			//資料ID該当なし
+			else {
+				return null;
+			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			throw new DAOException("");
+			throw new DAOException("検索に失敗しました。");
 		}
 		finally {
 			try {
@@ -60,5 +85,5 @@ public class CatalogDAO {
 				throw new DAOException("リソースの開放に失敗しました。");
 			}
 		}
-	}*/
+	}
 }
