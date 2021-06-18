@@ -1,7 +1,8 @@
 package ls.servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,17 +10,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ls.bean.InputMemberBean;
 import ls.dao.DAOException;
 import ls.dao.MemberDAO;
+import ls.module.OperateDate;
 
-@WebServlet("/RegisterMemberServlet")
-public class RegisterMemberServlet extends HttpServlet {
+@WebServlet("/RegisterMemberInfoServlet")
+public class RegisterMemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-    public RegisterMemberServlet() {
+    public RegisterMemberInfoServlet() {
         super();
     }
 
@@ -33,14 +36,15 @@ public class RegisterMemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
 		try {
-			//response.setContentType("text/html;charset=UTF-8");
+			request.setCharacterEncoding("UTF-8");
 
 			String action = request.getParameter("action");
 			MemberDAO dao = new MemberDAO();
+			HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
 				gotoPage(request, response, "/signUp.jsp");
 			}
-			else if(action.equals("next")) {
+			else if(action.equals("next") ) {
 
 				String name = request.getParameter("name");
 				String address = request.getParameter("address");
@@ -59,32 +63,30 @@ public class RegisterMemberServlet extends HttpServlet {
 
 
 					InputMemberBean memberInfo = new InputMemberBean(name, address, tel, email, birthY, birthM, birthD);
-					request.setAttribute("InputMemberInfo", memberInfo);
+					session.setAttribute("InputMemberInfo", memberInfo);
 					gotoPage(request, response, "/checkMemInfo.jsp");
 				}
 
 			}
 			//DAOを起動し、DBに情報追加、complete.jspへ
-			else if(action.equals("complete")) {
+			else if(action.equals("complete")&&(session != null)) {
 
-				String name = request.getParameter("name");
-				String address = request.getParameter("address");
-				String tel = request.getParameter("tel");
-				String email = request.getParameter("email");
-				String birthY = request.getParameter("birthY");
-				String birthM = request.getParameter("birthM");
-				String birthD = request.getParameter("birthD");
-				String birthDay = birthY + "-" + birthM + "-" + birthD;
+				InputMemberBean memberInfo = (InputMemberBean)session.getAttribute("InputMemberInfo");
 
-				//System.out.println(birthDay);
+				Date birthDate;
+				try {
+					// 使用しているSimpleDateFormat.parseメソッドがParseExceptionのチェック例外を要求しているため
+					birthDate = OperateDate.getJavaSqlDateOfInputMemberBean(memberInfo);
+				} catch (ParseException e) {
+					e.printStackTrace();
 
-				java.sql.Date birth = java.sql.Date.valueOf(birthDay);
-				Date entryDay = new Date();
-		        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		        String formattedDate = simpleDateFormat.format(entryDay);
-		        java.sql.Date enterDaysql = java.sql.Date.valueOf(formattedDate);
+					request.setAttribute("message",e);
+					gotoPage(request, response, "/errInternal.jsp");
+					return ;
+				}
+				Date enterDate = OperateDate.getDateNow();
 
-		        dao.addMember(name, address, tel, email, birth, enterDaysql);
+		        dao.addMember(memberInfo.getName(), memberInfo.getAddress(), memberInfo.getTel(), memberInfo.getEmail(), birthDate, enterDate);
 		        request.setAttribute("message", "会員登録");
 				gotoPage(request, response, "/complete.jsp");
 
@@ -92,11 +94,6 @@ public class RegisterMemberServlet extends HttpServlet {
 		}catch(DAOException e) {
 			e.printStackTrace();
 		}
-
-
-
-
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

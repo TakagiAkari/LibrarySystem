@@ -4,17 +4,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-<<<<<<< HEAD
-import java.sql.SQLException;
-
-=======
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ls.bean.MemberBean;
 
-
->>>>>>> origin
 public class MemberDAO {
 
 	private Connection con;
@@ -57,36 +51,6 @@ public class MemberDAO {
 				}
 		}
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin
-	private void getConnection() throws DAOException{
-
-		try {
-			Class.forName("org.postgresql.Driver");
-			String url ="jdbc:postgresql:library_system";
-			String user ="admin";
-			String pass ="himitu";
-			con = DriverManager.getConnection(url, user, pass);
-		}catch(Exception e) {
-			throw new DAOException("データベースへの接続に失敗しました");
-		}
-	}
-
-
-	private void close() throws SQLException{
-		if(con != null) {
-			con.close();
-			con = null;
-		}
-	}
-
-
-<<<<<<< HEAD
-}
-=======
 	public MemberBean findByEail(String email) throws DAOException{
 
 		if(con == null)
@@ -138,5 +102,24 @@ public class MemberDAO {
 			}
 		}
 	}
+
+	private void getConnection() throws DAOException{
+
+		try {
+			Class.forName("org.postgresql.Driver");
+			String url ="jdbc:postgresql:library_system";
+			String user ="admin";
+			String pass ="himitu";
+			con = DriverManager.getConnection(url, user, pass);
+		}catch(Exception e) {
+			throw new DAOException("データベースへの接続に失敗しました");
+		}
+	}
+
+	private void close() throws SQLException{
+		if(con != null) {
+			con.close();
+			con = null;
+		}
+	}
 }
->>>>>>> origin
