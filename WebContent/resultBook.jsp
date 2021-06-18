@@ -25,8 +25,7 @@ ISBN番号：${record.isbn }
 <br>出版日：${catalog.publishDay }
 <br>入荷年月日：${record.stockDay }
 <br>備考：${record.memo }
-<%-- 実装する...? --%>
-<br>貸出状況：
+<br>貸出状況：<%-- 実装しますか? --%>
 <br>
 <br>
 <jsp:include page="footer.jsp"/>
