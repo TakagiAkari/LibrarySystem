@@ -14,7 +14,7 @@
 <form action="/LibrarySystem/LendingBookInfoServlet" method="post">
 会員ID：<input type="text" name="userId" >
 書籍ID：<input type="text" name="bookId" >
-<input type="submit" value="貸し出す">
+<input type="submit" value="確認画面へ">
 <input type="hidden" name="action" value="lending">
 </form>
 

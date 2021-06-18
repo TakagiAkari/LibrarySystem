@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +13,12 @@
 
 <body>
 
-
-会員ID：
-会員名：
-//書籍じゃばすくでループ
-書籍ID：
-書籍名：
+会員ID：${ReturnMember.userId}
+会員名：${ReturnMember.userName}
+書籍ID：${ReturnBook.bookId}
+書籍名：${ReturnBook.bookName}
 <form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
-<input type="submit" value="確認画面へ">
+<input type="submit" value="返却する">
 <input type="hidden" name="action" value="complete">
 </form>
 

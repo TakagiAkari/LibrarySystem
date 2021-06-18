@@ -17,7 +17,9 @@
 </form>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 会員ID：<input type="text" name="MemID"><br>
+
 <input type="submit" value="削除">
+<input type="hidden" name="action" value="delete">
 </form>
 
 <jsp:include page="footer.jsp"/>
