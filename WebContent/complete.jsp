@@ -7,6 +7,8 @@
 <title>Complete message</title>
 </head>
 <body>
-<h1>${message}が完了しました。</h1>
+	<jsp:include page="header.jsp"/>
+		<h1>${message}が完了しました。</h1>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

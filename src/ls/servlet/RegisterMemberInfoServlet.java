@@ -17,12 +17,12 @@ import ls.dao.DAOException;
 import ls.dao.MemberDAO;
 import ls.module.OperateDate;
 
-@WebServlet("/RegisterMemberServlet")
-public class RegisterMemberServlet extends HttpServlet {
+@WebServlet("/RegisterMemberInfoServlet")
+public class RegisterMemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-    public RegisterMemberServlet() {
+    public RegisterMemberInfoServlet() {
         super();
     }
 
@@ -36,7 +36,7 @@ public class RegisterMemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
 		try {
-			//response.setContentType("text/html;charset=UTF-8");
+			request.setCharacterEncoding("UTF-8");
 
 			String action = request.getParameter("action");
 			MemberDAO dao = new MemberDAO();
@@ -78,7 +78,6 @@ public class RegisterMemberServlet extends HttpServlet {
 					// 使用しているSimpleDateFormat.parseメソッドがParseExceptionのチェック例外を要求しているため
 					birthDate = OperateDate.getJavaSqlDateOfInputMemberBean(memberInfo);
 				} catch (ParseException e) {
-					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 
 					request.setAttribute("message",e);
