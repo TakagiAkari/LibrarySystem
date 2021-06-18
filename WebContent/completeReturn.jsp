@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Complete message</title>
+<title>返却完了画面</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
-	<jsp:include page="header.jsp"/>
-		<h1>${message}が完了しました。</h1>
-	<jsp:include page="footer.jsp"/>
+
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>

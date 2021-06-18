@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>資料台帳確認画面</title>
 </head>
+
+<jsp:include page="header.jsp"/>
+
 <body>
 ISBN番号：${BookInfo.name}<br>
 題名：${BookInfo.address}<br>
@@ -20,4 +23,7 @@ ISBN番号：${BookInfo.name}<br>
 
 
 </body>
+
+<jsp:include page="footer.jsp"/>
+
 </html>
