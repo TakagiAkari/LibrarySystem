@@ -1,34 +1,25 @@
 DROP TABLE IF EXISTS lending;
+DROP TABLE IF EXISTS member;
 DROP TABLE IF EXISTS record;
 DROP TABLE IF EXISTS catalog;
-DROP TABLE IF EXISTS member;
 
-CREATE TABLE lending (
-  lend_id INTEGER PRIMARY KEY NOT NULL,
-  user_id INTEGER NOT NULL REFERENCES member,
-  book_id INTEGER  NOT NULL REFERENCES record,
-  lend_day DATE NOT NULL,
-  return_limit DATE NOT NULL,
-  return_day DATE,
-  memo TEXT
-);
 
-CREATE TABLE record (
-  book_id INTEGER PRIMARY KEY,
-  isbn INTEGER NOT NULL REFERENCES catalog,
-  book_name TEXT NOT NULL,
-  stock_day DATE NOT NULL,
-  throwout_day DATE,
-  memo TEXT
-);
 
 CREATE TABLE catalog (
-  isbn INTEGER PRIMARY KEY NOT NULL,
+  isbn BIGINT PRIMARY KEY NOT NULL,
   book_name TEXT NOT NULL,
   category INTEGER NOT NULL,
   author TEXT NOT NULL,
   publisher TEXT NOT NULL,
   publish_day DATE NOT NULL
+);
+
+CREATE TABLE record (
+  book_id INTEGER PRIMARY KEY NOT NULL,
+  isbn BIGINT NOT NULL REFERENCES catalog,
+  stock_day DATE NOT NULL,
+  throwout_day DATE,
+  memo TEXT
 );
 
 CREATE TABLE member(
@@ -42,11 +33,29 @@ CREATE TABLE member(
   leave_day DATE
 );
 
-INSERT INTO member(user_name, address, tel, email, birthday,enter_day) VALUES('óÈñÿ òaïv', 'ìåãûìsèaíJãÊ','111-1111', '1234@email.com', '1987/08/13', '20210401');
-INSERT INTO member(user_name, address, tel, email, birthday,enter_day) VALUES('ìcíÜ ê^ã|', 'ìåãûìsê¢ìcíJãÊ','222-2222', '5656@email.com', '1993/10/13', '20200503');
-INSERT INTO member(user_name, address, tel, email, birthday,enter_day, leave_day) VALUES('ìnï” ç_ìÒ', 'ìåãûìsç`ãÊ','333-3333', '2929@email.com', '1975/12/7','20210520', '20210601');
+CREATE TABLE lending (
+  lend_id INTEGER PRIMARY KEY NOT NULL,
+  user_id INTEGER NOT NULL REFERENCES member,
+  book_id INTEGER  NOT NULL REFERENCES record,
+  lend_day DATE NOT NULL,
+  return_limit DATE NOT NULL,
+  return_day DATE,
+  memo TEXT
+);
 
-ALTER TABLE lending OWNER TO admin;
-ALTER TABLE record OWNER TO admin;
-ALTER TABLE catalog OWNER TO admin;
+
+INSERT INTO member(user_name, address, tel, email, birthday,enter_day) VALUES('óÈñÿ òaïv', 'ìåãûìsèaíJãÊ','111-1111', '1234@email.com', '1987.08.13', '20210401');
+INSERT INTO member(user_name, address, tel, email, birthday,enter_day) VALUES('ìcíÜ ê^ã|', 'ìåãûìsê¢ìcíJãÊ','222-2222', '5656@email.com', '1993.10.13', '20200503');
+INSERT INTO member(user_name, address, tel, email, birthday,enter_day, leave_day) VALUES('ìnï” ç_ìÒ', 'ìåãûìsç`ãÊ','333-3333', '2929@email.com', '1975.12.7','20210520', '20210601');
+
+INSERT INTO catalog(isbn, book_name, category, author, publisher, publish_day) VALUES('4906638015', '7Ç¬ÇÃèKäµ', '3', 'ÉXÉeÉBÅ[ÉuÉìÅERÅEÉRÉrÅ[', 'ÉLÉìÉOÉxÉAÅ[èoî≈', '1996.12.25');
+INSERT INTO catalog(isbn, book_name, category, author, publisher, publish_day) VALUES('4480425993', 'ÇÊÇ¢Ç±ÇÃåNéÂò_', '1', 'âÀê_Å@ã±âÓ', 'í}ñÄèëñ[', '2009.05.11');
+
+INSERT INTO record(book_id, isbn,stock_day,throwout_day, memo) VALUES('123', '4906638015', '2010.01.07','2003.08.05','óÚâªÇÃÇΩÇﬂîpä¸');
+INSERT INTO record(book_id, isbn, stock_day) VALUES('124', '4906638015',  '2010.01.07');
+INSERT INTO record(book_id, isbn, stock_day) VALUES('234', '4480425993',  '2015.10.18');
+
 ALTER TABLE member OWNER TO admin;
+ALTER TABLE catalog OWNER TO admin;
+ALTER TABLE record OWNER TO admin;
+ALTER TABLE lending OWNER TO admin;
