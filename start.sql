@@ -34,7 +34,7 @@ CREATE TABLE member(
 );
 
 CREATE TABLE lending (
-  lend_id INTEGER PRIMARY KEY NOT NULL,
+  lend_id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES member,
   book_id INTEGER  NOT NULL REFERENCES record,
   lend_day DATE NOT NULL,

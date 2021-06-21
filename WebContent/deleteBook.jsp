@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>削除確認画面</title>
+<title>資料削除確認画面</title>
 </head>
 <body>
+
 <jsp:include page="header.jsp"/>
 <form action="/LibrarySystem/DeleteBookInfoServlet" method="post">
 <h2>削除資料情報</h2>
+
+
 </body>
 <br>ISBN番号：${catalog.isbn }
 <br>題名：${catalog.bookName }

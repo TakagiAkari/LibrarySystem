@@ -4,17 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>E-mail入力画面</title>
+<title>会員検索情報入力画面</title>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
-<br>
+
+<h1>メールアドレス入力</h1>
+
 <form action="/LibrarySystem/SearchMemberInfoServlet" method="post">
 E-mail：<input type="email" name="email" size="50" required>
 <br>
-<input type="submit" value="検索">
+<p style="text-align:center">
+<input type="submit" value="検索する">
 <input type="hidden" name="action" value="search">
+</p><br>
 </form>
 <br>
 <jsp:include page="footer.jsp"/>

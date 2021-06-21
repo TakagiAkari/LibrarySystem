@@ -196,7 +196,7 @@ public class RecordDAO {
 			}
 		}
 	}
-
+//資料IDで検索
 	public RecordBean findByBookId(int bookId) throws DAOException{
 		if(con == null)
 			getConnection();

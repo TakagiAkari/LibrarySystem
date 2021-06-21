@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員登録</title>
+<title>会員登録情報入力画面</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 
-	<h2>会員登録</h2>
+	<h1>会員登録情報入力</h1>
 
 	<form action="/LibrarySystem/RegisterMemberInfoServlet" method="post">
 		氏名：<input type="text" name="name"><br>
@@ -18,8 +18,10 @@
 		電話番号：<input type="text" name="tel"><br>
 		e-mail:<input type="text" name="email"><br>
 		生年月日：<input type="text" name="birthY">年<input type="text" name="birthM">月<input type="text" name="birthD">日<br>
+		<p style="text-align:center">
 		<input type="submit" value="確認画面へ">
 		<input type="hidden" name="action" value="next">
+		</p><br>
 	</form>
 
 	<jsp:include page="footer.jsp"/>

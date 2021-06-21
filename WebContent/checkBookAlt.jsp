@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>変更確認画面</title>
+<title>資料変更確認画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>
 
 <body>
+
+<h1>資料変更情報確認</h1>
 
 </body>
 

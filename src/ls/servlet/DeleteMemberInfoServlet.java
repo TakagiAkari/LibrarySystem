@@ -37,7 +37,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			}
 			else if(action.equals("complete")) {
 				MemberDAO memDao = new MemberDAO();
-				int userId = Integer.parseInt(request.getParameter("userId"));
+				int userId = Integer.parseInt(request.getParameter("userID"));
 				memDao.updateLeaveDay(userId);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);

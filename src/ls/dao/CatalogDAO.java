@@ -159,7 +159,7 @@ public class CatalogDAO {
 			}
 		}
 	}
-
+//ISBNで検索する
 	public CatalogBean findByIsbn(long isbn) throws DAOException{
 
 		if(con == null)
