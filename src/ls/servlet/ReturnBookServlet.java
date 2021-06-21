@@ -39,8 +39,8 @@ public class ReturnBookServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
-				
-				gotoPage(request, response, "/returnInput");
+
+				gotoPage(request, response, "/returnInput.jsp");
 
 			}else if(action.equals("check")) {
 
@@ -53,12 +53,12 @@ public class ReturnBookServlet extends HttpServlet {
 
 				}else {
 					session.setAttribute("displayInfo", ReturnInfo);
-					gotoPage(request, response, "/checkreturn.jsp");
+					gotoPage(request, response, "/checkReturn.jsp");
 				}
 
 			}else if(action.equals("complete")&&(session != null)) {
 
-				ReturnBean returnbean = (ReturnBean)session.getAttribute("ReturnInfo");
+				ReturnBean returnbean = (ReturnBean)session.getAttribute("displayInfo");
 				int bookId = returnbean.getBookId();
 				java.sql.Date returnDay = returnbean.getReturnDay();
 
