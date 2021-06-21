@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Complete message</title>
 </head>
-
-<jsp:include page="header.jsp"/>
-
 <body>
 
 	<jsp:include page="header.jsp"/>
@@ -38,10 +35,5 @@
 </form>
 
 </c:if>
-
-
 </body>
-
-<jsp:include page="footer.jsp"/>
-
 </html>

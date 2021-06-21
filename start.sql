@@ -15,7 +15,7 @@ CREATE TABLE catalog (
 );
 
 CREATE TABLE record (
-  book_id INTEGER PRIMARY KEY NOT NULL,
+  book_id SERIAL PRIMARY KEY,
   isbn BIGINT NOT NULL REFERENCES catalog,
   stock_day DATE NOT NULL,
   throwout_day DATE,
@@ -51,9 +51,9 @@ INSERT INTO member(user_name, address, tel, email, birthday,enter_day, leave_day
 INSERT INTO catalog(isbn, book_name, category, author, publisher, publish_day) VALUES('4906638015', '7つの習慣', '3', 'スティーブン・R・コビー', 'キングベアー出版', '1996.12.25');
 INSERT INTO catalog(isbn, book_name, category, author, publisher, publish_day) VALUES('4480425993', 'よいこの君主論', '1', '架神　恭介', '筑摩書房', '2009.05.11');
 
-INSERT INTO record(book_id, isbn,stock_day,throwout_day, memo) VALUES('123', '4906638015', '2010.01.07','2003.08.05','劣化のため廃棄');
-INSERT INTO record(book_id, isbn, stock_day) VALUES('124', '4906638015',  '2010.01.07');
-INSERT INTO record(book_id, isbn, stock_day) VALUES('234', '4480425993',  '2015.10.18');
+INSERT INTO record(isbn,stock_day,throwout_day, memo) VALUES('4906638015', '2010.01.07','2003.08.05','劣化のため廃棄');
+INSERT INTO record(isbn, stock_day) VALUES('4906638015',  '2010.01.07');
+INSERT INTO record(isbn, stock_day) VALUES('4480425993',  '2015.10.18');
 
 ALTER TABLE member OWNER TO admin;
 ALTER TABLE catalog OWNER TO admin;
