@@ -11,13 +11,16 @@
 <jsp:include page="header.jsp"/>
 <h1>会員情報変更</h1>
 
-名前：<input type="text" name="name"><br>
-住所:<input type="text" name="address"><br>
-e-mail:<input type="text" name="e-mail"><br>
-電話番号:<input type="text" name="tel"><br>
-生年月日:<input type="text" name="birthY">年<input type="text" name="birthM">月<input type="text" name="birthD">日<br>
+<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
+名前：<input type="text" name="name" value= "${PreviousMemberInfo.userName}" ><br>
+住所:<input type="text" name="address" value= "${PreviousMemberInfo.address}"><br>
+e-mail:<input type="text" name="email" value= "${PreviousMemberInfo.email}"><br>
+電話番号:<input type="text" name="tel" value= "${PreviousMemberInfo.tel}"><br>
+生年月日:<input type="text" name="birthY" value= "${PreviousMemberInfo.birth.getYear()+1900}">年<input type="text" name="birthM" value= "${PreviousMemberInfo.birth.getMonth()+1}">月<input type="text" name="birthD" value= "${PreviousMemberInfo.birth.getDay()}">日<br>
 
-<p style="text-align:center"><a href="/LibrarySystem/ChangeMemberInfoServlet?action=show">確認画面へ</a></p>
+<p style="text-align:center"><input type="submit" value="確認画面へ"></p>
+<input type="hidden" name = "action" value="show">
+</form>
 
 <jsp:include page="footer.jsp"/>
 </body>
