@@ -37,6 +37,14 @@ public class MemberBean implements Serializable{
 		this.birth = birth;
 		this.enterDay = enterDay;
 	}
+	public MemberBean(int userId, String userName, String address, String tel, String email, Date birth) {
+		this.userId = userId;
+		this.userName = userName;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.birth = birth;
+	}
 
 	public int getUserId() {
 		return userId;
