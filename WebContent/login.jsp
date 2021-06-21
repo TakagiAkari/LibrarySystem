@@ -8,10 +8,15 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
+
+	<h1>職員情報入力</h1>
+
 	<form action="/LibrarySystem/LoginServlet" method="post">
 		ユーザ名:<input type="text" name="userName"><br>
 		パスワード：<input type="password" name="password"><br>
+		<p style="text-align:center">
 		<input type="submit" value="ログイン">
+		</p><br>
 	</form>
 </body>
 </html>
