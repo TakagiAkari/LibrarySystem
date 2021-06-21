@@ -82,7 +82,7 @@ public class MemberDAO {
 					}
 				}
 		}
-
+//emailで検索
 	public MemberBean findByEail(String email) throws DAOException{
 
 		if(con == null)
