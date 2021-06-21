@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ls.bean.InputMemberBean;
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
 import ls.dao.MemberDAO;
@@ -55,6 +54,12 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				MemberDAO dao = new MemberDAO();
 				int userId = Integer.parseInt(request.getParameter("MemID"));
 				MemberBean bean =dao.findMemberByUserID(userId);
+				if (bean == null) {
+					request.setAttribute("message", "正しく入力してください");
+					gotoPage(request, response, "/errMessage.jsp");
+					return;
+				}
+
 				session.setAttribute("PreviousMemberInfo",bean);
 				gotoPage(request, response, "/changeMemInfo.jsp");
 					//showをクリックで変更前の情報表示を行う
@@ -75,8 +80,6 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 					int userId = ChangeMember.getUserId();
 					MemberBean LaterMemberInfo = new MemberBean(userId,name, address, tel, email, BirthDay);
 					session.setAttribute("LaterMemberInfo", LaterMemberInfo);
-					MemberDAO dao = new MemberDAO();
-					dao.ChangeMember(LaterMemberInfo);
 					gotoPage(request, response, "/checkMemAlt.jsp");
 			} catch (ParseException e) {
 					e.printStackTrace();
@@ -86,8 +89,10 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 
 			// changeは変更確定
 			}else if (action.equals("change")&&(session != null)) {
-				InputMemberBean memberInfo = (InputMemberBean)session.getAttribute("InputMemberInfo");
+				MemberBean LaterMemberInfo = (MemberBean)session.getAttribute("LaterMemberInfo");
 				MemberBean member = (MemberBean) session.getAttribute("PreviousMemberInfo");
+				MemberDAO dao = new MemberDAO();
+				dao.ChangeMember(LaterMemberInfo);
 			if (member == null) { //利用者情報がない
 				request.setAttribute("message", "正しく操作してください");
 				gotoPage(request, response, "/errMessage.jsp");
