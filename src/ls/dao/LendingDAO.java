@@ -181,12 +181,12 @@ public class LendingDAO {
 			//結果の取得
 			List<LendingBean> list = new ArrayList<LendingBean>();
 			while (rs.next()) {
-				int lendId = rs.getInt("lendId");
-				int bookId = rs.getInt("bookId");
-				int userId = rs.getInt("userId");
-				Date lendDay = rs.getDate("lendDay");
-				Date returnLimit = rs.getDate("returnLimit");
-				Date returnDay = rs.getDate("returnDay");
+				int lendId = rs.getInt("lend_id");
+				int bookId = rs.getInt("book_id");
+				int userId = rs.getInt("user_id");
+				Date lendDay = rs.getDate("lend_day");
+				Date returnLimit = rs.getDate("return_limit");
+				Date returnDay = rs.getDate("return_day");
 				String memo = rs.getString("memo");
 				LendingBean bean = new LendingBean(lendId, bookId, userId, lendDay, returnLimit, returnDay, memo);
 				list.add(bean);
