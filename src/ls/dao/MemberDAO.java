@@ -49,6 +49,39 @@ public class MemberDAO {
 					}
 				}
 		}
+	//会員情報変更
+	public int ChangeMember(MemberBean bean) throws DAOException {
+		if(con == null) {
+			getConnection();
+		}
+		PreparedStatement st = null;
+		try {
+			String sql = "UPDATE member SET user_name= ?, address= ?, tel= ?, email= ?, birthday= ? WHERE user_id = ?";
+			st = con.prepareStatement(sql);
+
+			st.setString(1,bean.getUserName());
+			st.setString(2,bean.getAddress());
+			st.setString(3,bean.getTel());
+			st.setString(4,bean.getEmail());
+			st.setDate(5,bean.getBirth());
+			st.setInt(6,bean.getUserId());
+
+			int rows = st.executeUpdate();
+			return rows;
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new DAOException("会員情報の変更に失敗しました");
+		}finally {
+			try {
+				if(st != null) {
+					st.close();
+					close();
+					}
+				}catch(Exception e) {
+					throw new DAOException("DBとの接続の開放に失敗しました");
+					}
+				}
+		}
 
 	public MemberBean findByEail(String email) throws DAOException{
 
@@ -60,7 +93,7 @@ public class MemberDAO {
 
 		try {
 			//emailが一致する会員の検索
-			String sql = "SELECT * FROM member WHERE email = ? AND leave_day is null";
+			String sql ="SELECT * FROM member WHERE email = ? AND leave_day is null";
 			//stオブジェクトの取得
 			st = con.prepareStatement(sql);
 			//Emailの設定

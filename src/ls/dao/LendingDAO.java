@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import ls.bean.LendingBean;
 
 public class LendingDAO {
 	private Connection con;
@@ -149,6 +153,52 @@ public class LendingDAO {
 			e.printStackTrace();
 			throw new DAOException("資料名の検索に失敗しました。");
 		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+	}
+
+	public List<LendingBean> findAll() throws DAOException {
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			//貸し出し台帳からデータを取得するSQL
+			String sql = "SELECT * FROM lending";
+			//PreparedStatementオブジェクトの取得
+			st = con.prepareStatement(sql);
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得
+			List<LendingBean> list = new ArrayList<LendingBean>();
+			while (rs.next()) {
+				int lendId = rs.getInt("lendId");
+				int bookId = rs.getInt("bookId");
+				int userId = rs.getInt("userId");
+				Date lendDay = rs.getDate("lendDay");
+				Date returnLimit = rs.getDate("returnLimit");
+				Date returnDay = rs.getDate("returnDay");
+				String memo = rs.getString("memo");
+				LendingBean bean = new LendingBean(lendId, bookId, userId, lendDay, returnLimit, returnDay, memo);
+				list.add(bean);
+			}
+			return list;
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			throw new DAOException("一覧の取得に失敗しました。");
+		}
+		finally {
 			try {
 				if(rs != null) rs.close();
 				if(st != null) st.close();
