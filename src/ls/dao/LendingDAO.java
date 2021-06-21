@@ -20,18 +20,19 @@ public class LendingDAO {
 	}
 
 	//DateはSQLDate
-	public int addLending(int userIdInt, int bookIdInt, Date returnLimit, String memo) throws DAOException {
+	public int addLending(int userIdInt, int bookIdInt, Date lendDay,Date returnLimitDay, String memo) throws DAOException {
 		if(con == null) {
 			getConnection();
 		}
 		PreparedStatement st = null;
 		try {
-			String sql = "INSERT INTO lending(user_id, book_id, return_limit, memo) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO lending(user_id, book_id, lend_day,return_limit, memo) VALUES(?, ?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, userIdInt);
 			st.setInt(2, bookIdInt);
-			st.setDate(3, returnLimit);
-			st.setString(4, memo);
+			st.setDate(3, lendDay);
+			st.setDate(4, returnLimitDay);
+			st.setString(5, memo);
 
 			int rows = st.executeUpdate();
 			return rows;
@@ -129,6 +130,39 @@ public class LendingDAO {
 		}
 	}
 
+	public boolean existsUnreturnedBook(int book_id) throws DAOException {
+		// return_dayがnullの行があればまだ返却されていないものとしてTrueを返したい
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM lending WHERE book_id = ? AND return_day IS null";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			st.setInt(1, book_id);
+			//Emailの設定
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+
+			return rs.next();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("資料名の検索に失敗しました。");
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+	}
 
 	public List<LendingBean> findAll() throws DAOException {
 		if(con == null)
@@ -147,12 +181,12 @@ public class LendingDAO {
 			//結果の取得
 			List<LendingBean> list = new ArrayList<LendingBean>();
 			while (rs.next()) {
-				int lendId = rs.getInt("lendId");
-				int bookId = rs.getInt("bookId");
-				int userId = rs.getInt("userId");
-				Date lendDay = rs.getDate("lendDay");
-				Date returnLimit = rs.getDate("returnLimit");
-				Date returnDay = rs.getDate("returnDay");
+				int lendId = rs.getInt("lend_id");
+				int bookId = rs.getInt("book_id");
+				int userId = rs.getInt("user_id");
+				Date lendDay = rs.getDate("lend_day");
+				Date returnLimit = rs.getDate("return_limit");
+				Date returnDay = rs.getDate("return_day");
 				String memo = rs.getString("memo");
 				LendingBean bean = new LendingBean(lendId, bookId, userId, lendDay, returnLimit, returnDay, memo);
 				list.add(bean);

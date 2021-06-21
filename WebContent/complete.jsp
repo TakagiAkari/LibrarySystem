@@ -16,6 +16,8 @@
 
 <c:if test="${act eq 'lend'}">
 
+
+<%-- submitとhrefが他と逆 --%>
 <a href="/LibrarySystem/LendingBookServlet?action=continue">続けて貸出をする</a>
 
 <form action="/LibrarySystem/LendingBookServlet" method="post">

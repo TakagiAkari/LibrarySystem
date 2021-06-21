@@ -47,7 +47,7 @@ public class ShowLendingServlet extends HttpServlet {
 		catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
-			RequestDispatcher rd = request.getRequestDispatcher("/errMeaage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/errMessage.jsp");
 			rd.forward(request, response);
 		}
 	}
