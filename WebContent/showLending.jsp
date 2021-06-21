@@ -9,15 +9,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>貸出履歴一覧</title>
+<title>貸出履歴一覧表示画面</title>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 <br>
 
+	<h1>貸出履歴一覧</h1>
+
 	<table border="1">
-	<tr><td>貸出番号</td><td>資料ID</td><td>会員ID</td><td>貸出日</td><td>返却予定日</td><td>返却日</td><td>備考</td></tr>
+	<tr>
+	<td>貸出番号</td>
+	<td>資料ID</td>
+	<td>会員ID</td>
+	<td>貸出日</td>
+	<td>返却予定日</td>
+	<td>返却日</td>
+	<td>備考</td></tr>
 
 	<c:forEach items="${lending}" var="lending">
 		<tr>

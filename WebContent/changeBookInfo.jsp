@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料情報変更画面</title>
+<title>資料情報変更入力画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>
 
 <body>
 
-<h1>資料情報変更</h1>
+<h1>資料変更情報入力</h1>
 
 <form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
 ISBN番号：<input type="text" name="isbn" size="13" required><br>

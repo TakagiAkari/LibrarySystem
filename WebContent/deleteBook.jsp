@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>削除確認画面</title>
+<title>資料削除確認画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>
 
 <body>
+
+<h1>資料削除情報</h1>
 
 </body>
 

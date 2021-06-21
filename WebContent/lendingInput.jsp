@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>貸出画面</title>
+<title>貸出情報入力画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>

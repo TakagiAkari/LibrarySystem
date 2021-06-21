@@ -14,7 +14,6 @@
 <h1>返却情報入力</h1>
 
 <form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
-
 資料ID：<input type="text" name="bookId" >
 <p style="text-align:center">
 <input type="submit" value="返却する">
