@@ -16,7 +16,7 @@ public class LendingDAO {
 	}
 
 	//DateはSQLDate
-	public int addLending(int userId, int bookId, Date returnLimit, String memo) throws DAOException {
+	public int addLending(int userIdInt, int bookIdInt, Date returnLimit, String memo) throws DAOException {
 		if(con == null) {
 			getConnection();
 		}
@@ -24,8 +24,8 @@ public class LendingDAO {
 		try {
 			String sql = "INSERT INTO lending(user_id, book_id, return_limit, memo) VALUES(?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
-			st.setInt(1, userId);
-			st.setInt(2, bookId);
+			st.setInt(1, userIdInt);
+			st.setInt(2, bookIdInt);
 			st.setDate(3, returnLimit);
 			st.setString(4, memo);
 
@@ -49,7 +49,7 @@ public class LendingDAO {
 
 
 
-	public String returnUserName(int userIdserch) throws DAOException {
+	public String returnUserName(int userIdInt) throws DAOException {
 		if(con == null)
 			getConnection();
 
@@ -61,7 +61,7 @@ public class LendingDAO {
 			//stオブジェクトの取得
 			st = con.prepareStatement(sql);
 			//Emailの設定
-			st.setInt(1, userIdserch);
+			st.setInt(1, userIdInt);
 			//SQLの実行
 			rs = st.executeQuery();
 			//結果の取得と表示
@@ -88,19 +88,19 @@ public class LendingDAO {
 
 
 
-	public String returnBookName(int bookIdserch) throws DAOException {
+	public String returnBookName(int bookIdInt) throws DAOException {
 		if(con == null)
 			getConnection();
 
 		PreparedStatement st = null;
 		ResultSet rs = null;
 
-		try {//userIdが一致する会員の検索
+		try {//userIdが一致するbookの検索
 			String sql = "SELECT book_name FROM record WHERE book_id = ?";
 			//stオブジェクトの取得
 			st = con.prepareStatement(sql);
 			//Emailの設定
-			st.setInt(1, bookIdserch);
+			st.setInt(1, bookIdInt);
 			//SQLの実行
 			rs = st.executeQuery();
 			//結果の取得と表示

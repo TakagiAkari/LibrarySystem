@@ -34,17 +34,20 @@ public class LendingBookServlet extends HttpServlet {
 
 			String action = request.getParameter("action");
 			LendingDAO dao = new LendingDAO();
-			//
+			//session情報をとってこい、「session」に格納しろ、session情報がなかったら「ssesion」にはnullをぶちこめ
 			HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
 					gotoPage(request, response, "/lendingInput.jsp");
 				}else if(action.equals("check")) {
+					String memo = request.getParameter("memo");
 					String userId = request.getParameter("userId");
 					String bookId = request.getParameter("bookId");
-					int userIdserch = Integer.parseInt(userId);
-					int bookIdserch = Integer.parseInt(bookId);
-					String userName = dao.returnUserName(userIdserch);
-					String bookName = dao.returnBookName(bookIdserch);
+					int userIdInt = Integer.parseInt(userId);
+					int bookIdInt = Integer.parseInt(bookId);
+
+					String userName = dao.returnUserName(userIdInt);
+					String bookName = dao.returnBookName(bookIdInt);
+
 					//↑Stringで各情報がそろった⇒情報のチェック↓
 					if(userId == null || userId.length() == 0 || bookId == null || bookId.length() == 0) {
 						request.setAttribute("errMessage", "すべての情報を入力してください");
@@ -53,16 +56,25 @@ public class LendingBookServlet extends HttpServlet {
 						request.setAttribute("errMessage", "DB内の会員名もしくは資料名が不正です");
 						gotoPage(request, response, "/errMessage.jsp");
 					}else {
-						LendingBean lendingbean = new LendingBean(bookId, bookName, userId, userName);
+						LendingBean lendingbean = new LendingBean(memo, bookId, bookName, userId, userName, userIdInt, bookIdInt);
 						session.setAttribute("displayInfo", lendingbean);
 						gotoPage(request, response, "/checkLending.jsp");
 						}
 				}else if(action.equals("complete")&&(session != null)) {
 			//貸出台帳に登録（INSERT）、貸出完了メッセージの送信、完了画面の表示
+					//sessionからBeanを取得、intId,memoの抽出
+					LendingBean lendingbean = (LendingBean)session.getAttribute("lendingbean");
+					int userIdInsert = lendingbean.getUserIdInt();
+					int bookIdInsert = lendingbean.getBookIdInt();
+					String memoInsert = lendingbean.getMemo();
+
+					Calender returnLimit;
+					//returnLimitの取得
+						//returnLimit = today + 10 or 15 days
+						//if で addDays(10 or 15)の場合分け
 
 
-
-					dao.addLending(userId, bookId, returnLimit, memo);
+					dao.addLending(userIdInsert, bookIdInsert, returnLimitInsert, memoInsert);
 					request.setAttribute("message", "貸出");
 					gotoPage(request, response, "/complete.jsp");
 				}
