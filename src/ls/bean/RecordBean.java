@@ -21,6 +21,17 @@ public class RecordBean implements Serializable {
 		this.throwoutDay = throwoutDay;
 		this.memo = memo;
 	}
+	public RecordBean(int bookId, long isbn, Date stockDay, String memo) {
+		this.bookId = bookId;
+		this.isbn = isbn;
+		this.stockDay = stockDay;
+		this.memo = memo;
+	}
+	public RecordBean(long isbn, Date stockDay, String memo) {
+		this.isbn = isbn;
+		this.stockDay = stockDay;
+		this.memo = memo;
+	}
 
 	public int getBookId() {
 		return bookId;

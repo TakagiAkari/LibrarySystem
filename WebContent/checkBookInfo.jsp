@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,14 @@
 <jsp:include page="header.jsp"/>
 
 <body>
-ISBN番号：${BookInfo.isbn}<br>
-題名：${BookInfo.title}<br>
-著者:${BookInfo.author}<br>
-分類コード：${BookInfo.category}<br>
-出版社：${BookInfo.publisher}<br>
-出版年月日：${BookInfo.publishedY}年${BookInfo.publishedM}月${BookInfo.publishedD}日<br>
-入荷年月日：${BookInfo.stockY}年${BookInfo.stockM}月${BookInfo.stockD}日<br>
-廃棄年月日：${BookInfo.throwoutY}年${BookInfo.throwoutM}月${BookInfo.throwoutD}日<br>
-備考欄：${BookInfo.memo}<br>
+ISBN番号：${recordBeanForRegisterBook.isbn}<br>
+題名：${catalogBeanForRegisterBook.bookName}<br>
+著者:${catalogBeanForRegisterBook.author}<br>
+分類コード：${catalogBeanForRegisterBook.category}<br>
+出版社：${catalogBeanForRegisterBook.publisher}<br>
+出版年月日：${catalogBeanForRegisterBook.publishDay}<br>
+入荷年月日：${recordBeanForRegisterBook.stockDay}<br>
+備考欄：${recordBeanForRegisterBook.memo}<br>
 <form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
 <input type="hidden" name="action" value="complete">
 <input type="submit"  value="登録する"><br>
