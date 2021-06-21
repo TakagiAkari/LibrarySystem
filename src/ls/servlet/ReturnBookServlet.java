@@ -39,7 +39,8 @@ public class ReturnBookServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
-			gotoPage(request, response, "/returnInput");
+
+				gotoPage(request, response, "/returnInput");
 
 			}else if(action.equals("check")) {
 
