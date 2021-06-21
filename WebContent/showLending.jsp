@@ -17,7 +17,7 @@
 <br>
 
 	<table border="1">
-	<tr><td>貸出番号</td><td>資料ID</td><td>会員ID</td><td>貸出日</td><td>返却予定日</td><td>返却日</td></tr>
+	<tr><td>貸出番号</td><td>資料ID</td><td>会員ID</td><td>貸出日</td><td>返却予定日</td><td>返却日</td><td>備考</td></tr>
 
 	<c:forEach items="${lending}" var="lending">
 		<tr>
@@ -27,6 +27,7 @@
 		<td>${lending.lendDay }</td>
 		<td>${lending.returnLimit }</td>
 		<td>${lending.returnDay }</td>
+		<td>${lending.memo }</td>
 		</tr>
 	</c:forEach>
 
