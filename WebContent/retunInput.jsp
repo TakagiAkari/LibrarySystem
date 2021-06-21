@@ -11,11 +11,11 @@
 
 <body>
 
-<form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
+<form action="/LibrarySystem/ReturnBookServlet" method="post">
 
 書籍ID：<input type="text" name="bookId" >
 <input type="submit" value="返却する">
-<input type="hidden" name="action" value="return">
+<input type="hidden" name="action" value="check">
 
 </form>
 
