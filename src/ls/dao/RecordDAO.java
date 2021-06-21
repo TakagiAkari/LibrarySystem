@@ -45,7 +45,7 @@ public class RecordDAO {
 		ResultSet rs = null;
 		 try {
 			//SQL
-			String sql = "SELECT * FROM record, WHERE book_id = ?";
+			String sql = "SELECT * FROM record WHERE book_id = ?";
 			st = con.prepareStatement(sql);
 			//SQLをデータベースへ
 			st.setInt(1, bookID);
