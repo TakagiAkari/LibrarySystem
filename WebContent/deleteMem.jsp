@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>退会会員情報確認画面</title>
+<title>会員退会確認画面</title>
 </head>
 <body>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
-<h1>新宿図書館 図書管理システム</h1>
+
 <h1>退会会員情報</h1>
-<br>会員ID：${member.userId }
+
+会員ID：${member.userId }
 <br>氏名：${member.userName }
 <br>住所：${member.address }
 <br>E-Mail：${member.email }
@@ -18,12 +19,16 @@
 <br>入会年月日：${member.enterDay }
 <br>
 <br>
-<input type="submit" value="削除">
+
+<p style="text-align:center">
+<input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
 <input type="hidden" name="userId" value="${member.userId }">
+</p><br>
 
 </form>
-<h1>貸出中</h1>
+<%--ここの実装はまだ --%>
+<h1>貸出状況</h1>
 貸出状況：
 </body>
 </html>

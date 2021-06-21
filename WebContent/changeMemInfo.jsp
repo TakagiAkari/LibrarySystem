@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員情報変更入力</title>
+<title>会員情報変更入力画面</title>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
-<h1>会員情報変更</h1>
+<h1>会員変更情報入力</h1>
 
 <form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 名前：<input type="text" name="name" value= "${PreviousMemberInfo.userName}"  required><br>
