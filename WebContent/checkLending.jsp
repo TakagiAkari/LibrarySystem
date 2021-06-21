@@ -12,13 +12,17 @@
 
 <body>
 
-会員ID：${displayInfo.userId}
-会員名：${displayInfo.userName}
-書籍ID：${displayInfo.bookId}
-書籍名：${displayInfo.bookName}
+<h1>貸出情報確認</h1>
+
+会員ID：${displayInfo.userId}<br>
+会員名：${displayInfo.userName}<br>
+書籍ID：${displayInfo.bookId}<br>
+書籍名：${displayInfo.bookName}<br>
 <form action="/LibrarySystem/LendingBookServlet" method="post">
-<input type="submit" value="貸出">
+<p style="text-align:center">
+<input type="submit" value="貸出する">
 <input type="hidden" name="action" value="complete">
+</p>
 </form>
 
 </body>
