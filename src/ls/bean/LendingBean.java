@@ -17,7 +17,16 @@ public class LendingBean implements Serializable {
 
 	public LendingBean() {}
 
-
+	public LendingBean(int lendId, int bookId, int userId, Date lendDay, Date returnLimit, Date returnDay, String memo) {
+		super();
+		this.bookId = lendId;
+		this.bookId = bookId;
+		this.userId = userId;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
+		this.returnDay = returnDay;
+		this.memo = memo;
+	}
 
 	public LendingBean(int lendId, int bookId, String bookName, int userId, String userName, Date lendDay,
 			Date returnLimit, Date returnDay, String memo) {
