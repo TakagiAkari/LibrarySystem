@@ -12,10 +12,10 @@
 
 <body>
 
-会員ID：${lendBook.userId}
-会員名：${lendBook.userName}
-書籍ID：${lendBook.bookId}
-書籍名：${lendBook.bookName}
+会員ID：${displayInfo.userId}
+会員名：${displayInfo.userName}
+書籍ID：${displayInfo.bookId}
+書籍名：${displayInfo.bookName}
 <form action="/LibrarySystem/LendingBookInfoServlet" method="post">
 <input type="submit" value="貸出">
 <input type="hidden" name="action" value="complete">
