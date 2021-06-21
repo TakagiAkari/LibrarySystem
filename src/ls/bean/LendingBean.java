@@ -1,29 +1,70 @@
 package ls.bean;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class LendingBean implements Serializable {
 
-	private String memo;
-	private String bookId;
+	private int lendId;
+	private int bookId;
 	private String bookName;
-	private String userId;
+	private int userId;
 	private String userName;
-	private int userIdInt;
-	private int bookIdInt;
+	private Date lendDay;
+	private Date returnLimit;
+	private Date returnDay;
+	private String memo;
 
 	public LendingBean() {}
 
-	public LendingBean(String memo, String bookId, String bookName, String userId, String userName, int userIdInt, int bookIdInt) {
+	public LendingBean(int lendId, int bookId, int userId, Date lendDay, Date returnLimit, Date returnDay, String memo) {
 		super();
+		this.bookId = lendId;
+		this.bookId = bookId;
+		this.userId = userId;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
+		this.returnDay = returnDay;
 		this.memo = memo;
+	}
+
+	public LendingBean(int lendId, int bookId, String bookName, int userId, String userName, Date lendDay,
+			Date returnLimit, Date returnDay, String memo) {
+		super();
+		this.lendId = lendId;
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.userId = userId;
 		this.userName = userName;
-		this.userIdInt = userIdInt;
-		this.bookIdInt = bookIdInt;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
+		this.returnDay = returnDay;
+		this.memo = memo;
 	}
+
+	public LendingBean(int bookId, String bookName, int userId, String userName, Date lendDay, Date returnLimit,
+			Date returnDay, String memo) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.userId = userId;
+		this.userName = userName;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
+		this.returnDay = returnDay;
+		this.memo = memo;
+	}
+
+
+	public int getLendId() {
+		return lendId;
+	}
+
+
+	public void setLendId(int lendId) {
+		this.lendId = lendId;
+	}
+
 
 	public String getMemo() {
 		return memo;
@@ -33,11 +74,11 @@ public class LendingBean implements Serializable {
 		this.memo = memo;
 	}
 
-	public String getBookId() {
+	public int getBookId() {
 		return bookId;
 	}
 
-	public void setBookId(String bookId) {
+	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 
@@ -49,11 +90,11 @@ public class LendingBean implements Serializable {
 		this.bookName = bookName;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -65,19 +106,29 @@ public class LendingBean implements Serializable {
 		this.userName = userName;
 	}
 
-	public int getUserIdInt() {
-		return userIdInt;
+	public Date getLendDay() {
+		return lendDay;
 	}
 
-	public void setUserIdInt(int userIdInt) {
-		this.userIdInt = userIdInt;
+	public void setLendDay(Date lendDay) {
+		this.lendDay = lendDay;
 	}
 
-	public int getBookIdInt() {
-		return bookIdInt;
+	public Date getReturnLimit() {
+		return returnLimit;
 	}
 
-	public void setBookIdInt(int bookIdInt) {
-		this.bookIdInt = bookIdInt;
+	public void setReturnLimit(Date returnLimit) {
+		this.returnLimit = returnLimit;
 	}
+
+	public Date getReturnDay() {
+		return returnDay;
+	}
+
+	public void setReturnDay(Date returnDay) {
+		this.returnDay = returnDay;
+	}
+
+
 }

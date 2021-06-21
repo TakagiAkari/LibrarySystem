@@ -58,24 +58,24 @@ public class SearchMemberInfoServlet extends HttpServlet {
 				//emailが入力されていない
 				else if (email == null || email.length() == 0) {
 					request.setAttribute("message","メールアドレスを入力してください。");
-					gotoPage(request, response, "/errInternal.jsp");
+					gotoPage(request, response, "/errMessage.jsp");
 				}
 				//該当者が存在しない
 				else {
 					request.setAttribute("message","該当者がいません。");
-					gotoPage(request, response, "/errInternal.jsp");
+					gotoPage(request, response, "/errMessage.jsp");
 				}
 			}
 			//その他
 			else {
 				request.setAttribute("message","正しく操作してしてください。");
-				gotoPage(request, response, "/errInternal.jsp");
+				gotoPage(request, response, "/errMessage.jsp");
 			}
 		}
 		catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
-			gotoPage(request, response, "/errInternal.jsp");
+			gotoPage(request, response, "/errMessage.jsp");
 		}
 	}
 
