@@ -28,6 +28,12 @@
 	<li><a href="/LibrarySystem/ChangeBookInfoServlet">変更</a></li>
 	<li><a href="/LibrarySystem/DeleteBookInfoServlet">退会</a></li>
 </ul>
+<h2>貸出管理</h2>
+<ul>
+	<li><a href="/LibrarySystem/LendingBookServlet">貸出</a></li>
+	<li><a href="/LibrarySystem/ReturnBookServlet">返却</a></li>
+	<li><a href="/LibrarySystem/ShowLendingServlet">貸出履歴</a></li>
+</ul>
 
 <jsp:include page="footer.jsp"/>
 
