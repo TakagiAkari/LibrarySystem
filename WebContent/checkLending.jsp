@@ -12,6 +12,7 @@
 
 <body>
 
+
 <h1>貸出情報確認</h1>
 
 会員ID：${displayInfo.userId}<br>
@@ -21,6 +22,8 @@
 <form action="/LibrarySystem/LendingBookServlet" method="post">
 <p style="text-align:center">
 <input type="submit" value="貸出する">
+
+
 <input type="hidden" name="action" value="complete">
 </p>
 </form>
