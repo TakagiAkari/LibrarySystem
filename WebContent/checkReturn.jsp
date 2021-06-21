@@ -13,10 +13,13 @@
 
 <body>
 
-会員ID：${ReturnMember.userId}
-会員名：${ReturnMember.userName}
-書籍ID：${ReturnBook.bookId}
-書籍名：${ReturnBook.bookName}
+会員ID：${displayInfo.userId}
+会員名：${displayInfo.userName}
+書籍ID：${displayInfo.bookId}
+書籍名：${displayInfo.bookName}
+返却期限：${displayInfo.returnLimit}
+返却日：${displayInfo.returnDay}
+備考：${displayInfo.memo}
 <form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
 <input type="submit" value="返却する">
 <input type="hidden" name="action" value="complete">

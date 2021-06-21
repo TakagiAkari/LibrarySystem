@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
+import ls.bean.ReturnBean;
 
 public class ReturnDAO {
 	private Connection con;
@@ -15,16 +18,18 @@ public class ReturnDAO {
 	}
 
 
-	public String returnReturnDay() throws DAOException {
-		//現在の日付を取得⇒Stringにしてreturn
-		String returnDayDisplay;
+	/*lend_id	integer		貸出台帳番号
+	user_id	integer		利用者のID番号
+	book_id	integer		資料ID番号　
+	lend_day	date		貸出年月日　
+	return_limit	date		返却期限
+	return_day	date		返却年月日
+	memo	text		備考欄*/
 
 
-		return returnDayDisplay;
-	}
 
-	//DBからreturn_limitを取得、Stringでreturn
-	public String returnReturnLimit(int bookIdserch) throws DAOException {
+	//DBから貸出情報(全部)を取得、Check画面で返却日以外をDB情報、返却日を当日で表示
+	public ReturnBean returnInfo(int bookIdInt) throws DAOException {
 
 		if(con == null)
 			getConnection();
@@ -33,25 +38,43 @@ public class ReturnDAO {
 		ResultSet rs = null;
 
 		try {//bookIdが一致する資料の検索
-			String sql = "SELECT return_limit FROM lending WHERE book_id = ?";
+			String sql = "SELECT * FROM lending WHERE book_id = ?";
 			//stオブジェクトの取得
 			st = con.prepareStatement(sql);
 			//bookIdの設定
-			st.setInt(1, bookIdserch);
+			st.setInt(1, bookIdInt);
 			//SQLの実行
 			rs = st.executeQuery();
 			//結果の取得と表示
 			if (rs.next()) {
-				Date returnLimit = rs.getDate("return_limit");
-				//Stringに変換 sample2参照
-				//String ReturnLimit = (String)returnLimit;
-				return ;
+				Date returnDate = rs.getDate("return_day");
+
+				if(returnDate == null) {
+					int lendId  = rs.getInt("lend_id");
+					int userId = rs.getInt("user_id");
+					int bookId = rs.getInt("book_id");
+					Date lendDay = rs.getDate("lend_day");
+					Date returnLimit = rs.getDate("return_limit");
+					String memo = rs.getString("memo");
+
+					java.util.Date date = new java.util.Date();
+			        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			        //String
+			        String formattedDate = simpleDateFormat.format(date);
+			        //SQLDate
+			        Date returnDay = Date.valueOf(formattedDate);
+
+
+					//beanに格納⇒servに渡す
+					ReturnBean returnInfo = new ReturnBean(lendId, userId, bookId, lendDay, returnLimit, returnDay, memo);
+					return returnInfo;
+				}
 			}else {
 				return null;
 				}
 		}catch(Exception e){
 			e.printStackTrace();
-			throw new DAOException("会員名の検索に失敗しました。");
+			throw new DAOException("貸出情報の検索に失敗しました。");
 		}finally {
 			try {
 				if(rs != null) rs.close();
@@ -62,9 +85,11 @@ public class ReturnDAO {
 				throw new DAOException("リソースの開放に失敗しました。");
 			}
 	}
-	}
+		return null;
 	}
 
+
+	//返却日の挿入
 	public int recordReturnDay(Date returnDay, int bookId) throws DAOException {
 		if(con == null) {
 			getConnection();
@@ -92,6 +117,14 @@ public class ReturnDAO {
 				}
 			}
 	}
+
+
+
+
+
+
+
+
 
 	private void getConnection() throws DAOException{
 
