@@ -10,19 +10,19 @@
 <jsp:include page="header.jsp"/>
 
 <h1>会員情報確認画面</h1>
-名前:${member.user_name }<br>
-住所:${member.user_address}<br>
-e-mail:${member.user_e-mail}<br>
-電話番号:${member.user_tel}<br>
-生年月日:${member.user_birthday}<br>
+名前:${PreviousMemberInfo.userName}<br>
+住所:${PreviousMemberInfo.address}<br>
+e-mail:${PreviousMemberInfo.email}<br>
+電話番号:${PreviousMemberInfo.tel}<br>
+生年月日:${PreviousMemberInfo.birth.getYear()+1900}年${PreviousMemberInfo.birth.getMonth()+1}月${PreviousMemberInfo.birth.getDay()}日<br>
 
 ↓<br>
 
-氏名：${InputMemberInfo.name}<br>
-住所：${InputMemberInfo.address}<br>
-電話番号：${InputMemberInfo.tel}<br>
-e-mail:${InputMemberInfo.email}<br>
-生年月日：${InputMemberInfo.birthY}年${InputMemberInfo.birthM}月${InputMemberInfo.birthD}日<br><br>
+氏名：${LaterMemberInfo.userName}<br>
+住所：${LaterMemberInfo.address}<br>
+電話番号：${LaterMemberInfo.tel}<br>
+e-mail:${LaterMemberInfo.email}<br>
+生年月日：${LaterMemberInfo.birth.getYear()+1900}年${LaterMemberInfo.birth.getMonth()+1}月${LaterMemberInfo.birth.getDay()}日<br>
 
 <p style="text-align:center"><a href="/LibrarySystem/ChangeMemberInfoServlet?action=change">変更する</a></p>
 
