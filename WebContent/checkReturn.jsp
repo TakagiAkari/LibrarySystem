@@ -13,6 +13,7 @@
 
 <body>
 
+
 会員ID：${displayInfo.userId}
 会員名：${displayInfo.userName}
 書籍ID：${displayInfo.bookId}
@@ -20,9 +21,12 @@
 返却期限：${displayInfo.returnLimit}
 返却日：${displayInfo.returnDay}
 備考：${displayInfo.memo}
+
 <form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
+<p style="text-align:center">
 <input type="submit" value="返却する">
 <input type="hidden" name="action" value="complete">
+</p><br>
 </form>
 
 </body>
