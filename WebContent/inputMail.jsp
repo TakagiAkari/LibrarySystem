@@ -16,7 +16,7 @@
 E-mail：<input type="email" name="email" size="50" required>
 <br>
 <p style="text-align:center">
-<input type="submit" value="検索">
+<input type="submit" value="検索する">
 <input type="hidden" name="action" value="search">
 </p><br>
 </form>
