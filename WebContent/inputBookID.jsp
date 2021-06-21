@@ -11,11 +11,12 @@
 
 <body>
 
-<form>
-書籍ID：<input type="text" name="bookID">
-<input type="submit" formaction="/ChangeBookInfoServlet" value="変更">
-<input type="submit" formaction="/SearchBookInfoServlet" value="検索">
-<input type="submit" formaction="/DeleteBookInfoServlet" value="削除">
+<form method="post">
+資料ID：<input type="text" name="bookId" required>
+<input type="hidden" name="action" value="work">
+<input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
+<input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
+<input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
 </form>
 
 </body>
