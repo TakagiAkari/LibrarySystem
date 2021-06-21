@@ -16,18 +16,19 @@ public class LendingDAO {
 	}
 
 	//DateはSQLDate
-	public int addLending(int userIdInt, int bookIdInt, Date returnLimit, String memo) throws DAOException {
+	public int addLending(int userIdInt, int bookIdInt, Date lendDay,Date returnLimitDay, String memo) throws DAOException {
 		if(con == null) {
 			getConnection();
 		}
 		PreparedStatement st = null;
 		try {
-			String sql = "INSERT INTO lending(user_id, book_id, return_limit, memo) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO lending(user_id, book_id, lend_day,return_limit, memo) VALUES(?, ?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, userIdInt);
 			st.setInt(2, bookIdInt);
-			st.setDate(3, returnLimit);
-			st.setString(4, memo);
+			st.setDate(3, lendDay);
+			st.setDate(4, returnLimitDay);
+			st.setString(5, memo);
 
 			int rows = st.executeUpdate();
 			return rows;

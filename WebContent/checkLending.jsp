@@ -16,7 +16,7 @@
 会員名：${displayInfo.userName}
 書籍ID：${displayInfo.bookId}
 書籍名：${displayInfo.bookName}
-<form action="/LibrarySystem/LendingBookInfoServlet" method="post">
+<form action="/LibrarySystem/LendingBookServlet" method="post">
 <input type="submit" value="貸出">
 <input type="hidden" name="action" value="complete">
 </form>

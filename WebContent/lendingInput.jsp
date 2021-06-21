@@ -11,7 +11,7 @@
 
 <body>
 
-<form action="/LibrarySystem/LendingBookInfoServlet" method="post">
+<form action="/LibrarySystem/LendingBookServlet" method="post">
 会員ID：<input type="text" name="userId" >
 書籍ID：<input type="text" name="bookId" >
 備考欄：<input type="text" name="memo" >
