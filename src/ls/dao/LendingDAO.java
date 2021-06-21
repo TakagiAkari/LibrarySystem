@@ -123,9 +123,42 @@ public class LendingDAO {
 			catch (Exception e) {
 				throw new DAOException("リソースの開放に失敗しました。");
 			}
-	}
+		}
 	}
 
+	public boolean existsUnreturnedBook(int book_id) throws DAOException {
+		// return_dayがnullの行があればまだ返却されていないものとしてTrueを返したい
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM lending WHERE book_id = ? AND return_day IS null";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			st.setInt(1, book_id);
+			//Emailの設定
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+
+			return rs.next();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("資料名の検索に失敗しました。");
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+	}
 
 	private void getConnection() throws DAOException{
 

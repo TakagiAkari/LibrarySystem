@@ -69,19 +69,24 @@ public class LendingBookServlet extends HttpServlet {
 					// 本の名前がとってこれる
 					String bookName = cBean.getBookName();
 
+
+
 					//↑Stringで各情報がそろった⇒情報のチェック↓
 					if(userIdStr == null || userIdStr.length() == 0 || bookIdStr == null || bookIdStr.length() == 0) {
-						request.setAttribute("errMessage", "すべての情報を入力してください");
+						request.setAttribute("message", "すべての情報を入力してください");
 						gotoPage(request, response, "/errMessage.jsp");
 					}else if(userName == null || userName.length() == 0 || bookName == null || bookName.length() == 0){
-						request.setAttribute("errMessage", "DB内の会員名もしくは資料名が不正です");
+						request.setAttribute("message", "DB内の会員名もしくは資料名が不正です");
 						gotoPage(request, response, "/errMessage.jsp");
-					}else {
-						Date lendDay = OperateDate.getDateNow();
-						LendingBean lendingbean = new LendingBean(bookId, bookName, userId, userName,lendDay, memo);
-						session.setAttribute("displayInfo", lendingbean);
-						gotoPage(request, response, "/checkLending.jsp");
-						}
+					}else if(lendDao.existsUnreturnedBook(bookId)) {
+						request.setAttribute("message", "すでに貸出されています");
+						gotoPage(request, response, "/errMessage.jsp");
+					}
+
+					Date lendDay = OperateDate.getDateNow();
+					LendingBean lendingbean = new LendingBean(bookId, bookName, userId, userName,lendDay, memo);
+					session.setAttribute("displayInfo", lendingbean);
+					gotoPage(request, response, "/checkLending.jsp");
 				}else if(action.equals("complete")&&(session != null)) {
 			//貸出台帳に登録（INSERT）、貸出完了メッセージの送信、完了画面の表示
 					//sessionからBeanを取得、intId,memoの抽出
