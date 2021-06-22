@@ -13,13 +13,13 @@
 <h1>会員情報入力</h1>
 
 <form action="/LibrarySystem/ChangeMemberInfoServlet?action=input" method="post">
-会員ID：<input type="text" name="MemID"><br>
+会員ID：<input type="text" name="MemID" required><br>
 <p style="text-align:center">
 <input type="submit" value="変更">
 </p><br>
 </form>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
-会員ID：<input type="text" name="MemID"><br>
+会員ID：<input type="text" name="MemID" required><br>
 <p style="text-align:center">
 <input type="submit" value="削除">
 <input type="hidden" name="action" value="delete">

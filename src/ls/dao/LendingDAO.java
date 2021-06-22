@@ -51,9 +51,6 @@ public class LendingDAO {
 				}
 		}
 
-
-
-
 	public String returnUserName(int userIdInt) throws DAOException {
 		if(con == null)
 			getConnection();
@@ -90,8 +87,6 @@ public class LendingDAO {
 			}
 	}
 	}
-
-
 
 	public String returnBookName(int bookIdInt) throws DAOException {
 		if(con == null)

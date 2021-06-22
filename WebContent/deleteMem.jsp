@@ -18,8 +18,9 @@
 <br>生年月日：${member.birth }
 <br>入会年月日：${member.enterDay }
 <br>
+<h1>貸出状況</h1>
+貸出状況：
 <br>
-
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
@@ -28,7 +29,6 @@
 
 </form>
 <%--ここの実装はまだ --%>
-<h1>貸出状況</h1>
-貸出状況：
+
 </body>
 </html>
