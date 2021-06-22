@@ -29,16 +29,16 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			else if(action.equals("delete") ) {
 
 				MemberDAO memDao = new MemberDAO();
-				int userId = Integer.parseInt(request.getParameter("userId"));
-				MemberBean bean = memDao.findMemberByUserID(userId);
+				int MemID = Integer.parseInt(request.getParameter("MemID"));
+				MemberBean bean = memDao.findMemberByUserID(MemID);
 				request.setAttribute("member", bean);
 				gotoPage(request, response, "/deleteMem.jsp");
 
 			}
 			else if(action.equals("complete")) {
 				MemberDAO memDao = new MemberDAO();
-				int userId = Integer.parseInt(request.getParameter("userID"));
-				memDao.updateLeaveDay(userId);
+				int MemID = Integer.parseInt(request.getParameter("MemID"));
+				memDao.updateLeaveDay(MemID);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
 			}
