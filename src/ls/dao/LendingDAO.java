@@ -164,6 +164,43 @@ public class LendingDAO {
 		}
 	}
 
+	public boolean existsUnreturnedBookNow(int user_id) throws DAOException {
+		// return_dayがnullの行があればまだ返却されていないものとしてTrueを返したい
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM lending WHERE user_id = ? AND return_day IS null";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			st.setInt(1, user_id);
+			//Emailの設定
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+
+			return rs.next();
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("会員IDの検索に失敗しました。");
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+	}
+
+
+
+
 	public List<LendingBean> findAll() throws DAOException {
 		if(con == null)
 			getConnection();
@@ -209,6 +246,10 @@ public class LendingDAO {
 			}
 		}
 	}
+
+
+
+
 
 	private void getConnection() throws DAOException{
 

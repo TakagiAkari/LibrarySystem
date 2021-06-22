@@ -156,7 +156,7 @@ public class MemberDAO {
 
 
 
-		public MemberBean findMemberByUserID(int userID) {
+		public MemberBean findMemberByMemID(int userID) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		 try {
