@@ -14,9 +14,9 @@
 <h1>貸出情報入力</h1>
 
 <form action="/LibrarySystem/LendingBookServlet" method="post">
-会員ID：<input type="text" name="userId" >
-書籍ID：<input type="text" name="bookId" >
-備考欄：<input type="text" name="memo" >
+会員ID：<input type="text" name="userId" ><br>
+資料ID：<input type="text" name="bookId" ><br>
+備考：<input type="text" name="memo" ><br>
 <p style="text-align:center">
 <input type="submit" value="確認画面へ">
 <input type="hidden" name="action" value="check">
