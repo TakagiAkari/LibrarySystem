@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import ls.bean.RecordBean;
 import ls.module.OperateDate;
 
+
 //RecordBeanの実装
 
 public class RecordDAO {
@@ -38,6 +39,56 @@ public class RecordDAO {
 			con.close();
 			con = null;
 		}
+	}
+	public RecordBean findRecordByBookID(int bookID) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		 try {
+			//SQL
+			String sql = "SELECT * FROM record WHERE book_id = ?";
+			st = con.prepareStatement(sql);
+			//SQLをデータベースへ
+			st.setInt(1, bookID);
+			rs = st.executeQuery();
+
+			if (rs.next()) {
+				int bookId = rs.getInt("book_id");
+				Long isbn = rs.getLong("isbn");
+				Date stockDay = rs.getDate("stock_day");
+				Date throwoutDay =rs.getDate("throwout_day");
+				String memo = rs.getString("memo");
+
+				RecordBean rb = new RecordBean(bookId,isbn, stockDay, throwoutDay,memo);
+				return rb;
+			}
+		} catch (Exception e) {
+					e.printStackTrace();
+		  }
+		return null;
+	   }
+	public void updateThrowoutDay(int bookId) {
+		PreparedStatement st = null;
+		 try {
+			String sql = "UPDATE record SET throwout_day = CURRENT_DATE WHERE book_id = ?";
+			st = con.prepareStatement(sql);
+			st.setInt(1, bookId);
+			st.executeUpdate();
+
+			return;
+		}
+		 catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	public RecordBean getRecordInfoByBookId(int bookId) throws DAOException{

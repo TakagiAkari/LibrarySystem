@@ -20,6 +20,7 @@
 <input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
 <input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
 <input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
+
 </p><br>
 </form>
 
