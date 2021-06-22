@@ -18,7 +18,6 @@
 <br>生年月日：${member.birth }
 <br>入会年月日：${member.enterDay }
 <br>
-<br>
 
 <p style="text-align:center">
 <input type="submit" value="削除する">
