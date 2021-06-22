@@ -20,8 +20,8 @@
 <br>住所：${member.address }
 <br>電話番号：${member.tel }
 <br>メールアドレス：${member.email }
-<br>生年月日：${member.birth }
-<br>入会日：${member.enterDay }
+<br>生年月日：${member.birth.toLocalDate().getYear() }年${member.birth.toLocalDate().getMonthValue() }月${member.birth.toLocalDate().getDayOfMonth() }日
+<br>入会日：${member.enterDay.toLocalDate().getYear() }年${member.enterDay.toLocalDate().getMonthValue() }月${member.enterDay.toLocalDate().getDayOfMonth() }日
 <br>
 <br>
 <jsp:include page="footer.jsp"/>

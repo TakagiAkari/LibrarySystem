@@ -15,7 +15,7 @@
 書籍ID:${PreviousRecordInfo.bookId}<br>
 ISBN番号:${LaterCatalogInfo.isbn}<br>
 資料名:${LaterCatalogInfo.bookName}<br>
-入荷年月日:${LaterCatalogInfo.publishDay}<br>
+入荷年月日:${LaterCatalogInfo.publishDay.toLocalDate().getYear() }年${LaterCatalogInfo.publishDay.toLocalDate().getMonthValue() }月${LaterCatalogInfo.publishDay.toLocalDate().getDayOfMonth() }日<br>
 <form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
 <input type="submit" value="変更する">
 <input type="hidden" name = "action" value="complete">
