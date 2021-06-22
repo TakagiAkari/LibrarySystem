@@ -90,41 +90,6 @@ public class ReturnDAO {
 
 
 	//返却日の挿入
-	public int recordReturnDay(Date returnDay, int bookId) throws DAOException {
-		if(con == null) {
-			getConnection();
-		}
-		PreparedStatement st = null;
-
-		try {
-			String sql = "UPDATE lending SET return_day = ? WHERE book_id = ?";
-			st = con.prepareStatement(sql);
-			st.setDate(1, returnDay);
-			st.setInt(2, bookId);
-			int rows = st.executeUpdate();
-			return rows;
-		}catch(Exception e) {
-			e.printStackTrace();
-			throw new DAOException("返却日の登録に失敗しました");
-		}finally {
-			try {
-				if(st != null) {
-					st.close();
-					close();
-					}
-			}catch(Exception e) {
-				throw new DAOException("DBとの接続の開放に失敗しました");
-				}
-			}
-	}
-
-
-
-
-
-
-
-
 
 	private void getConnection() throws DAOException{
 

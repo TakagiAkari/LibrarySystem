@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ls.bean.CatalogBean;
+import ls.bean.LendingBean;
 import ls.bean.RecordBean;
-import ls.bean.ReturnBean;
 import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
 import ls.dao.LendingDAO;
 import ls.dao.RecordDAO;
-import ls.dao.ReturnDAO;
+import ls.module.OperateDate;
 
 @WebServlet("/ReturnBookServlet")
 public class ReturnBookServlet extends HttpServlet {
@@ -40,10 +40,9 @@ public class ReturnBookServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 
 			String action = request.getParameter("action");
-			ReturnDAO dao = new ReturnDAO();
-			HttpSession session1 = request.getSession(false);
-			HttpSession session2 = request.getSession(false);
-			HttpSession session3 = request.getSession(false);
+
+			LendingDAO lDao = new LendingDAO();
+			HttpSession session = request.getSession(false);
 
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
 
@@ -52,12 +51,24 @@ public class ReturnBookServlet extends HttpServlet {
 			}else if(action.equals("check")) {
 
 				String bookId = request.getParameter("bookId");
-				int bookIdInt = Integer.parseInt(bookId);
-				ReturnBean ReturnInfo = dao.returnInfo(bookIdInt);
+				// 入力確認
+				if(bookId == null || bookId.length() == 0) {
+					request.setAttribute("message", "値が入力されていません。");
+					gotoPage(request, response, "/errMessage.jsp");
+				}
 
-				String userId = request.getParameter("userId");
-				int userIdInt = Integer.parseInt(userId);
-				LendingDAO lDao = new LendingDAO();
+				int bookIdInt = Integer.parseInt(bookId);
+
+				// TODO:userIdはlendingテーブルからとってくる
+				LendingBean lBean = lDao.getUnreturnedBookByBookId(bookIdInt);
+
+				if(lBean == null) {
+					request.setAttribute("message", "この書籍は貸し出されていません");
+					gotoPage(request, response, "/errMessage.jsp");
+				}
+				// 今日の日付を返却日とする
+				lBean.setReturnDay(OperateDate.getDateNow());
+				int userIdInt =  lBean.getUserId();
 				//userIdとってくる
 				String userName = lDao.returnUserName(userIdInt);
 
@@ -80,19 +91,18 @@ public class ReturnBookServlet extends HttpServlet {
 					gotoPage(request, response, "/errMessage.jsp");
 
 				}else {
-					session1.setAttribute("displayInfo1", ReturnInfo);
-					session2.setAttribute("USERNAME", userName);
-					session3.setAttribute("BOOKNAME", bookName);
+					session.setAttribute("lendingBeanForReturnBook", lBean);
+					session.setAttribute("userNameForReturnBook", userName);
+					session.setAttribute("bookNameForReturnBook", bookName);
 					gotoPage(request, response, "/checkReturn.jsp");
 				}
 
-			}else if(action.equals("complete")&&(session1 != null)) {
+			}else if(action.equals("complete")&&(session != null)) {
 
-				ReturnBean returnbean = (ReturnBean)session1.getAttribute("displayInfo");
-				int bookId = returnbean.getBookId();
-				java.sql.Date returnDay = returnbean.getReturnDay();
-
-			    dao.recordReturnDay(returnDay, bookId);
+				LendingBean lendingBean = (LendingBean)session.getAttribute("lendingBeanForReturnBook");
+				int bookId = lendingBean.getBookId();
+				java.sql.Date returnDay = lendingBean.getReturnDay();
+			    lDao.updateReturnDay(returnDay, bookId);
 
 
 			    request.setAttribute("message", "返却処理");

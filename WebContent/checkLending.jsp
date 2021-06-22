@@ -8,27 +8,24 @@
 <title>貸出確認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
 
 <body>
-
-t
+<jsp:include page="header.jsp"/>
 <h1>貸出情報確認</h1>
 
-会員ID：${lendBook.userId}<br>
-会員名：${lendBook.userName}<br>
-書籍ID：${lendBook.bookId}<br>
-書籍名：${lendBook.bookName}<br>
-<form action="/LibrarySystem/LendingBookInfoServlet" method="post">
+会員ID：${displayInfo.userId}<br>
+会員名：${displayInfo.userName}<br>
+書籍ID：${displayInfo.bookId}<br>
+書籍名：${displayInfo.bookName}<br>
+<form action="/LibrarySystem/LendingBookServlet" method="post">
 <p style="text-align:center">
 <input type="submit" value="貸出する">
 
 <input type="hidden" name="action" value="complete">
 </p>
 </form>
-
+<jsp:include page="footer.jsp"/>
 </body>
 
-<jsp:include page="footer.jsp"/>
 
 </html>
