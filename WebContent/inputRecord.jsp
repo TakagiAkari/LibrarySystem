@@ -13,7 +13,7 @@
 <h1>資料台帳情報入力</h1>
 
 <form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
-ISBN番号：<input type="text" name="isbn"><br>
+ISBN番号：<input type="text" name="isbn" required><br>
 備考：<input type="text" name="memo">
 <p style="text-align:center">
 <input type="submit" value="登録する">
