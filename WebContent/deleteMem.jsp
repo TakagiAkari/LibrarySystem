@@ -23,7 +23,7 @@
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
-<input type="hidden" name="userId" value="${member.userId }">
+<input type="hidden" name="MemID" value="${member.userId }">
 </p><br>
 
 </form>
