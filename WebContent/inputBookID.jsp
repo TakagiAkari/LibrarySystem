@@ -14,21 +14,27 @@
 <body>
 
 
-<c:if test="${mode eq change}">
+<c:if test="${mode eq 'change'}">
 <form method="post">
+資料ID：<input type="text" name="bookId" required>
 <input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
+<input type="hidden" name="action" value="work">
 </form>
 </c:if>
-<c:if test="${'mode' eq 'search'}">
+
+<c:if test="${mode eq 'search'}">
 <form method="post">
 資料ID：<input type="text" name="bookId" required>
 <input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
 <input type="hidden" name="action" value="work">
 </form>
 </c:if>
-<c:if test="${mode eq delete}">
+
+<c:if test="${mode eq 'delete'}">
+資料ID：<input type="text" name="bookId" required>
 <form method="post">
 <input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
+<input type="hidden" name="action" value="work">
 </form>
 </c:if>
 
