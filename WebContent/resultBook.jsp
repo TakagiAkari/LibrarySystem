@@ -22,8 +22,8 @@ ISBN番号：${record.isbn }
 <br>分類コード：${catalog.category }
 <br>著者：${catalog.author }
 <br>出版社：${catalog.publisher }
-<br>出版日：${catalog.publishDay }
-<br>入荷年月日：${record.stockDay }
+<br>出版日：${catalog.publishDay.toLocalDate().getYear() }年${catalog.publishDay.toLocalDate().getMonthValue() }月${catalog.publishDay.toLocalDate().getDayOfMonth() }日
+<br>入荷年月日：${record.stockDay.toLocalDate().getYear() }年${record.stockDay.toLocalDate().getMonthValue() }月${record.stockDay.toLocalDate().getDayOfMonth() }日
 <br>備考：${record.memo }
 <br>
 <br>

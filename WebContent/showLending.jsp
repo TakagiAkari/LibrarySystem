@@ -33,9 +33,9 @@
 		<td>${lending.lendId }</td>
 		<td>${lending.bookId }</td>
 		<td>${lending.userId }</td>
-		<td>${lending.lendDay }</td>
-		<td>${lending.returnLimit }</td>
-		<td>${lending.returnDay }</td>
+		<td>${lending.lendDay.toLocalDate().getYear() }年${lending.lendDay.toLocalDate().getMonthValue() }月${lending.lendDay.toLocalDate().getDayOfMonth() }日</td>
+		<td>${lending.returnLimit.toLocalDate().getYear() }年${lending.returnLimit.toLocalDate().getMonthValue() }月${lending.returnLimit.toLocalDate().getDayOfMonth() }日</td>
+		<td>${lending.returnDay.toLocalDate().getYear() }年${lending.returnDay.toLocalDate().getMonthValue() }月${lending.returnDay.toLocalDate().getDayOfMonth() }日</td>
 		<td>${lending.memo }</td>
 		</tr>
 	</c:forEach>
