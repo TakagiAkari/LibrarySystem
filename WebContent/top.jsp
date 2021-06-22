@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>トップページ</title>
+<title>トップ画面</title>
 </head>
 <body>
 

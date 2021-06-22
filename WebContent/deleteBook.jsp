@@ -12,7 +12,6 @@
 <form action="/LibrarySystem/DeleteBookInfoServlet" method="post">
 <h2>削除資料情報</h2>
 
-
 </body>
 <br>ISBN番号：${catalog.isbn }
 <br>題名：${catalog.bookName }

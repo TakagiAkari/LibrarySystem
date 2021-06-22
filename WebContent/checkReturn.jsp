@@ -13,7 +13,7 @@
 
 <body>
 
-<h1>返却情報</h1>
+<h1>返却情報確認</h1>
 
 会員ID：${ReturnMember.userId}<br>
 会員名：${ReturnMember.userName}<br>

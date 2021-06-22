@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員検索結果表示</title>
+<title>会員検索結果表示画面</title>
 </head>
 <body>
 

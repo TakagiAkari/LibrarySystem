@@ -10,7 +10,7 @@
 
 <jsp:include page="header.jsp"/>
 
-<h1>会員ID入力</h1>
+<h1>会員情報入力</h1>
 
 <form action="/LibrarySystem/ChangeMemberInfoServlet?action=input" method="post">
 会員ID：<input type="text" name="MemID"><br>

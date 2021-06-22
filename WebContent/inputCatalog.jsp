@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料目録情報入力画面</title>
+<title>資料目録入力画面</title>
 </head>
 <body>
 
@@ -17,7 +17,9 @@
 分類コード：<input type="text" name="category"><br>
 著者:<input type="text" name="author"><br>
 出版社：<input type="text" name="publisher"><br>
-出版年月日：<input type="text" name="publishedY">年<input type="text" name="publishedM">月<input type="text" name="publishedD">日<br>
+出版年月日：<input type="text" name="publishedY">年
+<input type="text" name="publishedM">月
+<input type="text" name="publishedD">日<br>
 
 <p style="text-align:center">
 <input type="hidden" name="action" value="registerCatalog">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員登録情報入力画面</title>
+<title>会員登録入力画面</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>

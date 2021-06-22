@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員変更情報表示画面</title>
+<title>会員変更確認画面</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
-<h1>会員情報確認</h1>
+<h1>会員変更情報確認</h1>
 
 名前:${PreviousMemberInfo.userName}<br>
 住所:${PreviousMemberInfo.address}<br>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>返却画面</title>
+<title>返却入力画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>
