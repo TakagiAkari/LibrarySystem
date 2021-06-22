@@ -13,7 +13,6 @@
 
 <body>
 
-
 <h1>資料情報入力</h1>
 <p style="text-align:center">
 <c:if test="${mode eq 'change'}">

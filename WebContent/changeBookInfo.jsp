@@ -14,6 +14,7 @@
 <h1>資料変更情報入力</h1>
 
 <form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
+<<<<<<< HEAD
 ISBN番号：<input type="text" name="isbn" size="13" required><br>
 題名：<input type="text" name="title" required><br>
 分類コード：<input type="text" name="category" required><br>
@@ -35,6 +36,18 @@ ISBN番号：<input type="text" name="isbn" size="13" required><br>
 <input type="hidden" name="action" value="next">
 </p>
 
+=======
+<input type="hidden" name="bookId" value="${PreviousRecordInfo.bookId}">
+ISBN番号：<input type="text" name="isbn" value = "${PreviousCatalogInfo.isbn}"><br>
+題名：<input type="text" name="bookName" value = "${PreviousCatalogInfo.bookName}"><br>
+著者:<input type="text" name="author" value= "${PreviousCatalogInfo.author}"><br>
+出版社：<input type="text" name="publisher" value= "${PreviousCatalogInfo.publisher}"><br>
+出版年月日：<input type="text" name="publishedY" value =  "${PreviousCatalogInfo.publishDay.getYear()+1900}">年<input type="text" name="publishedM" value = "${PreviousCatalogInfo.publishDay.getMonth()+1}">月<input type="text" name="publishedD" value = "${PreviousCatalogInfo.publishDay.getDay()}">日<br>
+
+
+<input type="submit" value="確認画面へ">
+<input type="hidden" name="action" value="show">
+>>>>>>> dec8421780c3dcb51ca3bf7d723e2d8f186ad17b
 </form>
 
 </body>
