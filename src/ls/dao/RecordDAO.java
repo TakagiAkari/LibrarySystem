@@ -71,11 +71,12 @@ public class RecordDAO {
 	public boolean updateRecordByBean(RecordBean bean) {
 		PreparedStatement st = null;
 		 try {
-			String sql = "UPDATE record SET stock_day=?,memo=? WHERE book_id = ?";
+			String sql = "UPDATE record SET isbn=?, stock_day=?,memo=? WHERE book_id = ?";
 			st = con.prepareStatement(sql);
-			st.setDate(1, bean.getStockDay());
-			st.setString(2, bean.getMemo());
-			st.setInt(3, bean.getBookId());
+			st.setLong(1, bean.getIsbn());
+			st.setDate(2, bean.getStockDay());
+			st.setString(3, bean.getMemo());
+			st.setInt(4, bean.getBookId());
 			int rows = st.executeUpdate();
 
 			if(rows > 0) {

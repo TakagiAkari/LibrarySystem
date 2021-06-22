@@ -116,22 +116,57 @@ public class CatalogDAO {
 			}
 		}
 	}
-	//会員情報変更
+		public boolean deleteByIsbn(long isbn) throws DAOException {
+			if(con == null) {
+				getConnection();
+			}
+			PreparedStatement st = null;
+			try {
+				String sql = "DELETE FROM catalog WHERE isbn=?";
+				st = con.prepareStatement(sql);
+				st.setLong(1,isbn);
+
+				int rows = st.executeUpdate();
+				if(rows > 0) {
+					return true;
+
+				}else {
+					return false;
+
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw new DAOException("書籍情報の変更に失敗しました");
+			}finally {
+				try {
+					if(st != null) {
+						st.close();
+						close();
+						}
+					}catch(Exception e) {
+						throw new DAOException("DBとの接続の開放に失敗しました");
+						}
+					}
+			}
+
+
+		//会員情報変更
+		// isbnの変更は不可
+
 		public int ChangeBookInfo(CatalogBean bean) throws DAOException {
 			if(con == null) {
 				getConnection();
 			}
 			PreparedStatement st = null;
 			try {
-				String sql = "UPDATE catalog SET isbn=?,book_name= ?, author= ?,publisher= ?, publish_day=? WHERE book_id = ?";
+				String sql = "UPDATE catalog SET book_name= ?, author= ?,publisher= ?, publish_day=? WHERE isbn = ?";
 				st = con.prepareStatement(sql);
 
-				st.setLong(1,bean.getIsbn());
-				st.setString(2,bean.getBookName());
-				st.setString(3,bean.getAuthor());
-				st.setString(4,bean.getPublisher());
-				st.setDate(5,bean.getPublishDay());
-				st.setInt(6,bean.getBookId());
+				st.setString(1,bean.getBookName());
+				st.setString(2,bean.getAuthor());
+				st.setString(3,bean.getPublisher());
+				st.setDate(4,bean.getPublishDay());
+				st.setLong(5,bean.getIsbn());
 
 				int rows = st.executeUpdate();
 				return rows;

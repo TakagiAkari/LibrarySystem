@@ -70,19 +70,12 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				long isbn = Rbean.getIsbn();
 			//catalogテーブルからisbn番号がマッチする行をとってくる
 				CatalogBean Cbean = Cdao.getCatalogInfoByIsbn(isbn);
-			//本の名前、作者、出版社、出版日がとってこれる
-				//String bookName = Cbean.getBookName();
-			//String author = Cbean.getAuthor();
-			//tring publisher = Cbean.getPublisher();
-				//Date publishDay = Cbean.getPublishDay();
-			//catalogBeanを定義する
 
 				session.setAttribute("PreviousCatalogInfo",Cbean);
 				gotoPage(request, response, "/changeBookInfo.jsp");
 			//nextをクリックで変更前の情報表示を行う
 			} else if (action.equals("show")) {
 
-				CatalogBean Cbean = (CatalogBean)session.getAttribute("PreviousCatalogInfo");
 				RecordBean Rbean = (RecordBean)session.getAttribute("PreviousRecordInfo");
 
 				int bookId = Rbean.getBookId();
@@ -95,12 +88,17 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				int publishedM = Integer.parseInt(request.getParameter("publishedM"));
 				int publishedD = Integer.parseInt(request.getParameter("publishedD"));
 
+				int stockY = Integer.parseInt(request.getParameter("stockY"));
+				int stockM = Integer.parseInt(request.getParameter("stockM"));
+				int stockD = Integer.parseInt(request.getParameter("stockD"));
+
 				String memo = request.getParameter("memo");
 
 		try {
 				// TODO:OperateDateLocalDate使えばなんとかなるかも
 				Date publishDay = OperateDate.getJavaSqlDateOfYMD(publishedY,publishedM,publishedD);
-				RecordBean LaterRecordInfo = new RecordBean(bookId,isbn, publishDay, memo);
+				Date stockDay = OperateDate.getJavaSqlDateOfYMD(stockY, stockM, stockD);
+				RecordBean LaterRecordInfo = new RecordBean(bookId,isbn, stockDay, memo);
 				CatalogBean LaterCatalogInfo = new CatalogBean(isbn,bookName,category,author,publisher,publishDay);
 				session.setAttribute("LaterRecordInfo", LaterRecordInfo);
 				session.setAttribute("LaterCatalogInfo", LaterCatalogInfo);
@@ -113,20 +111,30 @@ public class ChangeBookInfoServlet extends HttpServlet {
 
 			// nextは変更確定
 			}else if (action.equals("complete")&&(session != null)) {
+				CatalogBean PreviousCatalogInfo = (CatalogBean) session.getAttribute("PreviousCatalogInfo");
 				RecordBean LaterRecordInfo = (RecordBean)session.getAttribute("LaterRecordInfo");
 				CatalogBean LaterCatalogInfo = (CatalogBean) session.getAttribute("LaterCatalogInfo");
 				RecordDAO Rdao = new RecordDAO();
 				CatalogDAO Cdao = new CatalogDAO();
 
-
-
-				//Rdao.ChangeBookInfo(LaterRecordInfo);
-				Cdao.ChangeBookInfo(LaterCatalogInfo);
-			if (LaterCatalogInfo == null) { //書籍変更情報がない
-				request.setAttribute("message", "正しく操作してください");
-				gotoPage(request, response, "/errMessage.jsp");
-				return;
+				if (LaterCatalogInfo == null) { //書籍変更情報がない
+					request.setAttribute("message", "正しく操作してください");
+					gotoPage(request, response, "/errMessage.jsp");
+					return;
 				}
+
+				long previousIsbn = PreviousCatalogInfo.getIsbn();
+				long laterIsbn = LaterCatalogInfo.getIsbn();
+
+				if(previousIsbn != laterIsbn) {
+					Cdao.addCatalogInfo(LaterCatalogInfo);
+					Rdao.updateRecordByBean(LaterRecordInfo);
+					Cdao.deleteByIsbn(previousIsbn);
+				}else {
+					Cdao.ChangeBookInfo(LaterCatalogInfo);
+					Rdao.updateRecordByBean(LaterRecordInfo);
+				}
+
 			//変更後はセッション情報をクリアにする
 				session.removeAttribute("PreviousRecordBean");
 				session.removeAttribute("PreviousCatalogBean");
