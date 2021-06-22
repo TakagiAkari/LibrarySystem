@@ -9,10 +9,10 @@
 <title>返却確認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
+
 
 <body>
-
+<jsp:include page="header.jsp"/>
 <h1>返却情報確認</h1>
 
 会員ID：${lendingBeanForReturnBook.userId}
@@ -29,9 +29,9 @@
 <input type="hidden" name="action" value="complete">
 </p><br>
 </form>
-
+<jsp:include page="footer.jsp"/>
 </body>
 
-<jsp:include page="footer.jsp"/>
+
 
 </html>
