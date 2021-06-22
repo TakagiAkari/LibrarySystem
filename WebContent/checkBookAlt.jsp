@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料変更確認画面</title>
+<title>資料変更情認画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>

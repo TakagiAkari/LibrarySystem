@@ -90,6 +90,33 @@ public class LendingDAO {
 			}
 	}
 	}
+	public int updateReturnDay(Date returnDay, int bookId) throws DAOException {
+		if(con == null) {
+			getConnection();
+		}
+		PreparedStatement st = null;
+
+		try {
+			String sql = "UPDATE lending SET return_day = ? WHERE book_id = ?";
+			st = con.prepareStatement(sql);
+			st.setDate(1, returnDay);
+			st.setInt(2, bookId);
+			int rows = st.executeUpdate();
+			return rows;
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new DAOException("返却日の登録に失敗しました");
+		}finally {
+			try {
+				if(st != null) {
+					st.close();
+					close();
+					}
+			}catch(Exception e) {
+				throw new DAOException("DBとの接続の開放に失敗しました");
+				}
+			}
+	}
 
 
 
@@ -128,6 +155,53 @@ public class LendingDAO {
 				throw new DAOException("リソースの開放に失敗しました。");
 			}
 		}
+	}
+
+	public LendingBean getUnreturnedBookByBookId(int book_id) throws DAOException{
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM lending WHERE book_id = ? AND return_day IS null";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			st.setInt(1, book_id);
+			//Emailの設定
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+
+			if(rs.next()) {
+				int lendId = rs.getInt("lend_id");
+				int bookId = rs.getInt("book_id");
+				int userId = rs.getInt("user_id");
+				Date lendDay = rs.getDate("lend_day");
+				Date returnLimit = rs.getDate("return_limit");
+				String memo = rs.getString("memo");
+
+				return new LendingBean(lendId, bookId, userId, lendDay, returnLimit, memo);
+			}else {
+				return null;
+			}
+
+
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("資料名の検索に失敗しました。");
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+
 	}
 
 	public boolean existsUnreturnedBook(int book_id) throws DAOException {

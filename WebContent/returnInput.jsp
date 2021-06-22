@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>返却画面</title>
+<title>返却入力画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>
@@ -12,12 +12,12 @@
 <body>
 
 <h1>返却情報入力</h1>
+<form action="/LibrarySystem/ReturnBookServlet" method="post">
 
-<form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
 資料ID：<input type="text" name="bookId" >
 <p style="text-align:center">
 <input type="submit" value="返却する">
-<input type="hidden" name="action" value="return">
+<input type="hidden" name="action" value="check">
 </p><br>
 </form>
 

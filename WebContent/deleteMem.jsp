@@ -10,7 +10,7 @@
 <body>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 
-<h1>退会会員情報</h1>
+<h1>退会会員情報確認</h1>
 
 会員ID：${member.userId }
 <br>氏名：${member.userName }
@@ -29,7 +29,6 @@
 <c:if test="${lending eq false}">
 なし
 </c:if>
-
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">

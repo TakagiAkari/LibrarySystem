@@ -25,6 +25,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 ) {
+				request.setAttribute("mode", "delete");
 				gotoPage(request, response, "/inputMemID.jsp");
 			}
 			else if(action.equals("delete") ) {

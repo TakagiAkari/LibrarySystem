@@ -13,13 +13,17 @@
 
 <body>
 
-<h1>返却情報</h1>
+<h1>返却情報確認</h1>
 
-会員ID：${ReturnMember.userId}<br>
-会員名：${ReturnMember.userName}<br>
-書籍ID：${ReturnBook.bookId}<br>
-書籍名：${ReturnBook.bookName}<br>
-<form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
+会員ID：${lendingBeanForReturnBook.userId}
+会員名：${userNameForReturnBook}
+書籍ID：${lendingBeanForReturnBook.bookId}
+書籍名：${bookNameForReturnBook}
+返却期限：${lendingBeanForReturnBook.returnLimit}
+返却日：${lendingBeanForReturnBook.returnDay}
+備考：${lendingBeanForReturnBook.memo}
+
+<form action="/LibrarySystem/ReturnBookServlet" method="post">
 <p style="text-align:center">
 <input type="submit" value="返却する">
 <input type="hidden" name="action" value="complete">

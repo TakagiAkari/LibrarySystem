@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料台帳情報入力画面</title>
+<title>資料台帳入力画面</title>
 </head>
 <body>
 
