@@ -14,12 +14,12 @@ import ls.bean.LendingBean;
 public class LendingDAO {
 	private Connection con;
 
-
 	public LendingDAO() throws DAOException{
 		getConnection();
 	}
 
 	//DateはSQLDate
+	//貸出台帳の追加
 	public int addLending(int userIdInt, int bookIdInt, Date lendDay,Date returnLimitDay, String memo) throws DAOException {
 		if(con == null) {
 			getConnection();
@@ -50,10 +50,7 @@ public class LendingDAO {
 					}
 				}
 		}
-
-
-
-
+	//会員IDを返す
 	public String returnUserName(int userIdInt) throws DAOException {
 		if(con == null)
 			getConnection();
@@ -90,6 +87,7 @@ public class LendingDAO {
 			}
 	}
 	}
+	//変更日の変更
 	public int updateReturnDay(Date returnDay, int bookId) throws DAOException {
 		if(con == null) {
 			getConnection();
@@ -117,9 +115,7 @@ public class LendingDAO {
 				}
 			}
 	}
-
-
-
+	//資料名を返す
 	public String returnBookName(int bookIdInt) throws DAOException {
 		if(con == null)
 			getConnection();
@@ -156,7 +152,7 @@ public class LendingDAO {
 			}
 		}
 	}
-
+	//貸出中の資料IDを返す
 	public LendingBean getUnreturnedBookByBookId(int book_id) throws DAOException{
 		if(con == null)
 			getConnection();
@@ -203,7 +199,7 @@ public class LendingDAO {
 		}
 
 	}
-
+	//資料IDに該当する資料が貸出中か
 	public boolean existsUnreturnedBook(int book_id) throws DAOException {
 		// return_dayがnullの行があればまだ返却されていないものとしてTrueを返したい
 		if(con == null)
@@ -237,7 +233,7 @@ public class LendingDAO {
 			}
 		}
 	}
-
+	//会員IDに該当する会員に貸出中があるか
 	public boolean existsUnreturnedBookNow(int user_id) throws DAOException {
 		// return_dayがnullの行があればまだ返却されていないものとしてTrueを返したい
 		if(con == null)
@@ -271,10 +267,7 @@ public class LendingDAO {
 			}
 		}
 	}
-
-
-
-
+	//貸出履歴一覧
 	public List<LendingBean> findAll() throws DAOException {
 		if(con == null)
 			getConnection();
@@ -320,9 +313,6 @@ public class LendingDAO {
 			}
 		}
 	}
-
-
-
 
 
 	private void getConnection() throws DAOException{
