@@ -11,7 +11,6 @@ public class CatalogBean implements Serializable {
 	String author;
 	String publisher;
 	Date publishDay;
-	int bookId;
 
 
 	public CatalogBean() {}
@@ -54,9 +53,6 @@ public class CatalogBean implements Serializable {
 		return author;
 	}
 
-	public int getBookId() {
-		return bookId;
-	}
 
 	public void setAuthor(String author) {
 		this.author = author;
@@ -77,10 +73,4 @@ public class CatalogBean implements Serializable {
 	public void setPublishDay(Date publishDay) {
 		this.publishDay = publishDay;
 	}
-
-	public void setBookId(int bookId) {
-		this.bookId = bookId;
-	}
-
-
 }

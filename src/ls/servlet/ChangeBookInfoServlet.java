@@ -41,8 +41,7 @@ public class ChangeBookInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		request.setCharacterEncoding("UTF-8");
 		if (session == null) {
-			request.setAttribute("message", "正しく入力してください");
-			gotoPage(request, response, "/errMessage.jsp");
+			gotoPage(request, response, "/LoginServlet");
 			return;
 		}
 
@@ -110,7 +109,7 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				}
 
 			// nextは変更確定
-			}else if (action.equals("complete")&&(session != null)) {
+			}else if (action.equals("complete")) {
 				CatalogBean PreviousCatalogInfo = (CatalogBean) session.getAttribute("PreviousCatalogInfo");
 				RecordBean LaterRecordInfo = (RecordBean)session.getAttribute("LaterRecordInfo");
 				CatalogBean LaterCatalogInfo = (CatalogBean) session.getAttribute("LaterCatalogInfo");
