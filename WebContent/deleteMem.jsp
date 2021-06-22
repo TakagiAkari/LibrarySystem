@@ -15,6 +15,7 @@
 <c:if test="${lending eq true}">
 
 <h1>退会会員情報確認</h1>
+<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 
 会員ID：${member.userId }
 <br>氏名：${member.userName }
@@ -31,6 +32,7 @@
 <input type="hidden" name="action" value="cannot">
 <input type="hidden" name="MemID" value="${member.userId }">
 </p><br>
+</form>
 </c:if>
 
 <c:if test="${lending eq false}">
