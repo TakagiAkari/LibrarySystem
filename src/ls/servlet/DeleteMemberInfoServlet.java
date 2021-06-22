@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
+import ls.dao.LendingDAO;
 import ls.dao.MemberDAO;
 
 @WebServlet("/DeleteMemberInfoServlet")
@@ -30,11 +31,22 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			else if(action.equals("delete") ) {
 
 				MemberDAO memDao = new MemberDAO();
-				int MemID = Integer.parseInt(request.getParameter("MemID"));
-				MemberBean bean = memDao.findMemberByUserID(MemID);
-				request.setAttribute("member", bean);
-				gotoPage(request, response, "/deleteMem.jsp");
+				int MemID;
+				try {
+					MemID = Integer.parseInt(request.getParameter("MemID"));
+					MemberBean Mbean = memDao.findMemberByMemID(MemID);
+					request.setAttribute("member", Mbean);
 
+					LendingDAO lenDao = new LendingDAO();
+					int useID = Mbean.getUserId();
+					boolean OnLoan = lenDao.existsUnreturnedBookNow(useID);
+					request.setAttribute("lending", OnLoan);
+					gotoPage(request, response, "/deleteMem.jsp");
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "会員IDを入力してください");
+				gotoPage(request, response, "/errMessage.jsp");
+			}
 			}
 			else if(action.equals("complete")) {
 				MemberDAO memDao = new MemberDAO();
@@ -43,6 +55,8 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
 			}
+
+
 		}catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");

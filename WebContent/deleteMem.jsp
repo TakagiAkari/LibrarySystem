@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,16 @@
 <br>生年月日：${member.birth }
 <br>入会年月日：${member.enterDay }
 <br>
+<br>
+<h1>貸出状況</h1>
+貸出状況：
+<c:if test="${lending eq true}">
+あり
+</c:if>
 
+<c:if test="${lending eq false}">
+なし
+</c:if>
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
@@ -26,8 +36,6 @@
 </p><br>
 
 </form>
-<%--ここの実装はまだ --%>
-<h1>貸出状況</h1>
-貸出状況：
+
 </body>
 </html>
