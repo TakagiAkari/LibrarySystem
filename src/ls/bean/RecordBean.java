@@ -32,7 +32,6 @@ public class RecordBean implements Serializable {
 		this.stockDay = stockDay;
 		this.memo = memo;
 	}
-
 	public int getBookId() {
 		return bookId;
 	}

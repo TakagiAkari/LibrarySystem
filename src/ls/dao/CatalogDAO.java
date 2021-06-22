@@ -114,6 +114,40 @@ public class CatalogDAO {
 			}
 		}
 	}
+	//会員情報変更
+		public int ChangeBookInfo(CatalogBean bean) throws DAOException {
+			if(con == null) {
+				getConnection();
+			}
+			PreparedStatement st = null;
+			try {
+				String sql = "UPDATE catalog SET isbn=?,book_name= ?, author= ?,publisher= ?, publish_day=? WHERE book_id = ?";
+				st = con.prepareStatement(sql);
+
+				st.setLong(1,bean.getIsbn());
+				st.setString(2,bean.getBookName());
+				st.setString(3,bean.getAuthor());
+				st.setString(4,bean.getPublisher());
+				st.setDate(5,bean.getPublishDay());
+				st.setInt(6,bean.getBookId());
+
+				int rows = st.executeUpdate();
+				return rows;
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw new DAOException("書籍情報の変更に失敗しました");
+			}finally {
+				try {
+					if(st != null) {
+						st.close();
+						close();
+						}
+					}catch(Exception e) {
+						throw new DAOException("DBとの接続の開放に失敗しました");
+						}
+					}
+			}
+
 	public CatalogBean getCatalogInfoByIsbn(long isbn) throws DAOException{
 
 		if(con == null)

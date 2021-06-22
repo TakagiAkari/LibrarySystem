@@ -145,7 +145,6 @@ public class RecordDAO {
 			}
 		}
 	}
-
 	public RecordBean findByBookId(int bookId) throws DAOException{
 		if(con == null)
 			getConnection();
