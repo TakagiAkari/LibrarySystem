@@ -49,7 +49,6 @@ public class RegisterBookInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/login.jsp");
 			}
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
-				
 				gotoPage(request, response, "/inputRecord.jsp");
 			}else if(action.equals("checkIsbn")) {
 				long isbn = Long.parseLong(request.getParameter("isbn"));

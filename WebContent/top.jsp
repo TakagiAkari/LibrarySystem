@@ -22,7 +22,7 @@
 	<li><a href="/LibrarySystem/SearchBookInfoServlet">検索</a></li>
 	<li><a href="/LibrarySystem/RegisterBookInfoServlet">登録</a></li>
 	<li><a href="/LibrarySystem/ChangeBookInfoServlet">変更</a></li>
-	<li><a href="/LibrarySystem/DeleteBookInfoServlet">退会</a></li>
+	<li><a href="/LibrarySystem/DeleteBookInfoServlet">削除</a></li>
 </ul>
 <h2>貸出管理</h2>
 <ul>
