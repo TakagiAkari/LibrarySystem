@@ -13,6 +13,7 @@
 <h1>資料削除情報確認</h1>
 
 <form action="/LibrarySystem/DeleteBookInfoServlet" method="post">
+
 ISBN番号：${catalog.isbn }
 <br>題名：${catalog.bookName }
 <br>作者：${catalog.author }
