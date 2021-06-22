@@ -14,13 +14,13 @@
 <body>
 
 
-会員ID：${displayInfo.userId}
-会員名：${displayInfo.userName}
-書籍ID：${displayInfo.bookId}
-書籍名：${displayInfo.bookName}
-返却期限：${displayInfo.returnLimit}
-返却日：${displayInfo.returnDay}
-備考：${displayInfo.memo}
+会員ID：${displayInfo1.userId}
+会員名：${USERNAME}
+書籍ID：${displayInfo1.bookId}
+書籍名：${BOOKNAME}
+返却期限：${displayInfo1.returnLimit}
+返却日：${displayInfo1.returnDay}
+備考：${displayInfo1.memo}
 
 <form action="/LibrarySystem/ReturnBookInfoServlet" method="post">
 <p style="text-align:center">
