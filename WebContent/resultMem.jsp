@@ -15,7 +15,7 @@
 <br>
 <h1>会員検索結果</h1>
 
-<br>会員ID：${member.userId }
+会員ID：${member.userId }
 <br>会員名：${member.userName }
 <br>住所：${member.address }
 <br>電話番号：${member.tel }

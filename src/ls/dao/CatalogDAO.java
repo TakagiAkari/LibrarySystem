@@ -38,6 +38,8 @@ public class CatalogDAO {
 			con = null;
 		}
 	}
+
+	//資料目録に存在するか否か調べる
 	public boolean existsIsbn(long isbn) throws DAOException{
 
 		if(con == null)
@@ -70,7 +72,7 @@ public class CatalogDAO {
 			}
 		}
 	}
-
+	//資料目録に追加
 	public boolean addCatalogInfo(CatalogBean cBean) throws DAOException{
 
 		if(con == null)
@@ -148,6 +150,7 @@ public class CatalogDAO {
 					}
 			}
 
+	//ISBNで情報を取得
 	public CatalogBean getCatalogInfoByIsbn(long isbn) throws DAOException{
 
 		if(con == null)
@@ -193,7 +196,7 @@ public class CatalogDAO {
 			}
 		}
 	}
-//ISBNで検索する
+	//ISBNで検索する
 	public CatalogBean findByIsbn(long isbn) throws DAOException{
 
 		if(con == null)

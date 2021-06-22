@@ -40,6 +40,8 @@ public class RecordDAO {
 			con = null;
 		}
 	}
+
+	//資料IDから資料を検索
 	public RecordBean findRecordByBookID(int bookID) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -99,6 +101,7 @@ public class RecordDAO {
 		}
 
 	}
+	//廃棄日の更新
 	public void updateThrowoutDay(int bookId) {
 		PreparedStatement st = null;
 		 try {
@@ -123,7 +126,7 @@ public class RecordDAO {
 		}
 
 	}
-
+	//資料IDから資料台帳の情報を取得
 	public RecordBean getRecordInfoByBookId(int bookId) throws DAOException{
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -165,10 +168,6 @@ public class RecordDAO {
 			}
 		}
 	}
-
-
-
-
 	// 追加した行の資料idを返り値とする
 	public int addRecordInfo(long isbn, String memo) throws DAOException{
 
@@ -229,7 +228,7 @@ public class RecordDAO {
 			}
 		}
 	}
-//資料IDで検索
+	//資料IDで検索
 	public RecordBean findByBookId(int bookId) throws DAOException{
 		if(con == null)
 			getConnection();
@@ -277,6 +276,5 @@ public class RecordDAO {
 			}
 		}
 	}
-
 
 }

@@ -17,7 +17,8 @@ public class MemberDAO {
 		getConnection();
 	}
 
-//Dateはjava.sql.Date
+	//Dateはjava.sql.Date
+	//会員の追加
 	public int addMember(String name, String address, String tel, String email, Date birth, Date enterDaysql) throws DAOException {
 		if(con == null) {
 			getConnection();
@@ -82,7 +83,7 @@ public class MemberDAO {
 					}
 				}
 		}
-//emailで検索
+	//emailで会員検索
 	public MemberBean findByEail(String email) throws DAOException{
 
 		if(con == null)
@@ -134,29 +135,8 @@ public class MemberDAO {
 			}
 		}
 	}
-
-	private void getConnection() throws DAOException{
-		try {
-			Class.forName("org.postgresql.Driver");
-			String url ="jdbc:postgresql:library_system";
-			String user ="admin";
-			String pass ="himitu";
-			con = DriverManager.getConnection(url, user, pass);
-		}catch(Exception e) {
-			throw new DAOException("データベースへの接続に失敗しました");
-		}
-	}
-
-	private void close() throws SQLException{
-		if(con != null) {
-			con.close();
-			con = null;
-		}
-	}
-
-
-
-		public MemberBean findMemberByMemID(int userID) {
+	//会員IDで会員検索
+	public MemberBean findMemberByMemID(int userID) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		 try {
@@ -184,8 +164,8 @@ public class MemberDAO {
 		  }
 		return null;
 	   }
-
-		public void updateLeaveDay(int userId) {
+	//退会日の更新
+	public void updateLeaveDay(int userId) {
 		PreparedStatement st = null;
 		 try {
 			String sql = "UPDATE member SET leave_day = CURRENT_DATE WHERE user_id = ?";
@@ -209,6 +189,27 @@ public class MemberDAO {
 		}
 
 	}
+
+
+	private void getConnection() throws DAOException{
+		try {
+			Class.forName("org.postgresql.Driver");
+			String url ="jdbc:postgresql:library_system";
+			String user ="admin";
+			String pass ="himitu";
+			con = DriverManager.getConnection(url, user, pass);
+		}catch(Exception e) {
+			throw new DAOException("データベースへの接続に失敗しました");
+		}
+	}
+
+	private void close() throws SQLException{
+		if(con != null) {
+			con.close();
+			con = null;
+		}
+	}
+
 }
 
 
