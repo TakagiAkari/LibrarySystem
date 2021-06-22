@@ -29,7 +29,6 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/inputMemID.jsp");
 			}
 			else if(action.equals("delete") ) {
-
 				MemberDAO memDao = new MemberDAO();
 				int MemID;
 				try {
@@ -54,7 +53,9 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				memDao.updateLeaveDay(MemID);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
+
 			}
+
 
 
 		}catch (DAOException e) {
