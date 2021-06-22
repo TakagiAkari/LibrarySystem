@@ -29,7 +29,6 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/inputMemID.jsp");
 			}
 			else if(action.equals("delete") ) {
-
 				MemberDAO memDao = new MemberDAO();
 				int MemID;
 				try {
@@ -44,7 +43,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 					gotoPage(request, response, "/deleteMem.jsp");
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
-				request.setAttribute("message", "会員IDを入力してください");
+				request.setAttribute("message", "会員IDを入力してください。");
 				gotoPage(request, response, "/errMessage.jsp");
 			}
 			}
@@ -54,7 +53,13 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				memDao.updateLeaveDay(MemID);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
+
+			} else if (action.equals("cannot")) {
+				request.setAttribute("message", "資料を返却してください。");
+				request.getRequestDispatcher("/errMessage.jsp").forward(request, response);
+
 			}
+
 
 
 		}catch (DAOException e) {

@@ -7,9 +7,9 @@
 <title>返却入力画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
-
 <body>
+
+<jsp:include page="header.jsp"/>
 
 <h1>返却情報入力</h1>
 <form action="/LibrarySystem/ReturnBookServlet" method="post">
@@ -21,8 +21,8 @@
 </p><br>
 </form>
 
-</body>
-
 <jsp:include page="footer.jsp"/>
+
+</body>
 
 </html>

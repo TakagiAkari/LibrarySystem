@@ -9,9 +9,9 @@
 <title>資料ID入力画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
-
 <body>
+
+<jsp:include page="header.jsp"/>
 
 <h1>資料情報入力</h1>
 <p style="text-align:center">
@@ -42,8 +42,8 @@
 </c:if>
 </p>
 
-</body>
-
 <jsp:include page="footer.jsp"/>
+
+</body>
 
 </html>

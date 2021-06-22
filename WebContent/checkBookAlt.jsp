@@ -7,12 +7,10 @@
 <title>資料変更情認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
-
 <body>
 <h1>変更情報</h1>
 
-<h1>資料変更情報確認</h1>
+<jsp:include page="header.jsp"/>
 
 書籍ID:${PreviousRecordInfo.bookId}<br>
 ISBN番号:${LaterCatalogInfo.isbn}<br>
@@ -25,5 +23,7 @@ ISBN番号:${LaterCatalogInfo.isbn}<br>
 </body>
 
 <jsp:include page="footer.jsp"/>
+
+</body>
 
 </html>
