@@ -7,14 +7,14 @@
 <title>資料変更情認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
-
 <body>
+
+<jsp:include page="header.jsp"/>
 
 <h1>資料変更情報確認</h1>
 
-</body>
-
 <jsp:include page="footer.jsp"/>
+
+</body>
 
 </html>

@@ -7,7 +7,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp"/><%--ログイン画面にログアウト要るか問題 --%>
 
 	<h1>職員情報入力</h1>
 
