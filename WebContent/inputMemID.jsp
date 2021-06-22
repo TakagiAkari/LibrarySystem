@@ -15,7 +15,7 @@
 <h1>会員管理</h1>
 
 <c:if test="${mode eq 'change'}">
-	<form action="/LibrarySystem/ChangeMemberInfoServlet?action=input" method="post">
+	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 		会員ID：<input type="text" name="MemID" required><br>
 		<p style="text-align:center">
 		<input type="submit" value="変更">

@@ -51,9 +51,10 @@ public class ChangeBookInfoServlet extends HttpServlet {
 			String action = request.getParameter("action");
 
 			if (action == null || action.length() == 0 || action.equals("change_action")) {
+				request.setAttribute("mode", "change");
 				gotoPage(request, response, "/inputBookID.jsp");
 			//会員idを入力して変更をクリックで変更情報入力画面へいく
-			} else if(action.equals("change")) {
+			} else if(action.equals("work")) {
 				RecordDAO Rdao = new RecordDAO();
 				CatalogDAO Cdao = new CatalogDAO();
 				int bookId = Integer.parseInt(request.getParameter("bookId"));
@@ -80,28 +81,27 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/changeBookInfo.jsp");
 			//nextをクリックで変更前の情報表示を行う
 			} else if (action.equals("show")) {
-				int bookId = Integer.parseInt(request.getParameter("bookId"));
+
+				CatalogBean Cbean = (CatalogBean)session.getAttribute("PreviousCatalogInfo");
+				RecordBean Rbean = (RecordBean)session.getAttribute("PreviousRecordInfo");
+
+				int bookId = Rbean.getBookId();
 				Long isbn = Long.parseLong(request.getParameter("isbn"));
-				String bookName = request.getParameter("bookName");
+				String bookName = request.getParameter("title");
 				String author = request.getParameter("author");
-				//int category = Integer.parseInt(request.getParameter("category"));
+				int category = Integer.parseInt(request.getParameter("category"));
 				String publisher = request.getParameter("publisher");
 				int publishedY = Integer.parseInt(request.getParameter("publishedY"));
 				int publishedM = Integer.parseInt(request.getParameter("publishedM"));
 				int publishedD = Integer.parseInt(request.getParameter("publishedD"));
 
-			//publshedY,publishedM,publishedDの型変換
-				CatalogBean Cbean = (CatalogBean)session.getAttribute("PreviousCatalogInfo");
-				int category = Cbean.getCategory();
-				RecordBean Rbean = (RecordBean)session.getAttribute("PreviousRecordInfo");
-				String memo = Rbean.getMemo();
+				String memo = request.getParameter("memo");
 
 		try {
+				// TODO:OperateDateLocalDate使えばなんとかなるかも
 				Date publishDay = OperateDate.getJavaSqlDateOfYMD(publishedY,publishedM,publishedD);
 				RecordBean LaterRecordInfo = new RecordBean(bookId,isbn, publishDay, memo);
 				CatalogBean LaterCatalogInfo = new CatalogBean(isbn,bookName,category,author,publisher,publishDay);
-				//session.setAttribute("PreviousCatalogInfo",category);
-				//session.getAttribute(Integer.toString(category));
 				session.setAttribute("LaterRecordInfo", LaterRecordInfo);
 				session.setAttribute("LaterCatalogInfo", LaterCatalogInfo);
 				gotoPage(request, response, "/checkBookAlt.jsp");
@@ -115,8 +115,12 @@ public class ChangeBookInfoServlet extends HttpServlet {
 			}else if (action.equals("complete")&&(session != null)) {
 				RecordBean LaterRecordInfo = (RecordBean)session.getAttribute("LaterRecordInfo");
 				CatalogBean LaterCatalogInfo = (CatalogBean) session.getAttribute("LaterCatalogInfo");
+				RecordDAO Rdao = new RecordDAO();
 				CatalogDAO Cdao = new CatalogDAO();
-				Cdao.ChangeBookInfo(LaterRecordInfo);
+
+
+
+				//Rdao.ChangeBookInfo(LaterRecordInfo);
 				Cdao.ChangeBookInfo(LaterCatalogInfo);
 			if (LaterCatalogInfo == null) { //書籍変更情報がない
 				request.setAttribute("message", "正しく操作してください");
