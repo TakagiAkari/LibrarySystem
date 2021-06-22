@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料登録全情報確認画面</title>
+<title>資料登録確認画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>

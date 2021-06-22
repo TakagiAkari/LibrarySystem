@@ -13,6 +13,7 @@
 
 <body>
 
+<h1>返却情報確認</h1>
 
 会員ID：${lendingBeanForReturnBook.userId}
 会員名：${userNameForReturnBook}

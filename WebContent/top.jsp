@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>トップページ</title>
+<title>トップ画面</title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 <h2>会員管理</h2>
 <ul>
 	<li><a href="/LibrarySystem/SearchMemberInfoServlet">検索</a></li>
-	<li><a href="/LibrarySystem/RegisterMemberInfoServlet">登録</a></l>
+	<li><a href="/LibrarySystem/RegisterMemberInfoServlet">登録</a></li>
 	<li><a href="/LibrarySystem/ChangeMemberInfoServlet">変更</a></li>
 	<li><a href="/LibrarySystem/DeleteMemberInfoServlet">退会</a></li>
 </ul>

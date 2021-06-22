@@ -9,7 +9,7 @@
 <body>
 <form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 
-<h1>退会会員情報</h1>
+<h1>退会会員情報確認</h1>
 
 会員ID：${member.userId }
 <br>氏名：${member.userName }
@@ -18,12 +18,11 @@
 <br>生年月日：${member.birth }
 <br>入会年月日：${member.enterDay }
 <br>
-<br>
 
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
-<input type="hidden" name="userId" value="${member.userId }">
+<input type="hidden" name="MemID" value="${member.userId }">
 </p><br>
 
 </form>

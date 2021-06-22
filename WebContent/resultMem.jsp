@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>検索結果表示</title>
+<title>会員検索結果表示画面</title>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 <br>
-<h1>検索結果</h1>
+<h1>会員検索結果</h1>
 
 <br>会員ID：${member.userId }
 <br>会員名：${member.userName }
