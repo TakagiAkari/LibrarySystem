@@ -12,6 +12,7 @@ public class CatalogBean implements Serializable {
 	String publisher;
 	Date publishDay;
 
+
 	public CatalogBean() {}
 
 	public CatalogBean(long isbn, String bookName, int category, String author, String publisher, Date publishDay) {
@@ -52,6 +53,7 @@ public class CatalogBean implements Serializable {
 		return author;
 	}
 
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
@@ -71,6 +73,4 @@ public class CatalogBean implements Serializable {
 	public void setPublishDay(Date publishDay) {
 		this.publishDay = publishDay;
 	}
-
-
 }

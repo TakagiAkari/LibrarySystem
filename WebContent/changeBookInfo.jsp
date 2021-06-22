@@ -14,12 +14,14 @@
 <h1>資料変更情報入力</h1>
 
 <form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
-ISBN番号：<input type="text" name="isbn" size="13" required><br>
-題名：<input type="text" name="title" required><br>
-分類コード：<input type="text" name="category" required><br>
-著者：<input type="text" name="author" required><br>
-出版社：<input type="text" name="publisher" required><br>
+<!--  <<<<<<< HEAD -->
+ISBN番号：<input type="text" name="isbn" size="13"  value="${PreviousCatalogInfo.isbn}" required><br>
+題名：<input type="text" name="title" value="${PreviousCatalogInfo.bookName }" required><br>
+分類コード：<input type="text" name="category" value="${PreviousCatalogInfo.category}" required><br>
+著者：<input type="text" name="author" value="${ PreviousCatalogInfo.author}" required><br>
+出版社：<input type="text" name="publisher"  value="${PreviousCatalogInfo.publisher}" required><br>
 出版年月日：
+
 	<input type="text" name="publishedY" size="4"required>年
 	<input type="text" name="publishedM" size="2" required>月
 	<input type="text" name="publishedD" size="2" required>日<br>
@@ -33,9 +35,10 @@ ISBN番号：<input type="text" name="isbn" size="13" required><br>
 	<input type="text" name="throwoutD" size="2" required>日<br>
 備考：<textarea name="memo"></textarea><br>
 
+
 <p style="text-align:center">
 <input type="submit" value="確認画面へ">
-<input type="hidden" name="action" value="next">
+<input type="hidden" name="action" value="show">
 </p>
 
 </form>

@@ -68,6 +68,40 @@ public class RecordDAO {
 		  }
 		return null;
 	   }
+	public boolean updateRecordByBean(RecordBean bean) {
+		PreparedStatement st = null;
+		 try {
+			String sql = "UPDATE record SET isbn=?, stock_day=?,memo=? WHERE book_id = ?";
+			st = con.prepareStatement(sql);
+			st.setLong(1, bean.getIsbn());
+			st.setDate(2, bean.getStockDay());
+			st.setString(3, bean.getMemo());
+			st.setInt(4, bean.getBookId());
+			int rows = st.executeUpdate();
+
+			if(rows > 0) {
+				// 行数が0行よりおおければ、変更したものとする
+				return true;
+
+			}else {
+				return false;
+			}
+		}
+		 catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			try {
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
 	//廃棄日の更新
 	public void updateThrowoutDay(int bookId) {
 		PreparedStatement st = null;

@@ -39,7 +39,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			request.setAttribute("message", "正しく入力してください");
-			gotoPage(request, response, "/errMessage.jsp");
+			gotoPage(request, response, "/LibrarySystem/LoginServlet=action=logout");
 			return;
 		}
 
