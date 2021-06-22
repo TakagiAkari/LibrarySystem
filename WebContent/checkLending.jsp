@@ -8,9 +8,9 @@
 <title>貸出確認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
 
 <body>
+<jsp:include page="header.jsp"/>
 
 <h1>貸出情報確認</h1>
 
@@ -25,9 +25,8 @@
 <input type="hidden" name="action" value="complete">
 </p><br>
 </form>
-
+<jsp:include page="footer.jsp"/>
 </body>
 
-<jsp:include page="footer.jsp"/>
 
 </html>

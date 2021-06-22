@@ -90,6 +90,7 @@ public class LendingBookServlet extends HttpServlet {
 				}else if(action.equals("complete")&&(session != null)) {
 			//貸出台帳に登録（INSERT）、貸出完了メッセージの送信、完了画面の表示
 					//sessionからBeanを取得、intId,memoの抽出
+					// TODO:displayInfoの命名を変える（被らないように）
 					LendingBean lendingbean = (LendingBean)session.getAttribute("displayInfo");
 					int userIdInsert = lendingbean.getUserId();
 					int bookIdInsert = lendingbean.getBookId();
