@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>資料情報変更入力画面</title>
+<title>資料変更入力画面</title>
 </head>
 
 <jsp:include page="header.jsp"/>

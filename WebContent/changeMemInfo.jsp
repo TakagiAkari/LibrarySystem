@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員情報変更入力画面</title>
+<title>会員変更入力画面</title>
 </head>
 <body>
 

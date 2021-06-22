@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員登録情報確認画面</title>
+<title>会員登録確認画面</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 
-	<h1>会員登録情報</h1>
+	<h1>会員登録情報確認</h1>
 
 	氏名：${InputMemberInfo.name}<br>
 	住所：${InputMemberInfo.address}<br>
