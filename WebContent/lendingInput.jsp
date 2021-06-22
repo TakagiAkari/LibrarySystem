@@ -7,9 +7,9 @@
 <title>貸出入力画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
-
 <body>
+
+<jsp:include page="header.jsp"/>
 
 <h1>貸出情報入力</h1>
 
@@ -23,8 +23,8 @@
 </p><br>
 </form>
 
-</body>
-
 <jsp:include page="footer.jsp"/>
+
+</body>
 
 </html>
