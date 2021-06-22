@@ -27,7 +27,9 @@ e-mail:${LaterMemberInfo.email}<br>
 	${LaterMemberInfo.birth.getMonth()+1}月
 	${LaterMemberInfo.birth.getDay()}日<br>
 <%-- ↓ボタンにする--%>
-<p style="text-align:center"><a href="/LibrarySystem/ChangeMemberInfoServlet?action=change">変更する</a></p><br>
+<%-- ボタンにした　<p style="text-align:center"><a href="/LibrarySystem/ChangeMemberInfoServlet?action=change">変更する</a></p><br>--%>
+<input type="submit" value="変更する"><br>
+<input type="hidden" name="action" value="change">
 
 <jsp:include page="footer.jsp"/>
 </body>

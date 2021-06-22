@@ -8,10 +8,9 @@
 <title>資料登録確認画面</title>
 </head>
 
-<jsp:include page="header.jsp"/>
 
 <body>
-
+<jsp:include page="header.jsp"/>
 <h1>資料登録情報確認</h1>
 
 ISBN番号：${recordBeanForRegisterBook.isbn}<br>
@@ -29,8 +28,9 @@ ISBN番号：${recordBeanForRegisterBook.isbn}<br>
 </p>
 </form>
 <a href="RegisterBookInfoServlet?action=reInput">入力をやり直す</a>
+<jsp:include page="footer.jsp"/>
 </body>
 
-<jsp:include page="footer.jsp"/>
+
 
 </html>
