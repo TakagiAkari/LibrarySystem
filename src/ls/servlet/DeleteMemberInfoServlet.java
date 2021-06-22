@@ -41,21 +41,21 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 					boolean OnLoan = lenDao.existsUnreturnedBookNow(useID);
 					request.setAttribute("lending", OnLoan);
 					gotoPage(request, response, "/deleteMem.jsp");
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-					request.setAttribute("message", "会員IDを入力してください");
-					gotoPage(request, response, "/errMessage.jsp");
-				}
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "会員IDを入力してください。");
+				gotoPage(request, response, "/errMessage.jsp");
+			}
 			}
 			else if(action.equals("complete")) {
 				MemberDAO memDao = new MemberDAO();
 				int MemID = Integer.parseInt(request.getParameter("MemID"));
 				memDao.updateLeaveDay(MemID);
-				request.setAttribute("message", "削除する");
+				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
 
 			} else if (action.equals("cannot")) {
-				request.setAttribute("message", "資料を返却してください");
+				request.setAttribute("message", "資料を返却してください。");
 				request.getRequestDispatcher("/errMessage.jsp").forward(request, response);
 
 			}
