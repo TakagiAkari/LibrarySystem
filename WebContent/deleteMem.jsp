@@ -4,10 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>会員退会確認画面</title>
 </head>
 <body>
+
+<jsp:include page="header.jsp"/>
 
 <c:if test="${lending eq true}">
 
@@ -22,7 +25,12 @@
 <br>
 <br>
 <h1>貸出状況</h1>
-貸出状況：あり
+貸出中の資料：あり
+<p style="text-align:center">
+<input type="submit" value="削除する">
+<input type="hidden" name="action" value="cannot">
+<input type="hidden" name="MemID" value="${member.userId }">
+</p><br>
 </c:if>
 
 <c:if test="${lending eq false}">
@@ -39,7 +47,7 @@
 <br>
 <br>
 <h1>貸出状況</h1>
-貸出状況：なし
+貸出中の資料：なし
 <p style="text-align:center">
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
@@ -48,6 +56,7 @@
 </form>
 </c:if>
 
+<jsp:include page="footer.jsp"/>
 
 </body>
 </html>
