@@ -48,6 +48,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 			String action = request.getParameter("action");
 
 			if (action == null || action.length() == 0 || action.equals("input_userId")) {
+				request.setAttribute("mode", "change");
 				gotoPage(request, response, "/inputMemID.jsp");
 			//会員idを入力して変更をクリックで変更情報入力画面へいく
 			} else if(action.equals("input")) {

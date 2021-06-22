@@ -37,7 +37,8 @@ public class SearchBookInfoServlet extends HttpServlet {
 
 			//topから資料検索をリンクした場合・サーブレットに直接飛んできた場合
 			if (action == null || action.length() == 0) {
-				gotoPage(request, response, "/inputBookIDsample.jsp");
+				request.setAttribute("mode", "search");
+				gotoPage(request, response, "/inputBookID.jsp");
 			}
 
 			//BookID入力画面で検索ボタンを押した場合

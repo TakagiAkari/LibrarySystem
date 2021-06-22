@@ -17,16 +17,6 @@ public class LendingBean implements Serializable {
 
 	public LendingBean() {}
 
-	public LendingBean(int lendId, int bookId, int userId, Date lendDay, Date returnLimit, Date returnDay, String memo) {
-		super();
-		this.lendId = lendId;
-		this.bookId = bookId;
-		this.userId = userId;
-		this.lendDay = lendDay;
-		this.returnLimit = returnLimit;
-		this.returnDay = returnDay;
-		this.memo = memo;
-	}
 
 	public LendingBean(int lendId, int bookId, String bookName, int userId, String userName, Date lendDay,
 			Date returnLimit, Date returnDay, String memo) {
@@ -54,13 +44,33 @@ public class LendingBean implements Serializable {
 		this.returnDay = returnDay;
 		this.memo = memo;
 	}
-	public LendingBean(int bookId, String bookName, int userId, String userName, Date lendDay,String memo) {
+	public LendingBean(int bookId, String bookName, int userId, String userName, Date lendDay, String memo) {
 		super();
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.userId = userId;
 		this.userName = userName;
 		this.lendDay = lendDay;
+		this.memo = memo;
+	}
+	public LendingBean(int lendId, int bookId, int userId, Date lendDay, Date returnLimit, Date returnDay, String memo) {
+		super();
+		this.lendId = lendId;
+		this.bookId = bookId;
+		this.userId = userId;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
+		this.returnDay = returnDay;
+		this.memo = memo;
+	}
+
+	public LendingBean(int lendId, int bookId, int userId,  Date lendDay, Date returnLimit, String memo) {
+		// DBからとってきた場合
+		this.lendId = lendId;
+		this.bookId = bookId;
+		this.userId = userId;
+		this.lendDay = lendDay;
+		this.returnLimit = returnLimit;
 		this.memo = memo;
 	}
 
