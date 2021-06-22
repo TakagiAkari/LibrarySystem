@@ -54,7 +54,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 			} else if(action.equals("input")) {
 				MemberDAO dao = new MemberDAO();
 				int userId = Integer.parseInt(request.getParameter("MemID"));
-				MemberBean bean =dao.findMemberByUserID(userId);
+				MemberBean bean =dao.findMemberByMemID(userId);
 				if (bean == null) {
 					request.setAttribute("message", "正しく入力してください");
 					gotoPage(request, response, "/errMessage.jsp");
