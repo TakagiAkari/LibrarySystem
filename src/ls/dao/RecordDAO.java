@@ -170,26 +170,11 @@ public class RecordDAO {
 		}
 	}
 	// 追加した行の資料idを返り値とする
-	public int addRecordInfo(long isbn, String memo) throws DAOException{
+	public boolean addRecordInfo(long isbn, String memo) throws DAOException{
 
-		PreparedStatement st1 = null;
 		PreparedStatement st2 = null;
 		ResultSet rs = null;
 		try {
-			String getRecordIdSql = "SELECT nextval('record_book_id_seq')";
-			st1 = con.prepareStatement(getRecordIdSql);
-			rs = st1.executeQuery();
-
-			int next_book_id = -1;
-
-			if(rs.next()) {
-				next_book_id = rs.getInt(1);
-			}else {
-				// -1を返す 加えることが出来ませんでした
-				return -1;
-			}
-
-
 			String insertSql = "INSERT INTO record(isbn,stock_day,throwout_day,memo) VALUES(?,?,?,?)";
 			st2 = con.prepareStatement(insertSql);
 
@@ -205,11 +190,10 @@ public class RecordDAO {
 			// 結果の取得
 
 			if(rows > 1) {
-				// 次の資料idを返す
-				return next_book_id;
+				return true;
 			}else {
 				// 加えることが出来ませんでした
-				return -1;
+				return false;
 			}
 
 		}
@@ -220,7 +204,6 @@ public class RecordDAO {
 		finally {
 			try {
 				if(rs != null) rs.close();
-				if(st1 != null) st1.close();
 				if(st2 != null) st2.close();
 				close();
 			}

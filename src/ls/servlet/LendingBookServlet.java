@@ -52,6 +52,12 @@ public class LendingBookServlet extends HttpServlet {
 					String memo = request.getParameter("memo");
 					String userIdStr = request.getParameter("userId");
 					String bookIdStr = request.getParameter("bookId");
+
+					if(userIdStr == null || userIdStr.length() == 0 || bookIdStr == null || bookIdStr.length() == 0 ) {
+						request.setAttribute("message","会員IDか資料IDが入力されていません。");
+						gotoPage(request, response, "/errMessage.jsp");
+
+					}
 					int userId = Integer.parseInt(userIdStr);
 					int bookId = Integer.parseInt(bookIdStr);
 
@@ -62,6 +68,10 @@ public class LendingBookServlet extends HttpServlet {
 
 					// recordテーブルからbook_idがマッチする行をとってくる
 					RecordBean rBean =  rDao.getRecordInfoByBookId(bookId);
+					if(rBean == null) {
+						request.setAttribute("message","存在しない資料IDです。");
+						gotoPage(request, response, "/errMessage.jsp");
+					}
 					// book_idが一致する行のisbn番号を取得する
 					long isbn = rBean.getIsbn();
 					// catalogテーブルからisbn番号がマッチする行をとってくる
@@ -69,14 +79,9 @@ public class LendingBookServlet extends HttpServlet {
 					// 本の名前がとってこれる
 					String bookName = cBean.getBookName();
 
-
-
 					//↑Stringで各情報がそろった⇒情報のチェック↓
-					if(userIdStr == null || userIdStr.length() == 0 || bookIdStr == null || bookIdStr.length() == 0) {
-						request.setAttribute("message", "すべての情報を入力してください");
-						gotoPage(request, response, "/errMessage.jsp");
-					}else if(userName == null || userName.length() == 0 || bookName == null || bookName.length() == 0){
-						request.setAttribute("message", "DB内の会員名もしくは資料名が不正です");
+					if(userName == null || userName.length() == 0){
+						request.setAttribute("message", "存在しない会員IDです。");
 						gotoPage(request, response, "/errMessage.jsp");
 					}else if(lendDao.existsUnreturnedBook(bookId)) {
 						request.setAttribute("message", "すでに貸出されています");

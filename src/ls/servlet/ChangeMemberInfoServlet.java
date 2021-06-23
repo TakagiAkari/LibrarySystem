@@ -56,7 +56,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				int userId = Integer.parseInt(request.getParameter("MemID"));
 				MemberBean bean =dao.findMemberByMemID(userId);
 				if (bean == null) {
-					request.setAttribute("message", "正しく入力してください");
+					request.setAttribute("message", "存在しない会員IDです。");
 					gotoPage(request, response, "/errMessage.jsp");
 					return;
 				}
@@ -89,7 +89,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				}
 
 			// changeは変更確定
-			}else if (action.equals("change")&&(session != null)) {
+			}else if (action.equals("change")) {
 				MemberBean LaterMemberInfo = (MemberBean)session.getAttribute("LaterMemberInfo");
 				MemberBean member = (MemberBean) session.getAttribute("PreviousMemberInfo");
 				MemberDAO dao = new MemberDAO();

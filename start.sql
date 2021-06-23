@@ -55,6 +55,8 @@ INSERT INTO record(isbn,stock_day,throwout_day, memo) VALUES('4906638015', '2010
 INSERT INTO record(isbn, stock_day) VALUES('4906638015',  '2010.01.07');
 INSERT INTO record(isbn, stock_day) VALUES('4480425993',  '2015.10.18');
 
+INSERT INTO lending(user_id,book_id,lend_day,return_limit,memo) VALUES(2,3,'2020.12.10','2020-12-20','テスト用（未返却)');
+
 ALTER TABLE member OWNER TO admin;
 ALTER TABLE catalog OWNER TO admin;
 ALTER TABLE record OWNER TO admin;
