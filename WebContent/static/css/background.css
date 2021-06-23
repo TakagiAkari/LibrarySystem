@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+body{
+	font-family: 'Roboto', sans-serif;
+	margin:0;
+}
+
+/* header関連 */
+
+h1{
+	color:#222;
+	margin:0;
+	padding:10px;
+
+}
+
+.logout-button{
+	float:right;
+	border:2px solid #666;
+	border-radius:5px;
+	padding:5px;
+	margin-right: 10px;
+	font-size:large;
+}
+
+header{
+	background-color:#DCD8D0;
+	margin:0;
+	height:130px;
+}
+article{
+	margin:10px;
+}
+
+a{
+	text-decoration: none;
+}
+/* -----------------------*/
+/* article（メインコンテンツ) */
+h2{
+	/*border-bottom:3px #08d9d6 solid;*/
+	border-bottom:3px #DCD8D0 solid;
+	text-align: center;
+	max-width:300px;
+}
+/* ログアウトの文字を大きくする
+h2のボーダーの色を上にそろえる
+h2の小見出しの位置を変える
+*/
+
+
+.top-placement{
+	margin-top:20px;
+	margin-bottom:20px;
+	flex-direction:row;
+	justify-content: space-around;
+}
+.container{
+	display:flex;
+}
+.item{
+	width:250px;
+	border:1px solid #888;
+	border-radius:5px;
+	padding:5px;
+
+}
+/* -----------------------*/
+/* Form関連のデザイン */
+.center-form{
+	background-color:#eaeaea;
+	padding: 10px 30px;
+	width:70%;
+	margin:0 auto;
+
+}
+.center-form dl dt{
+	width: 100px;
+	padding: 10px 0;
+	float:left;
+	clear:both;
+}
+.center-form dl dd{
+	padding: 10px 0;
+}
+.center-form dl dt:after{
+	content:":";
+}
+.next-button{
+	text-align:center;
+}
+.next-button input{
+	display:inline-block;
+	text-align:left;
+}
+.previous-anchor-like-button{
+	text-align:right;
+}
+.previous-anchor-like-button a{
+	display:inline-block;
+	text-align:left;
+	padding:5px;
+	margin-right: 10px;
+}
+
+.previous-button-placement{
+	width:100%;
+	flex-direction:row;
+	justify-content: flex-start;
+}
+
+.next-button-placement{
+	width:100%;
+	flex-direction:row;
+	justify-content: center;
+}
+input{
+	outline: none;
+	border: none;
+}
+input[type="text"]{
+	border: 1px solid black;
+}
+
+.button{/*anchor input両対応のはず*/
+	border: 1.5px solid black;
+	border-radius:5px;
+	font-size:small;
+	color:black;
+	padding:2px;
+}
+/*inputとデザインをそろえるための調整用*/
+.like-input{
+	padding:3px 7px;
+}
+/*inputのボタンの文字色と一致させるため*/
+a:visited{
+	color:black;
+}
+
+/* ------------------------ */

@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <header>
 	<h1>新宿図書館 図書管理システム</h1>
-	<div style="text-align:right;">
-		<a href="/LibrarySystem/LoginServlet?action=logout" style="text-align:right;">ログアウト</a>
+	<div class="logout-button">
+		<div>
+			<a href="/LibrarySystem/LoginServlet?action=logout" >ログアウト</a>
+		</div>
 	</div>
 </header>
