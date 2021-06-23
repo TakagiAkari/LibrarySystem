@@ -17,7 +17,7 @@
 <p style="text-align:center">
 <c:if test="${mode eq 'change'}">
 	<form method="post">
-		資料ID：<input type="text" name="bookId" required>
+		資料ID：<input type="number" name="bookId" required>
 		<input type="hidden" name="action" value="work">
 		<input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
 		<input type="hidden" name="action" value="work">
@@ -26,7 +26,7 @@
 
 <c:if test="${mode eq 'search'}">
 	<form method="post">
-		資料ID：<input type="text" name="bookId" required>
+		資料ID：<input type="number" name="bookId" required>
 		<input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
 		<input type="hidden" name="action" value="work">
 	</form>
@@ -34,7 +34,7 @@
 
 <c:if test="${mode eq 'delete'}">
 	<form method="post">
-		資料ID：<input type="text" name="bookId" required>
+		資料ID：<input type="number" name="bookId" required>
 		<input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
 		<input type="hidden" name="action" value="work">
 	<br>

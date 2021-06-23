@@ -14,7 +14,7 @@
 <h1>返却情報入力</h1>
 <form action="/LibrarySystem/ReturnBookServlet" method="post">
 
-資料ID：<input type="text" name="bookId" >
+資料ID：<input type="number" name="bookId" >
 <p style="text-align:center">
 <input type="submit" value="返却する">
 <input type="hidden" name="action" value="check">
