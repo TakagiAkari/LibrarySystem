@@ -23,12 +23,12 @@
 		<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 			<dl>
 				<dt>会員ID</dt>
-				<dd><input type="number" name="MemID" required></dd>
+				<dd><input type="text" name="MemID" required></dd>
 			</dl>
 			<div class="container next-button-placement">
 				<div class="button next-button">
 					<input type="submit" value="変更">
-					<input type="hidden" name="action" value="change">
+					<input type="hidden" name="action" value="input">
 				</div>
 			</div>
 		</form>

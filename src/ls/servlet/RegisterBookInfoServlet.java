@@ -61,6 +61,11 @@ public class RegisterBookInfoServlet extends HttpServlet {
 
 				if(existsIsbn) {
 					// isbnの検索結果が存在する場合は既にある目録の情報から情報を登録する
+					//TODO:test
+					RecordBean rBean = new RecordBean(isbn, OperateDate.getDateNow(),memo);
+					session.setAttribute("recordBeanForRegisterBook", rBean);
+					CatalogBean cBean = catalogDao.getCatalogInfoByIsbn(isbn);
+					session.setAttribute("catalogBeanForRegisterBook", cBean);
 					gotoPage(request, response, "/checkBookInfo.jsp");
 				}else {
 					// isbnの検索結果が存在しないということは書籍情報が登録されていないということ

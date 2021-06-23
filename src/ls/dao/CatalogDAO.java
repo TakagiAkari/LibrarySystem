@@ -102,7 +102,9 @@ public class CatalogDAO {
 
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			// すでにあるisbn番号を追加しようとした場合に飛ぶ。
+			// これは正常系の処理で起きてしまう
+			//e.printStackTrace();
 			return false;
 		}
 		finally {

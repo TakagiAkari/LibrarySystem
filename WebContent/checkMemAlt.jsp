@@ -13,6 +13,7 @@
 
 	<h2>会員変更情報確認</h2>
 
+
 	<div class="center-form">
 
 	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
