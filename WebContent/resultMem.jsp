@@ -8,22 +8,41 @@
 <head>
 <meta charset="UTF-8">
 <title>会員検索結果表示画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
-<br>
-<h1>会員検索結果</h1>
 
-会員ID：${member.userId }
-<br>会員名：${member.userName }
-<br>住所：${member.address }
-<br>電話番号：${member.tel }
-<br>メールアドレス：${member.email }
-<br>生年月日：${member.birth.toLocalDate().getYear() }年${member.birth.toLocalDate().getMonthValue() }月${member.birth.toLocalDate().getDayOfMonth() }日
-<br>入会日：${member.enterDay.toLocalDate().getYear() }年${member.enterDay.toLocalDate().getMonthValue() }月${member.enterDay.toLocalDate().getDayOfMonth() }日
-<br>
-<br>
+<article>
+
+	<h2>会員検索結果</h2>
+
+	<div class="center-form">
+		<dl>
+			<dt>名前</dt>
+			<dd>${member.userId }</dd>
+			<dt>住所</dt>
+			<dd>${member.address }</dd>
+			<dt>電話番号</dt>
+			<dd>${member.tel }</dd>
+			<dt>E-Mail</dt>
+			<dd>${member.email }</dd>
+			<dt>生年月日</dt>
+			<dd>：${member.birth.toLocalDate().getYear() }年
+			${member.birth.toLocalDate().getMonthValue() }月$
+			{member.birth.toLocalDate().getDayOfMonth() }日</dd>
+			<dt>入会年月日</dt>
+			<dd>${member.enterDay.toLocalDate().getYear() }年
+			${member.enterDay.toLocalDate().getMonthValue() }月
+			${member.enterDay.toLocalDate().getDayOfMonth() }日</dd>
+		</dl>
+
+		<%--検索をやり直すならココに --%>
+	</div>
+
+</article>
+
 <jsp:include page="footer.jsp"/>
 
 </body>

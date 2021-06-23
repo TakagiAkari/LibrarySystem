@@ -7,11 +7,65 @@
 
 <meta charset="UTF-8">
 <title>会員退会確認画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
+<article>
+
+	<h2>退会会員情報確認</h2>
+
+	<div class="center-form">
+
+			<dl>
+				<dt>名前</dt>
+				<dd>${member.userId }</dd>
+				<dt>住所</dt>
+				<dd>${member.userName }</dd>
+				<dt>E-Mail</dt>
+				<dd>${member.email }</dd>
+				<dt>生年月日</dt>
+				<dd>${member.birth }</dd>
+				<dt>入会年月日</dt>
+				<dd>${member.enterDay }</dd>
+			</dl>
+
+			<h3>貸出状況</h3>
+				<dl>
+					<dt>貸出中資料</dt>
+					<dd>
+						<c:if test="${lending eq true}">
+						あり<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
+							<div class="container next-button-placement">
+								<div class="button next-button">
+									<input type="submit" value="削除する">
+									<input type="hidden" name="action" value="cannot">
+									<input type="hidden" name="MemID" value="${member.userId }">
+								</div>
+							</div>
+							</form>
+						</c:if>
+
+						<c:if test="${lending eq false}">
+						なし<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
+						<div class="container next-button-placement">
+							<div class="button next-button">
+								<input type="submit" value="削除する">
+								<input type="hidden" name="action" value="complete">
+								<input type="hidden" name="MemID" value="${member.userId }">
+							</div>
+						</div>
+						</form>
+						</c:if>
+					</dd>
+				</dl>
+
+		</form>
+	</div>
+
+<%--
 <c:if test="${lending eq true}">
 
 <h1>退会会員情報確認</h1>
@@ -27,11 +81,11 @@
 <br>
 <h1>貸出状況</h1>
 貸出中の資料：あり
-<p style="text-align:center">
+
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="cannot">
 <input type="hidden" name="MemID" value="${member.userId }">
-</p><br>
+
 </form>
 </c:if>
 
@@ -50,13 +104,16 @@
 <br>
 <h1>貸出状況</h1>
 貸出中の資料：なし
-<p style="text-align:center">
+
 <input type="submit" value="削除する">
 <input type="hidden" name="action" value="complete">
 <input type="hidden" name="MemID" value="${member.userId }">
-</p><br>
+
 </form>
 </c:if>
+--%>
+
+</article>
 
 <jsp:include page="footer.jsp"/>
 
