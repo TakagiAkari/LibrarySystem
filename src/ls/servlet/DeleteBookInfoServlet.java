@@ -50,6 +50,13 @@ public class DeleteBookInfoServlet extends HttpServlet {
 				CatalogDAO catDao = new CatalogDAO();
 				int bookID = Integer.parseInt(request.getParameter("bookId"));
 				RecordBean rb = recDao.findRecordByBookID(bookID);
+				if(rb == null) {
+					request.setAttribute("message", "存在しない資料IDです。");
+					gotoPage(request, response, "errMessage.jsp");
+				}else if(rb.getThrowoutDay() != null) {
+					request.setAttribute("message", "削除済みの資料です。");
+					gotoPage(request, response, "errMessage.jsp");
+				}
 				long isbn = rb.getIsbn();
 				CatalogBean cb = catDao.getCatalogInfoByIsbn(isbn);
 				String bookName = cb.getBookName();
