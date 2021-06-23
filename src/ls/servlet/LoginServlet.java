@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 				gotoPage(request, response, "/top.jsp");
 			}else {
 				request.setAttribute("message", "正しいユーザ名とパスワードを入力してください");
-				gotoPage(request, response, "/errInternal.jsp");
+				gotoPage(request, response, "/errMessage.jsp");
 				return ;
 			}
 		}else if(action.equals("logout")){
