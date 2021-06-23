@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
@@ -19,11 +18,10 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws ServletException, IOException {
-		String error = "";
 		try {
 			request.setCharacterEncoding("UTF-8");
 			String action = request.getParameter("action");
-			HttpSession session = request.getSession(false);
+			//HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 ) {
 				request.setAttribute("mode", "delete");
 				gotoPage(request, response, "/inputMemID.jsp");
@@ -34,6 +32,10 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				try {
 					MemID = Integer.parseInt(request.getParameter("MemID"));
 					MemberBean Mbean = memDao.findMemberByMemID(MemID);
+					if(Mbean == null) {
+						request.setAttribute("message", "存在しない会員IDです。");
+						gotoPage(request, response, "/errMessage.jsp");
+					}
 					request.setAttribute("member", Mbean);
 
 					LendingDAO lenDao = new LendingDAO();
