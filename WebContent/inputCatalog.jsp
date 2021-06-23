@@ -14,12 +14,12 @@
 
 <form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
 題名：<input type="text" name="title" required><br>
-分類コード：<input type="text" name="category" required><br>
+分類コード：<input type="number" name="category" required><br>
 著者:<input type="text" name="author" required><br>
 出版社：<input type="text" name="publisher" required><br>
-出版年月日：<input type="text" name="publishedY" required>年
-<input type="text" name="publishedM" required>月
-<input type="text" name="publishedD" required>日<br>
+出版年月日：<input type="number" name="publishedY" required>年
+<input type="number" name="publishedM" required>月
+<input type="number" name="publishedD" required>日<br>
 
 <p style="text-align:center">
 <input type="hidden" name="action" value="registerCatalog">
