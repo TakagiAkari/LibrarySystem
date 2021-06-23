@@ -19,7 +19,7 @@
 		会員ID：<input type="text" name="MemID" required><br>
 		<p style="text-align:center">
 		<input type="submit" value="変更">
-		<input type="hidden" name="action" value="change">
+		<input type="hidden" name="action" value="input">
 		</p><br>
 	</form>
 </c:if>

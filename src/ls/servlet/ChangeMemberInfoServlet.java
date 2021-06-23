@@ -89,7 +89,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				}
 
 			// changeは変更確定
-			}else if (action.equals("change")&&(session != null)) {
+			}else if (action.equals("change")) {
 				MemberBean LaterMemberInfo = (MemberBean)session.getAttribute("LaterMemberInfo");
 				MemberBean member = (MemberBean) session.getAttribute("PreviousMemberInfo");
 				MemberDAO dao = new MemberDAO();
