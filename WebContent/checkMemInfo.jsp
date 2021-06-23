@@ -10,9 +10,13 @@
 <jsp:include page="importLayout.jsp"/>
 </head>
 <body>
-	<jsp:include page="header.jsp"/>
+
+<jsp:include page="header.jsp"/>
+
+<article>
 
 	<h2>会員登録情報確認</h2>
+
 	<div class="center-form">
 		<dl>
 			<dt>氏名</dt>
@@ -21,16 +25,17 @@
 			<dd>${InputMemberInfo.address}</dd>
 			<dt>電話番号</dt>
 			<dd>${InputMemberInfo.tel}</dd>
-			<dt>e-mail</dt>
+			<dt>E-Mail</dt>
 			<dd>${InputMemberInfo.email}</dd>
 			<dt>生年月日</dt>
 			<dd>${InputMemberInfo.birthY}年${InputMemberInfo.birthM}月${InputMemberInfo.birthD}日</dd>
 		</dl>
+
 		<form action="/LibrarySystem/RegisterMemberInfoServlet" method="post">
-			<input type="hidden" name="action" value="complete">
 			<div class="container next-button-placement">
 				<div class="button next-button">
 					<input type="submit"  value="登録する">
+					<input type="hidden" name="action" value="complete">
 				</div>
 			</div>
 			<br>
@@ -42,7 +47,9 @@
 		</form>
 	</div>
 
-	<jsp:include page="footer.jsp"/>
+</article>
+
+<jsp:include page="footer.jsp"/>
 
 </body>
 </html>

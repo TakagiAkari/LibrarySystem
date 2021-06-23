@@ -11,33 +11,35 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"/>
+
+	<article>
 		<p>${message}が完了しました。</p>
-	<jsp:include page="footer.jsp"/>
+	</article>
 
+<%--貸出 --%>
 <c:if test="${act eq 'lend'}">
-
-
-
-<%-- submitとhrefが他と逆 --%>
+<article>
 <a href="/LibrarySystem/LendingBookServlet?action=continue">続けて貸出をする</a>
 <form action="/LibrarySystem/LendingBookServlet" method="post">
 <input type="hidden" name="lendingAct" value="finish">
 <input type="submit" value="終了">
-<br>
 </form>
-
+</article>
 </c:if>
 
+<%--返却 --%>
 <c:if test="${act eq 'return'}">
-
+<article>
 <a href="/LibrarySystem/ReturnBookServlet?action=continue">続けて返却をする</a>
 <form action="/LibrarySystem/ReturnBookServlet" method="post">
 <input type="hidden" name="returnAct" value="finish">
 <input type="submit" value="終了">
-<br>
 </form>
-
+</article>
 </c:if>
+
+<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

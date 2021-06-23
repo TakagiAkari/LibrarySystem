@@ -7,32 +7,53 @@
 <head>
 <meta charset="UTF-8">
 <title>会員情報入力画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
-<h1>会員管理</h1>
+<article>
 
+<h2>会員管理</h2>
+
+<%--変更 --%>
 <c:if test="${mode eq 'change'}">
-	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
-		会員ID：<input type="text" name="MemID" required><br>
-		<p style="text-align:center">
-		<input type="submit" value="変更">
-		<input type="hidden" name="action" value="change">
-		</p><br>
-	</form>
+	<div class="center-form">
+		<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
+			<dl>
+				<dt>会員ID</dt>
+				<dd><input type="number" name="MemID" required></dd>
+			</dl>
+			<div class="container next-button-placement">
+				<div class="button next-button">
+					<input type="submit" value="変更">
+					<input type="hidden" name="action" value="change">
+				</div>
+			</div>
+		</form>
+	</div>
 </c:if>
 
+<%--削除 --%>
 <c:if test="${mode eq 'delete'}">
-	<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
-		会員ID：<input type="text" name="MemID" required><br>
-		<p style="text-align:center">
-		<input type="submit" value="削除">
-		<input type="hidden" name="action" value="delete">
-		</p><br>
-	</form>
+	<div class="center-form">
+		<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
+			<dl>
+				<dt>会員ID</dt>
+				<dd><input type="text" name="MemID" required></dd>
+			</dl>
+			<div class="container next-button-placement">
+				<div class="button next-button">
+					<input type="submit" value="削除">
+					<input type="hidden" name="action" value="delete">
+				</div>
+			</div>
+		</form>
+	</div>
 </c:if>
+
+</article>
 
 <jsp:include page="footer.jsp"/>
 

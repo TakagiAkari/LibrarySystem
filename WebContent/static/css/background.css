@@ -118,7 +118,7 @@ input{
 	outline: none;
 	border: none;
 }
-input[type="text"]{
+input[type="text"],[type="password"],[type="email"],[type="number"]{
 	border: 1px solid black;
 }
 
@@ -139,3 +139,9 @@ a:visited{
 }
 
 /* ------------------------ */
+
+/*
+・pの文字を大きくする
+・小見出しと中身の位置を整える
+・続けて貸出/返却ができない
+ */

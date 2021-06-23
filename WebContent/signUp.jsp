@@ -16,6 +16,7 @@
 	<!--  center-formを使うといいよ -->
 	<div class="center-form">
 		<form action="/LibrarySystem/RegisterMemberInfoServlet" method="post">
+
 			<dl>
 				<dt>氏名</dt>
 				<dd><input type="text" name="name" required></dd>
@@ -23,25 +24,25 @@
 				<dd><input type="text" name="address" required></dd>
 				<dt>電話番号</dt>
 				<dd><input type="text" name="tel" required></dd>
-				<dt>e-mail</dt>
-				<dd><input type="text" name="email" required></dd>
+				<dt>E-Mail</dt>
+				<dd><input type="email" name="email" required></dd>
 				<dt>生年月日</dt>
-				<dd><input type="text" name="birthY" required>年
-				<input type="text" name="birthM" required>月
-				<input type="text" name="birthD" required>日</dd>
+				<dd><input type="number" name="birthY" required>年
+				<input type="number" name="birthM" required>月
+				<input type="number" name="birthD" required>日</dd>
 			</dl>
 			<!-- buttonは配置と色とか変えたいので、flexbox使う -->
-				<div class="container next-button-placement">
-					<div class="button next-button">
-						<input type="submit" value="確認画面へ">
-					</div>
+			<div class="container next-button-placement">
+				<div class="button next-button">
+					<input type="submit" value="登録">
+					<input type="hidden" name="action" value="next">
 				</div>
-				<input type="hidden" name="action" value="next">
-				<br>
+			</div>
 		</form>
 	</div>
 </article>
-<jsp:include page="footer.jsp"/>
-</body>
 
+<jsp:include page="footer.jsp"/>
+
+</body>
 </html>
