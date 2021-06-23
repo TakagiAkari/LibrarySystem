@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>トップ画面</title>
+<!-- 1.cssを読み込む -->
 <jsp:include page="importLayout.jsp"/>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+<!-- 2.article -->
 <article>
+<!-- 3.flexboxを使って横並びにする -->
 <div class="container top-placement">
 	<div class="item">
 		<h2>会員管理</h2>

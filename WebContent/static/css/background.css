@@ -83,9 +83,9 @@ h2の小見出しの位置を変える
 .center-form dl dd{
 	padding: 10px 0;
 }
-.center-form dl dt:after{
+/*.center-form dl dd:before{
 	content:":";
-}
+}*/
 .next-button{
 	text-align:center;
 }

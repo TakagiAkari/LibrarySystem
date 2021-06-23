@@ -11,7 +11,9 @@
 <body>
 <jsp:include page="header.jsp"/>
 <article>
+<!-- 小見出しがh2以外になってたら、h2に統一 -->
 	<h2>会員登録情報入力</h2>
+	<!--  center-formを使うといいよ -->
 	<div class="center-form">
 		<form action="/LibrarySystem/RegisterMemberInfoServlet" method="post">
 			<dl>
@@ -28,6 +30,7 @@
 				<input type="text" name="birthM" required>月
 				<input type="text" name="birthD" required>日</dd>
 			</dl>
+			<!-- buttonは配置と色とか変えたいので、flexbox使う -->
 				<div class="container next-button-placement">
 					<div class="button next-button">
 						<input type="submit" value="確認画面へ">
