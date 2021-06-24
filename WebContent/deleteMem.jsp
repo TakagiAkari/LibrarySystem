@@ -19,22 +19,23 @@
 
 	<div class="center-form">
 
-			<dl>
-				<dt>名前</dt>
+	<h3>会員情報</h3>
+		<dl>
+			<dt>名前</dt>
 				<dd>${member.userId }</dd>
-				<dt>住所</dt>
+			<dt>住所</dt>
 				<dd>${member.userName }</dd>
-				<dt>E-Mail</dt>
+			<dt>E-Mail</dt>
 				<dd>${member.email }</dd>
-				<dt>生年月日</dt>
+			<dt>生年月日</dt>
 				<dd>${member.birth }</dd>
-				<dt>入会年月日</dt>
+			<dt>入会年月日</dt>
 				<dd>${member.enterDay }</dd>
-			</dl>
-
-			<h3>貸出状況</h3>
-				<dl>
-					<dt>貸出中資料</dt>
+		</dl>
+	<br>
+		<h3>貸出状況</h3>
+			<dl>
+				<dt>貸出中資料</dt>
 					<dd>
 						<c:if test="${lending eq true}">
 						あり<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
@@ -60,9 +61,7 @@
 						</form>
 						</c:if>
 					</dd>
-				</dl>
-
-		</form>
+			</dl>
 	</div>
 
 <%--
