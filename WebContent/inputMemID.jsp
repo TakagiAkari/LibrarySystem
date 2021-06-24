@@ -13,12 +13,10 @@
 
 <jsp:include page="header.jsp"/>
 
-<article>
-
-<h2>会員管理</h2>
-
 <%--変更 --%>
 <c:if test="${mode eq 'change'}">
+<h2>会員変更</h2>
+<article>
 	<div class="center-form">
 		<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 			<dl>
@@ -33,10 +31,13 @@
 			</div>
 		</form>
 	</div>
+</article>
 </c:if>
 
 <%--削除 --%>
 <c:if test="${mode eq 'delete'}">
+<h2>会員退会</h2>
+<article>
 	<div class="center-form">
 		<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 			<dl>
@@ -51,9 +52,8 @@
 			</div>
 		</form>
 	</div>
-</c:if>
-
 </article>
+</c:if>
 
 <jsp:include page="footer.jsp"/>
 

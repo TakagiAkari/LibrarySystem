@@ -20,11 +20,11 @@
 			<form action="/LibrarySystem/LendingBookServlet" method="post">
 				<dl>
 					<dt>会員ID</dt>
-					<dd><input type="number" name="userId" ></dd>
+					<dd><input type="number" name="userId" required></dd>
 					<dt>資料ID</dt>
-					<dd><input type="number" name="bookId" ></dd>
+					<dd><input type="number" name="bookId" required></dd>
 					<dt>備考</dt>
-					<dd><input type="text" name="memo" ></dd>
+					<dd><input type="text" name="memo"d></dd>
 				</dl>
 
 				<div class="container next-button-placement">
