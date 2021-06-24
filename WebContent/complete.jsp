@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>完了画面</title>
 <jsp:include page="importLayout.jsp"/>
+<style>
+p{font-size:200%}
+</style>
 </head>
 <body>
 

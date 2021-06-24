@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>エラー画面</title>
 <jsp:include page="importLayout.jsp"/>
+<style>
+p{font-size:200%}
+</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
