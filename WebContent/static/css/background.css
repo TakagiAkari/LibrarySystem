@@ -57,12 +57,6 @@ h2の小見出しの位置を変える
 */
 
 
-.top-placement{
-	margin-top:20px;
-	margin-bottom:20px;
-	flex-direction:row;
-	justify-content: space-around;
-}
 .container{
 	display:flex;
 }
@@ -72,6 +66,27 @@ h2の小見出しの位置を変える
 	border-radius:5px;
 	padding:5px;
 
+}
+.change-item{
+	width:90%;
+	border:1px solid #888;
+	border-radius:5px;
+	padding:5px;
+	margin:0 30px;
+
+}
+.prepare-placement{
+	padding:10px;
+	margin-top:20px;
+	margin-bottom:20px;
+	flex-direction:row;
+	justify-content: space-between;
+}
+.top-placement{
+	margin-top:20px;
+	margin-bottom:20px;
+	flex-direction:row;
+	justify-content: space-around;
 }
 /* -----------------------*/
 /* Form関連のデザイン */

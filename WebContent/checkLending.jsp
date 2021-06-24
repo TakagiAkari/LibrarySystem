@@ -26,6 +26,8 @@
 			<dd>${displayInfo.bookId}</dd>
 			<dt>資料名</dt>
 			<dd>${displayInfo.bookName}</dd>
+			<dt>返却期限</dt>
+			<dd>${displayInfo.returnLimit }</dd>
 		</dl>
 
 		<form action="/LibrarySystem/LendingBookServlet" method="post">
