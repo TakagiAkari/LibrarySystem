@@ -7,43 +7,70 @@
 <head>
 <meta charset="UTF-8">
 <title>資料ID入力画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 
 <body>
 
 <jsp:include page="header.jsp"/>
 
-<h1>資料情報入力</h1>
-<p style="text-align:center">
-<c:if test="${mode eq 'change'}">
-	<form method="post">
-		資料ID：<input type="number" name="bookId" required>
-		<input type="hidden" name="action" value="work">
-		<input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
-		<input type="hidden" name="action" value="work">
-	</form>
-</c:if>
+<article>
 
-<c:if test="${mode eq 'search'}">
-	<form method="post">
-		資料ID：<input type="number" name="bookId" required>
-		<input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
-		<input type="hidden" name="action" value="work">
-	</form>
-</c:if>
+<h2>資料情報入力</h2>
 
-<c:if test="${mode eq 'delete'}">
+<div class="center-form">
+
+	<c:if test="${mode eq 'change'}">
 	<form method="post">
-		資料ID：<input type="number" name="bookId" required>
-		<input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
-		<input type="hidden" name="action" value="work">
-	<br>
+		<dl>
+			<dt>資料ID</dt>
+			<dd><input type="number" name="bookId" required></dd>
+		</dl>
+		<div class="container next-button-placement">
+			<div class="button next-button">
+				<input type="submit" formaction="/LibrarySystem/ChangeBookInfoServlet" value="変更">
+				<input type="hidden" name="action" value="work">
+			</div>
+		</div>
 	</form>
-</c:if>
-</p>
+	</c:if>
+
+	<c:if test="${mode eq 'search'}">
+	<form method="post">
+		<dl>
+			<dt>資料ID</dt>
+			<dd><input type="number" name="bookId" required></dd>
+		</dl>
+
+		<div class="container next-button-placement">
+			<div class="button next-button">
+				<input type="submit" formaction="/LibrarySystem/SearchBookInfoServlet" value="検索">
+				<input type="hidden" name="action" value="work">
+			</div>
+		</div>
+	</form>
+	</c:if>
+
+	<c:if test="${mode eq 'delete'}">
+	<form method="post">
+		<dl>
+			<dt>資料ID</dt>
+			<dd><input type="number" name="bookId" required></dd>
+		</dl>
+		<div class="container next-button-placement">
+			<div class="button next-button">
+				<input type="submit" formaction="/LibrarySystem/DeleteBookInfoServlet" value="削除">
+				<input type="hidden" name="action" value="work">
+			</div>
+		</div>
+	</form>
+	</c:if>
+
+</div>
+
+</article>
 
 <jsp:include page="footer.jsp"/>
 
 </body>
-
 </html>
