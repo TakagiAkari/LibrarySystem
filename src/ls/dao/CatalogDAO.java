@@ -138,7 +138,7 @@ public class CatalogDAO {
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
-				throw new DAOException("書籍情報の変更に失敗しました");
+				throw new DAOException("資料情報の変更に失敗しました");
 			}finally {
 				try {
 					if(st != null) {
@@ -174,7 +174,7 @@ public class CatalogDAO {
 				return rows;
 			}catch(Exception e) {
 				e.printStackTrace();
-				throw new DAOException("書籍情報の変更に失敗しました");
+				throw new DAOException("資料情報の変更に失敗しました");
 			}finally {
 				try {
 					if(st != null) {

@@ -27,9 +27,9 @@
 				<dt>出版社</dt>
 				<dd><input type="text" name="publisher" required></dd>
 				<dt>出版年月日</dt>
-				<dd><input type="number"  maxlength="4" name="publishedY" required>年
-				<input type="number"  maxlength="2" name="publishedM" required>月
-				<input type="number"  maxlength="2" name="publishedD" required>日</dd>
+				<dd><input type="number"  min="1800" max="2100" name="publishedY" required>年
+				<input type="number" min="1" max="12" name="publishedM" required>月
+				<input type="number" min="1" max="31" name="publishedD" required>日</dd>
 			</dl>
 
 			<div class="container next-button-placement">

@@ -27,9 +27,9 @@
 				<dt>E-Mail</dt>
 				<dd><input type="email" name="email" required></dd>
 				<dt>生年月日</dt>
-				<dd><input type="number"  maxlength="4" name="birthY" required>年
-				<input type="number" maxlength="2" name="birthM" required>月
-				<input type="number" maxlength="2" name="birthD" required>日</dd>
+				<dd><input type="number"   name="birthY" min="1900" max="2100" required>年
+				<input type="number" name="birthM" min="1" max="12" required>月
+				<input type="number" name="birthD" min="1" max="31" required>日</dd>
 			</dl>
 			<!-- buttonは配置と色とか変えたいので、flexbox使う -->
 			<div class="container next-button-placement">

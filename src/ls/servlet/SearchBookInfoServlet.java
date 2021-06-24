@@ -75,7 +75,7 @@ public class SearchBookInfoServlet extends HttpServlet {
 
 			//その他
 			else {
-				request.setAttribute("message","書籍IDを正しく入力してください。");
+				request.setAttribute("message","資料IDを正しく入力してください。");
 				gotoPage(request, response, "/errMessage.jsp");
 			}
 		}

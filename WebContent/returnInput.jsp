@@ -20,7 +20,7 @@
 			<dl>
 				<dt>資料ID</dt>
 
-				<dd><input type="number" maxlength="5" name="bookId" required></dd>
+				<dd><input type="number" min="1" max="999999" name="bookId" required></dd>
 
 			</dl>
 

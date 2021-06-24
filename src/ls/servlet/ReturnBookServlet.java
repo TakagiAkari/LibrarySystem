@@ -64,7 +64,7 @@ public class ReturnBookServlet extends HttpServlet {
 				LendingBean lBean = lDao.getUnreturnedBookByBookId(bookIdInt);
 
 				if(lBean == null) {
-					request.setAttribute("message", "この書籍は貸し出されていません");
+					request.setAttribute("message", "この資料は貸し出されていません");
 					gotoPage(request, response, "/errMessage.jsp");
 				}
 				// 今日の日付を返却日とする
@@ -88,7 +88,7 @@ public class ReturnBookServlet extends HttpServlet {
 
 
 				if(bookId == null || bookId.length() == 0) {
-					request.setAttribute("errMessage", "書籍IDを入力してください");
+					request.setAttribute("errMessage", "資料IDを入力してください");
 					gotoPage(request, response, "/errMessage.jsp");
 
 				}else {
