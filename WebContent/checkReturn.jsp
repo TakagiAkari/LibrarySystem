@@ -28,13 +28,13 @@
 			<dt>資料名</dt>
 			<dd>${bookNameForReturnBook}</dd>
 			<dt>返却期限</dt>
-			<dd>${lendingBeanForReturnBook.returnLimit.publishDay.toLocalDate().getYear()}年
-				${lendingBeanForReturnBook.returnLimit.publishDay.toLocalDate().getMonthValue()}月
-				${lendingBeanForReturnBook.returnLimit.publishDay.toLocalDate().getDayOfMonth()}日</dd>
+			<dd>${lendingBeanForReturnBook.returnLimit.toLocalDate().getYear()}年
+				${lendingBeanForReturnBook.returnLimit.toLocalDate().getMonthValue()}月
+				${lendingBeanForReturnBook.returnLimit.toLocalDate().getDayOfMonth()}日</dd>
 			<dt>返却日</dt>
-			<dd>${lendingBeanForReturnBook.returnDay.publishDay.toLocalDate().getYear()}
-				${lendingBeanForReturnBook.returnDaypublishDay.toLocalDate().getMonthValue()}
-				${lendingBeanForReturnBook.returnDay.publishDay.toLocalDate().getDayOfMonth()}</dd>
+			<dd>${lendingBeanForReturnBook.returnDay.toLocalDate().getYear()}年
+				${lendingBeanForReturnBook.returnDay.toLocalDate().getMonthValue()}月
+				${lendingBeanForReturnBook.returnDay.toLocalDate().getDayOfMonth()}日</dd>
 			<dt>備考</dt>
 			<dd>${lendingBeanForReturnBook.memo}</dd>
 		</dl>

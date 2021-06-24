@@ -59,7 +59,7 @@ public class LendingDAO {
 		ResultSet rs = null;
 
 		try {//userIdが一致する会員の検索
-			String sql = "SELECT user_name FROM member WHERE user_id = ?";
+			String sql = "SELECT user_name FROM member WHERE user_id = ? AND leave_day IS  NULL";
 			//stオブジェクトの取得
 			st = con.prepareStatement(sql);
 			//Emailの設定
