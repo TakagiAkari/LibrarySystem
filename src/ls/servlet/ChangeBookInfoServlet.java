@@ -18,6 +18,7 @@ import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
 import ls.dao.RecordDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 
 /**
  * Servlet implementation class ChangeBookInfoServlet
@@ -47,7 +48,7 @@ public class ChangeBookInfoServlet extends HttpServlet {
 
 		try {
 			//パラメータの取得
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 
 			if (action == null || action.length() == 0 || action.equals("change_action")) {
 				request.setAttribute("mode", "change");
@@ -56,7 +57,7 @@ public class ChangeBookInfoServlet extends HttpServlet {
 			} else if(action.equals("work")) {
 				RecordDAO Rdao = new RecordDAO();
 				CatalogDAO Cdao = new CatalogDAO();
-				int bookId = Integer.parseInt(request.getParameter("bookId"));
+				int bookId = Integer.parseInt(XSS.escape(request.getParameter("bookId")));
 			//recordテーブルからbookIdが合う情報をとってくる
 				RecordBean Rbean =Rdao.getRecordInfoByBookId(bookId);
 				if (Rbean == null) {
@@ -78,20 +79,20 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				RecordBean Rbean = (RecordBean)session.getAttribute("PreviousRecordInfo");
 
 				int bookId = Rbean.getBookId();
-				Long isbn = Long.parseLong(request.getParameter("isbn"));
-				String bookName = request.getParameter("title");
-				String author = request.getParameter("author");
-				int category = Integer.parseInt(request.getParameter("category"));
-				String publisher = request.getParameter("publisher");
-				int publishedY = Integer.parseInt(request.getParameter("publishedY"));
-				int publishedM = Integer.parseInt(request.getParameter("publishedM"));
-				int publishedD = Integer.parseInt(request.getParameter("publishedD"));
+				Long isbn = Long.parseLong(XSS.escape(request.getParameter("isbn")));
+				String bookName = XSS.escape(request.getParameter("title"));
+				String author = XSS.escape(request.getParameter("author"));
+				int category = Integer.parseInt(XSS.escape(request.getParameter("category")));
+				String publisher = XSS.escape(request.getParameter("publisher"));
+				int publishedY = Integer.parseInt(XSS.escape(request.getParameter("publishedY")));
+				int publishedM = Integer.parseInt(XSS.escape(request.getParameter("publishedM")));
+				int publishedD = Integer.parseInt(XSS.escape(request.getParameter("publishedD")));
 
-				int stockY = Integer.parseInt(request.getParameter("stockY"));
-				int stockM = Integer.parseInt(request.getParameter("stockM"));
-				int stockD = Integer.parseInt(request.getParameter("stockD"));
+				int stockY = Integer.parseInt(XSS.escape(request.getParameter("stockY")));
+				int stockM = Integer.parseInt(XSS.escape(request.getParameter("stockM")));
+				int stockD = Integer.parseInt(XSS.escape(request.getParameter("stockD")));
 
-				String memo = request.getParameter("memo");
+				String memo = XSS.escape(request.getParameter("memo"));
 
 		try {
 				// TODO:OperateDateLocalDate使えばなんとかなるかも

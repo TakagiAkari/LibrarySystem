@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ls.module.XSS;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -31,9 +33,9 @@ public class LoginServlet extends HttpServlet {
 		String CORRECT_USER_NAME = "admin";
 		String CORRECT_PASSWORD = "himitu";
 		request.setCharacterEncoding("UTF-8");
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String action = request.getParameter("action");
+		String userName = XSS.escape(request.getParameter("userName"));
+		String password = XSS.escape(request.getParameter("password"));
+		String action = XSS.escape(request.getParameter("action"));
 
 		HttpSession session = request.getSession(false);
 
