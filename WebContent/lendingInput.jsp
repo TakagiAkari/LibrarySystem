@@ -26,7 +26,7 @@
 					<dd><input type="number" maxlength="6" name="bookId" required></dd>
 
 					<dt>備考</dt>
-					<dd><input type="text" name="memo"d></dd>
+					<dd><input type="text" name="memo"></dd>
 				</dl>
 
 				<div class="container next-button-placement">
