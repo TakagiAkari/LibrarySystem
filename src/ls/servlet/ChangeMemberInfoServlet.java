@@ -16,6 +16,7 @@ import ls.bean.MemberBean;
 import ls.dao.DAOException;
 import ls.dao.MemberDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 /**
  * Servlet implementation class ChangeMenberInfoServlet
  */
@@ -45,7 +46,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 
 		try {
 			//パラメータの取得
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 
 			if (action == null || action.length() == 0 || action.equals("input_userId")) {
 				request.setAttribute("mode", "change");
@@ -53,7 +54,7 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 			//会員idを入力して変更をクリックで変更情報入力画面へいく
 			} else if(action.equals("input")) {
 				MemberDAO dao = new MemberDAO();
-				int userId = Integer.parseInt(request.getParameter("MemID"));
+				int userId = Integer.parseInt(XSS.escape(request.getParameter("MemID")));
 				MemberBean bean =dao.findMemberByMemID(userId);
 				if (bean == null) {
 					request.setAttribute("message", "存在しない会員IDです。");
@@ -65,13 +66,13 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/changeMemInfo.jsp");
 					//showをクリックで変更前の情報表示を行う
 			} else if (action.equals("show")) {
-				String name = request.getParameter("name");
-				String address = request.getParameter("address");
-				String tel = request.getParameter("tel");
-				String email = request.getParameter("email");
-				int birthY = Integer.parseInt(request.getParameter("birthY"));
-				int birthM = Integer.parseInt(request.getParameter("birthM"));
-				int birthD = Integer.parseInt(request.getParameter("birthD"));
+				String name = XSS.escape(request.getParameter("name"));
+				String address = XSS.escape(request.getParameter("address"));
+				String tel = XSS.escape(request.getParameter("tel"));
+				String email = XSS.escape(request.getParameter("email"));
+				int birthY = Integer.parseInt(XSS.escape(request.getParameter("birthY")));
+				int birthM = Integer.parseInt(XSS.escape(request.getParameter("birthM")));
+				int birthD = Integer.parseInt(XSS.escape(request.getParameter("birthD")));
 
 				//birthY,birthM,birthDの型変換
 				session.getAttribute("PreviousMemberInfo");

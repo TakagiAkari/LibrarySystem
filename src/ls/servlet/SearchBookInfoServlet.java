@@ -14,6 +14,7 @@ import ls.bean.RecordBean;
 import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
 import ls.dao.RecordDAO;
+import ls.module.XSS;
 
 /**
  * Servlet implementation class SearchBookInfoServlet
@@ -33,7 +34,7 @@ public class SearchBookInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 
 			//topから資料検索をリンクした場合・サーブレットに直接飛んできた場合
 			if (action == null || action.length() == 0) {
@@ -43,7 +44,7 @@ public class SearchBookInfoServlet extends HttpServlet {
 
 			//BookID入力画面で検索ボタンを押した場合
 			else if (action.equals("work")) {
-				int bookId = Integer.parseInt(request.getParameter("bookId"));
+				int bookId = Integer.parseInt(XSS.escape(request.getParameter("bookId")));
 
 				RecordDAO RD = new RecordDAO();
 

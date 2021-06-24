@@ -19,6 +19,7 @@ import ls.dao.DAOException;
 import ls.dao.LendingDAO;
 import ls.dao.RecordDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 
 @WebServlet("/LendingBookServlet")
 public class LendingBookServlet extends HttpServlet {
@@ -38,7 +39,7 @@ public class LendingBookServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 			LendingDAO lendDao = new LendingDAO();
 			//session情報をとってこい、「session」に格納しろ、session情報がなかったら「ssesion」にはnullをぶちこめ
 			HttpSession session = request.getSession(false);
@@ -49,9 +50,9 @@ public class LendingBookServlet extends HttpServlet {
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
 					gotoPage(request, response, "/lendingInput.jsp");
 				}else if(action.equals("check")) {
-					String memo = request.getParameter("memo");
-					String userIdStr = request.getParameter("userId");
-					String bookIdStr = request.getParameter("bookId");
+					String memo = XSS.escape(request.getParameter("memo"));
+					String userIdStr = XSS.escape(request.getParameter("userId"));
+					String bookIdStr = XSS.escape(request.getParameter("bookId"));
 
 					if(userIdStr == null || userIdStr.length() == 0 || bookIdStr == null || bookIdStr.length() == 0 ) {
 						request.setAttribute("message","会員IDか資料IDが入力されていません。");

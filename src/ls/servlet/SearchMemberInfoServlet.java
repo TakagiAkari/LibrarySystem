@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import ls.bean.MemberBean;
 import ls.dao.DAOException;
 import ls.dao.MemberDAO;
+import ls.module.XSS;
 
 /**
  * Servlet implementation class SearchMemberServlet
@@ -37,7 +38,7 @@ public class SearchMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 
 			MemberDAO dao = new MemberDAO();
 
@@ -47,7 +48,7 @@ public class SearchMemberInfoServlet extends HttpServlet {
 			}
 			//email入力画面で検索ボタンを押した場合
 			else if (action.equals("search")) {
-				String email = request.getParameter("email");
+				String email = XSS.escape(request.getParameter("email"));
 				MemberBean member = dao.findByEail(email);
 
 				//該当者が存在する

@@ -18,6 +18,7 @@ import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
 import ls.dao.RecordDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 
 /**
  * Servlet implementation class RegisterBookInfoServlet
@@ -43,7 +44,7 @@ public class RegisterBookInfoServlet extends HttpServlet {
 
 			CatalogDAO catalogDao = new CatalogDAO();
 			RecordDAO recordDao = new RecordDAO();
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 			HttpSession session = request.getSession(false);
 			if(session == null) {
 				gotoPage(request, response, "/login.jsp");
@@ -51,8 +52,8 @@ public class RegisterBookInfoServlet extends HttpServlet {
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
 				gotoPage(request, response, "/inputRecord.jsp");
 			}else if(action.equals("checkIsbn")) {
-				long isbn = Long.parseLong(request.getParameter("isbn"));
-				String memo = request.getParameter("memo");
+				long isbn = Long.parseLong(XSS.escape(request.getParameter("isbn")));
+				String memo = XSS.escape(request.getParameter("memo"));
 
 				session.setAttribute("isbnForRegisterBook", isbn);
 				session.setAttribute("memoForRegisterBook", memo);
@@ -74,13 +75,13 @@ public class RegisterBookInfoServlet extends HttpServlet {
 				}
 			}else if(action.equals("registerCatalog")) {
 				long isbn = (long)session.getAttribute("isbnForRegisterBook");
-				String bookName = request.getParameter("title");
-				int category= Integer.parseInt(request.getParameter("category"));
-				String author = request.getParameter("author");
-				String publisher = request.getParameter("publisher");
-				int publishedY = Integer.parseInt(request.getParameter("publishedY"));
-				int publishedM = Integer.parseInt(request.getParameter("publishedM"));
-				int publishedD = Integer.parseInt(request.getParameter("publishedD"));
+				String bookName = XSS.escape(request.getParameter("title"));
+				int category= Integer.parseInt(XSS.escape(request.getParameter("category")));
+				String author = XSS.escape(request.getParameter("author"));
+				String publisher = XSS.escape(request.getParameter("publisher"));
+				int publishedY = Integer.parseInt(XSS.escape(request.getParameter("publishedY")));
+				int publishedM = Integer.parseInt(XSS.escape(request.getParameter("publishedM")));
+				int publishedD = Integer.parseInt(XSS.escape(request.getParameter("publishedD")));
 
 				try {
 					Date publishDay = OperateDate.getJavaSqlDateOfYMD(publishedY,publishedM,publishedD);

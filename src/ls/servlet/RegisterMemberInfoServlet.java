@@ -16,6 +16,7 @@ import ls.bean.InputMemberBean;
 import ls.dao.DAOException;
 import ls.dao.MemberDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 
 @WebServlet("/RegisterMemberInfoServlet")
 public class RegisterMemberInfoServlet extends HttpServlet {
@@ -38,7 +39,7 @@ public class RegisterMemberInfoServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 			MemberDAO dao = new MemberDAO();
 			HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 || action.equals("reInput")) {
@@ -46,13 +47,13 @@ public class RegisterMemberInfoServlet extends HttpServlet {
 			}
 			else if(action.equals("next") ) {
 
-				String name = request.getParameter("name");
-				String address = request.getParameter("address");
-				String tel = request.getParameter("tel");
-				String email = request.getParameter("email");
-				String birthY = request.getParameter("birthY");
-				String birthM = request.getParameter("birthM");
-				String birthD = request.getParameter("birthD");
+				String name = XSS.escape(request.getParameter("name"));
+				String address = XSS.escape(request.getParameter("address"));
+				String tel = XSS.escape(request.getParameter("tel"));
+				String email = XSS.escape(request.getParameter("email"));
+				String birthY = XSS.escape(request.getParameter("birthY"));
+				String birthM = XSS.escape(request.getParameter("birthM"));
+				String birthD = XSS.escape(request.getParameter("birthD"));
 
 				if(name == null || name.length() == 0 || address == null || address.length() == 0 || tel == null ||
 					tel.length() == 0 || email == null || email.length() == 0 || birthY == null || birthY.length() == 0 ||
