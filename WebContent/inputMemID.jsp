@@ -15,15 +15,14 @@
 
 <article>
 
-<h2>会員管理</h2>
-
 <%--変更 --%>
 <c:if test="${mode eq 'change'}">
+<h2>会員変更情報入力</h2>
 	<div class="center-form">
 		<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 			<dl>
 				<dt>会員ID</dt>
-				<dd><input type="number" name="MemID" required></dd>
+				<dd><input type="number"  maxlength="5" name="MemID" required></dd>
 			</dl>
 			<div class="container next-button-placement">
 				<div class="button next-button">
@@ -37,6 +36,7 @@
 
 <%--削除 --%>
 <c:if test="${mode eq 'delete'}">
+<h2>会員退会情報入力</h2>
 	<div class="center-form">
 		<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 			<dl>

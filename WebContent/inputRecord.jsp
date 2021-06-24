@@ -19,7 +19,7 @@
 	<form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
 		<dl>
 			<dt>ISBN番号</dt>
-			<dd><input type="number" name="isbn" required></dd>
+			<dd><input type="number"  maxlength="13" name="isbn" required></dd>
 			<dt>備考</dt>
 			<dd><input type="text" name="memo"></dd>
 		</dl>
