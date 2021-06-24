@@ -42,7 +42,7 @@
 			<dt>備考</dt>
 			<dd></dd>
 		</dl>
-		<br>
+	<br>
 	<h3>変更後</h3>
 		<dl>
 			<dt>資料ID</dt>

@@ -22,9 +22,9 @@
 			<dd>${displayInfo.userId}</dd>
 			<dt>会員名</dt>
 			<dd>${displayInfo.userName}</dd>
-			<dt>書籍ID</dt>
+			<dt>資料ID</dt>
 			<dd>${displayInfo.bookId}</dd>
-			<dt>書籍名</dt>
+			<dt>資料名</dt>
 			<dd>${displayInfo.bookName}</dd>
 		</dl>
 
