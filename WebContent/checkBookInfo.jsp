@@ -32,9 +32,13 @@
 		<dt>出版社</dt>
 		<dd>${catalogBeanForRegisterBook.publisher}</dd>
 		<dt>出版年月日</dt>
-		<dd>${catalogBeanForRegisterBook.publishDay}</dd>
+		<dd>${catalogBeanForRegisterBook.publishDay.toLocalDate().getYear()}年
+			${catalogBeanForRegisterBook.publishDay.toLocalDate().getMonthValue()}月
+			${catalogBeanForRegisterBook.publishDay.toLocalDate().getDayOfMonth()}日</dd>
 		<dt>入荷年月日</dt>
-		<dd>${recordBeanForRegisterBook.stockDay}</dd>
+		<dd>${recordBeanForRegisterBook.stockDay.toLocalDate().getYear()}年
+			${recordBeanForRegisterBook.stockDay.toLocalDate().getMonthValue()}月
+			${recordBeanForRegisterBook.stockDay.toLocalDate().getDayOfMonth()}日</dd>
 		<dt>備考</dt>
 		<dd>${recordBeanForRegisterBook.memo}</dd>
 	</dl>

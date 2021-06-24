@@ -30,8 +30,8 @@
 			<dd>${member.email }</dd>
 			<dt>生年月日</dt>
 			<dd>：${member.birth.toLocalDate().getYear() }年
-			${member.birth.toLocalDate().getMonthValue() }月$
-			{member.birth.toLocalDate().getDayOfMonth() }日</dd>
+			${member.birth.toLocalDate().getMonthValue() }月
+			${member.birth.toLocalDate().getDayOfMonth() }日</dd>
 			<dt>入会年月日</dt>
 			<dd>${member.enterDay.toLocalDate().getYear() }年
 			${member.enterDay.toLocalDate().getMonthValue() }月

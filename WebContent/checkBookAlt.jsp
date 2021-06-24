@@ -24,7 +24,9 @@
 			<dt>資料名</dt>
 			<dd>${LaterCatalogInfo.bookName}</dd>
 			<dt>入荷年月日</dt>
-			<dd>${LaterCatalogInfo.publishDay.toLocalDate().getYear() }年${LaterCatalogInfo.publishDay.toLocalDate().getMonthValue() }月${LaterCatalogInfo.publishDay.toLocalDate().getDayOfMonth() }日</dd>
+			<dd>${LaterCatalogInfo.publishDay.toLocalDate().getYear() }年
+				${LaterCatalogInfo.publishDay.toLocalDate().getMonthValue() }月
+				${LaterCatalogInfo.publishDay.toLocalDate().getDayOfMonth() }日</dd>
 		</dl>
 
 		<div class="container next-button-placement">
