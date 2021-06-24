@@ -135,7 +135,7 @@ public class RecordDAO {
 			getConnection();
 		}
 		try {
-			String sql = "SELECT * FROM record WHERE book_id = ?";
+			String sql = "SELECT * FROM record WHERE book_id = ? AND throwout_day IS NULL";
 
 			st = con.prepareStatement(sql);
 			st.setLong(1, bookId);
