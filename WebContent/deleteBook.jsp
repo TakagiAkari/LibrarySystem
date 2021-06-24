@@ -18,16 +18,20 @@
 	<div class="center-form">
 		<form action="/LibrarySystem/DeleteBookInfoServlet" method="post">
 			<dl>
+				<dt>資料ID</dt>
+					<dd>${record.bookId }</dd>
 				<dt>ISBN番号</dt>
-				<dd>${catalog.isbn }</dd>
+					<dd>${catalog.isbn }</dd>
 				<dt>資料名</dt>
-				<dd>${catalog.bookName }</dd>
+					<dd>${catalog.bookName }</dd>
 				<dt>著者</dt>
-				<dd>${catalog.author }</dd>
+					<dd>${catalog.author }</dd>
 				<dt>出版社</dt>
-				<dd>${catalog.publisher }</dd>
+					<dd>${catalog.publisher }</dd>
 				<dt>出版年月日</dt>
-				<dd>${catalog.publishDay }</dd>
+					<dd>${catalog.publishDay.toLocalDate().getYear() }年
+						${catalog.publishDay.toLocalDate().getMonthValue() }月
+						${catalog.publishDay.toLocalDate().getDayOfMonth() }日</dd>
 			</dl>
 
 			<div class="container next-button-placement">
