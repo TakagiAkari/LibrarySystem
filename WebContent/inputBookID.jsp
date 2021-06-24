@@ -24,7 +24,7 @@
 	<form method="post">
 		<dl>
 			<dt>資料ID</dt>
-			<dd><input type="number" name="bookId" required></dd>
+			<dd><input type="number" maxlength="6" name="bookId" required></dd>
 		</dl>
 		<div class="container next-button-placement">
 			<div class="button next-button">
@@ -39,7 +39,7 @@
 	<form method="post">
 		<dl>
 			<dt>資料ID</dt>
-			<dd><input type="number" name="bookId" required></dd>
+			<dd><input type="number" maxlength="6" name="bookId" required></dd>
 		</dl>
 
 		<div class="container next-button-placement">
@@ -55,7 +55,7 @@
 	<form method="post">
 		<dl>
 			<dt>資料ID</dt>
-			<dd><input type="number" name="bookId" required></dd>
+			<dd><input type="number" maxlength="6" name="bookId" required></dd>
 		</dl>
 		<div class="container next-button-placement">
 			<div class="button next-button">
