@@ -27,9 +27,9 @@
 				<dt>電話番号</dt>
 				<dd><input type="text" name="tel" value= "${PreviousMemberInfo.tel}" required></dd>
 				<dt>生年月日</dt>
-				<dd><input type="number" name="birthY" value= "${PreviousMemberInfo.birth.getYear()+1900}" required>年
-				<input type="number" name="birthM" value= "${PreviousMemberInfo.birth.getMonth()+1}" required>月
-				<input type="number" name="birthD" value= "${PreviousMemberInfo.birth.getDay()}" required>日</dd>
+				<dd><input type="number" name="birthY" value= "${PreviousMemberInfo.birth.toLocalDate().getYear()}" required>年
+				<input type="number" name="birthM" value= "${PreviousMemberInfo.birth.toLocalDate().getMonthValue()}" required>月
+				<input type="number" name="birthD" value= "${PreviousMemberInfo.birth.toLocalDate().getDayOfMonth()}" required>日</dd>
 			</dl>
 
 			<div class="container next-button-placement">
