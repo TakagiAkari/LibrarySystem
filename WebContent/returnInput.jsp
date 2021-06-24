@@ -19,7 +19,9 @@
 		<form action="/LibrarySystem/ReturnBookServlet" method="post">
 			<dl>
 				<dt>資料ID</dt>
+
 				<dd><input type="number" maxlength="5" name="bookId" required></dd>
+
 			</dl>
 
 			<div class="container next-button-placement">
