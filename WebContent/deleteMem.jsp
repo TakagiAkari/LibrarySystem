@@ -15,7 +15,7 @@
 
 <article>
 
-	<h2>退会会員情報確認</h2>
+	<h2>会員退会情報確認</h2>
 
 	<div class="center-form">
 

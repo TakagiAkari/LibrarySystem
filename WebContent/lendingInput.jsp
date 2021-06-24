@@ -24,7 +24,7 @@
 					<dt>資料ID</dt>
 					<dd><input type="number" name="bookId" required></dd>
 					<dt>備考</dt>
-					<dd><input type="text" name="memo" required></dd>
+					<dd><input type="text" name="memo"d></dd>
 				</dl>
 
 				<div class="container next-button-placement">
