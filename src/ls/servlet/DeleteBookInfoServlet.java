@@ -81,6 +81,10 @@ public class DeleteBookInfoServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
 			request.getRequestDispatcher("/errInternal.jsp").forward(request, response);
+		    }catch(NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "数字を入力してください。");
+				gotoPage(request, response, "/errMessage.jsp");
 		}finally {
 		}
 	}

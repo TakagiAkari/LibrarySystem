@@ -70,6 +70,10 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			request.setAttribute("message", "内部エラーが発生しました。");
 			//gotoPage(request, response, "/errInternal.jsp");
 			request.getRequestDispatcher("/errInternal.jsp").forward(request, response);
+		    }catch(NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "数字を入力してください。");
+				gotoPage(request, response, "/errMessage.jsp");
 		}finally {
 			//request.setAttribute("error", error);
 			//request.getRequestDispatcher("/LibrarySystem/DeleteComplete").forward(request, response);

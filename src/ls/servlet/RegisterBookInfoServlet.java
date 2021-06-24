@@ -117,6 +117,10 @@ public class RegisterBookInfoServlet extends HttpServlet {
 		}catch(DAOException e) {
 			e.printStackTrace();
 			gotoPage(request, response, "/errMessage.jsp");
+		}catch(NumberFormatException e) {
+			e.printStackTrace();
+			request.setAttribute("message", "数字を入力してください。");
+			gotoPage(request, response, "/errMessage.jsp");
 		}
 	}
 

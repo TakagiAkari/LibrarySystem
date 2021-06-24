@@ -107,9 +107,13 @@ public class ChangeMemberInfoServlet extends HttpServlet {
 				gotoPage(request, response, "/complete.jsp");
 			}
 		    } catch (DAOException e) {
-			e.printStackTrace();
-			request.setAttribute("message", "内部エラーが発生しました");
-			gotoPage(request, response, "/errMessage.jsp");
+				e.printStackTrace();
+				request.setAttribute("message", "内部エラーが発生しました");
+				gotoPage(request, response, "/errMessage.jsp");
+		    }catch(NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "数字を入力してください。");
+				gotoPage(request, response, "/errMessage.jsp");
 		    }
 	    }
 

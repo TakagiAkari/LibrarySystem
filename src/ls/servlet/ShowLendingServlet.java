@@ -49,6 +49,11 @@ public class ShowLendingServlet extends HttpServlet {
 			request.setAttribute("message", "内部エラーが発生しました。");
 			RequestDispatcher rd = request.getRequestDispatcher("/errMessage.jsp");
 			rd.forward(request, response);
+		}catch(NumberFormatException e) {
+			e.printStackTrace();
+			request.setAttribute("message", "数字を入力してください。");
+			RequestDispatcher rd = request.getRequestDispatcher("/errMessage.jsp");
+			rd.forward(request, response);
 		}
 	}
 
