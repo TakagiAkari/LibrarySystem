@@ -12,6 +12,7 @@ import ls.bean.MemberBean;
 import ls.dao.DAOException;
 import ls.dao.LendingDAO;
 import ls.dao.MemberDAO;
+import ls.module.XSS;
 
 @WebServlet("/DeleteMemberInfoServlet")
 public class DeleteMemberInfoServlet extends HttpServlet {
@@ -20,7 +21,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 	throws ServletException, IOException {
 		try {
 			request.setCharacterEncoding("UTF-8");
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 			//HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 ) {
 				request.setAttribute("mode", "delete");
@@ -30,7 +31,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 				MemberDAO memDao = new MemberDAO();
 				int MemID;
 				try {
-					MemID = Integer.parseInt(request.getParameter("MemID"));
+					MemID = Integer.parseInt(XSS.escape(request.getParameter("MemID")));
 					MemberBean Mbean = memDao.findMemberByMemID(MemID);
 					if(Mbean == null) {
 						request.setAttribute("message", "存在しない会員IDです。");
@@ -51,7 +52,7 @@ public class DeleteMemberInfoServlet extends HttpServlet {
 			}
 			else if(action.equals("complete")) {
 				MemberDAO memDao = new MemberDAO();
-				int MemID = Integer.parseInt(request.getParameter("MemID"));
+				int MemID = Integer.parseInt(XSS.escape(request.getParameter("MemID")));
 				memDao.updateLeaveDay(MemID);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);

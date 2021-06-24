@@ -36,6 +36,9 @@ public class LoginServlet extends HttpServlet {
 		String userName = XSS.escape(request.getParameter("userName"));
 		String password = XSS.escape(request.getParameter("password"));
 		String action = XSS.escape(request.getParameter("action"));
+		System.out.println("テスト");
+		System.out.println(XSS.escape(userName));
+		System.out.println(userName);
 
 		HttpSession session = request.getSession(false);
 

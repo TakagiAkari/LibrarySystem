@@ -18,6 +18,7 @@ import ls.dao.DAOException;
 import ls.dao.LendingDAO;
 import ls.dao.RecordDAO;
 import ls.module.OperateDate;
+import ls.module.XSS;
 
 @WebServlet("/ReturnBookServlet")
 public class ReturnBookServlet extends HttpServlet {
@@ -39,7 +40,7 @@ public class ReturnBookServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 
 			LendingDAO lDao = new LendingDAO();
 			HttpSession session = request.getSession(false);
@@ -50,7 +51,7 @@ public class ReturnBookServlet extends HttpServlet {
 
 			}else if(action.equals("check")) {
 
-				String bookId = request.getParameter("bookId");
+				String bookId = XSS.escape(request.getParameter("bookId"));
 				// 入力確認
 				if(bookId == null || bookId.length() == 0) {
 					request.setAttribute("message", "値が入力されていません。");

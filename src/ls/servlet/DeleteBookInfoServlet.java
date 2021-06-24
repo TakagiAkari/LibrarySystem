@@ -15,6 +15,7 @@ import ls.bean.RecordBean;
 import ls.dao.CatalogDAO;
 import ls.dao.DAOException;
 import ls.dao.RecordDAO;
+import ls.module.XSS;
 
 /**
  * Servlet implementation class DeleteBookInfoServlet
@@ -38,7 +39,7 @@ public class DeleteBookInfoServlet extends HttpServlet {
 		String error = "";
 		try {
 			request.setCharacterEncoding("UTF-8");
-			String action = request.getParameter("action");
+			String action = XSS.escape(request.getParameter("action"));
 			HttpSession session = request.getSession(false);
 			if(action == null || action.length() == 0 ) {
 				request.setAttribute("mode", "delete");
@@ -48,7 +49,7 @@ public class DeleteBookInfoServlet extends HttpServlet {
 
 				RecordDAO recDao = new RecordDAO();
 				CatalogDAO catDao = new CatalogDAO();
-				int bookID = Integer.parseInt(request.getParameter("bookId"));
+				int bookID = Integer.parseInt(XSS.escape(request.getParameter("bookId")));
 				RecordBean rb = recDao.findRecordByBookID(bookID);
 				if(rb == null) {
 					request.setAttribute("message", "存在しない資料IDです。");
@@ -71,7 +72,7 @@ public class DeleteBookInfoServlet extends HttpServlet {
 			}
 			else if(action.equals("complete")) {
 				RecordDAO recDao = new RecordDAO();
-				int bookId = Integer.parseInt(request.getParameter("bookId"));
+				int bookId = Integer.parseInt(XSS.escape(request.getParameter("bookId")));
 				recDao.updateThrowoutDay(bookId);
 				request.setAttribute("message", "削除");
 				request.getRequestDispatcher("/complete.jsp").forward(request, response);
