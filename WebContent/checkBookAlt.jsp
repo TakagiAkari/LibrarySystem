@@ -5,25 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>資料変更情認画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
-
 <body>
-<h1>変更情報</h1>
 
 <jsp:include page="header.jsp"/>
 
-書籍ID:${PreviousRecordInfo.bookId}<br>
-ISBN番号:${LaterCatalogInfo.isbn}<br>
-資料名:${LaterCatalogInfo.bookName}<br>
-入荷年月日:${LaterCatalogInfo.publishDay.toLocalDate().getYear() }年${LaterCatalogInfo.publishDay.toLocalDate().getMonthValue() }月${LaterCatalogInfo.publishDay.toLocalDate().getDayOfMonth() }日<br>
-<form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
-<input type="submit" value="変更する">
-<input type="hidden" name = "action" value="complete">
-</form>
-</body>
+<article>
+
+	<h2>変更情報</h2>
+
+	<div class="center-form">
+		<dl>
+			<dt>資料ID</dt>
+			<dd>${PreviousRecordInfo.bookId}</dd>
+			<dt>ISBN番号</dt>
+			<dd>${LaterCatalogInfo.isbn}</dd>
+			<dt>資料名</dt>
+			<dd>${LaterCatalogInfo.bookName}</dd>
+			<dt>入荷年月日</dt>
+			<dd>${LaterCatalogInfo.publishDay.toLocalDate().getYear() }年${LaterCatalogInfo.publishDay.toLocalDate().getMonthValue() }月${LaterCatalogInfo.publishDay.toLocalDate().getDayOfMonth() }日</dd>
+		</dl>
+
+		<div class="container next-button-placement">
+			<div class="button next-button">
+				<form action="/LibrarySystem/ChangeBookInfoServlet" method="post">
+					<input type="submit" value="変更する">
+					<input type="hidden" name = "action" value="complete">
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</article>
 
 <jsp:include page="footer.jsp"/>
 
 </body>
-
 </html>

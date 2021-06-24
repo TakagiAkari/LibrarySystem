@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +19,6 @@
 
 	<div class="center-form">
 
-	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
-
 	<h3>変更前</h3>
 		<dl>
 			<dt>名前</dt>
@@ -29,11 +30,11 @@
 			<dt>電話番号</dt>
 			<dd>${PreviousMemberInfo.tel}</dd>
 			<dt>生年月日</dt>
-			<dd>${PreviousMemberInfo.birth.getYear()+1900}年
-			${PreviousMemberInfo.birth.getMonth()+1}月
-			${PreviousMemberInfo.birth.getDay()}日</dd>
+			<dd>${PreviousMemberInfo.birth.toLocalDate().getYear()}年
+			${PreviousMemberInfo.birth.toLocalDate().getMonthValue()}月
+			${PreviousMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
 		</dl>
-
+		<br>
 	<h3>変更後</h3>
 		<dl>
 			<dt>名前</dt>
@@ -45,10 +46,12 @@
 			<dt>電話番号</dt>
 			<dd>${LaterMemberInfo.email}</dd>
 			<dt>生年月日</dt>
-			<dd>${LaterMemberInfo.birth.getYear()+1900}年
-			${LaterMemberInfo.birth.getMonth()+1}月
-			${LaterMemberInfo.birth.getDay()}日</dd>
+			<dd>${LaterMemberInfo.birth.toLocalDate().getYear()}年
+			${LaterMemberInfo.birth.toLocalDate().getMonthValue()}月
+			${LaterMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
 		</dl>
+
+	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 
 		<div class="container next-button-placement">
 			<div class="button next-button">

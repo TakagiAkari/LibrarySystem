@@ -6,31 +6,60 @@
 <head>
 <meta charset="UTF-8">
 <title>資料登録確認画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 
-
 <body>
+
 <jsp:include page="header.jsp"/>
-<h1>資料登録情報確認</h1>
 
-ISBN番号：${recordBeanForRegisterBook.isbn}<br>
-題名：${catalogBeanForRegisterBook.bookName}<br>
-著者:${catalogBeanForRegisterBook.author}<br>
-分類コード：${catalogBeanForRegisterBook.category}<br>
-出版社：${catalogBeanForRegisterBook.publisher}<br>
-出版年月日：${catalogBeanForRegisterBook.publishDay}<br>
-入荷年月日：${recordBeanForRegisterBook.stockDay}<br>
-備考欄：${recordBeanForRegisterBook.memo}<br>
-<form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
-<p style="text-align:center">
-<input type="hidden" name="action" value="complete">
-<input type="submit"  value="登録する"><br>
-</p>
-</form>
-<a href="RegisterBookInfoServlet?action=reInput">入力をやり直す</a>
+<article>
+
+<h2>資料登録情報確認</h2>
+
+<div class="center-form">
+	<dl>
+		<%-- <dt>資料ID</dt>
+		<dd>${recordBeanForRegisterBook.bookId}</dd>--%>
+		<dt>ISBN番号</dt>
+		<dd>${recordBeanForRegisterBook.isbn}</dd>
+		<dt>題名</dt>
+		<dd>${catalogBeanForRegisterBook.bookName}</dd>
+		<dt>著者</dt>
+		<dd>${catalogBeanForRegisterBook.author}</dd>
+		<dt>分類コード</dt>
+		<dd>${catalogBeanForRegisterBook.category}</dd>
+		<dt>出版社</dt>
+		<dd>${catalogBeanForRegisterBook.publisher}</dd>
+		<dt>出版年月日</dt>
+		<dd>${catalogBeanForRegisterBook.publishDay}</dd>
+		<dt>入荷年月日</dt>
+		<dd>${recordBeanForRegisterBook.stockDay}</dd>
+		<dt>備考</dt>
+		<dd>${recordBeanForRegisterBook.memo}</dd>
+	</dl>
+
+	<form action="/LibrarySystem/RegisterBookInfoServlet" method="post">
+		<div class="container next-button-placement">
+			<div class="button next-button">
+				<input type="hidden" name="action" value="complete">
+				<input type="submit"  value="登録する">
+			</div>
+		</div>
+
+		<div class="container previous-button-placement">
+			<div class="button previous-button like-input">
+				<a href="RegisterBookInfoServlet?action=reInput">入力をやり直す</a>
+			</div>
+		</div>
+
+
+	</form>
+</div>
+
+</article>
+
 <jsp:include page="footer.jsp"/>
+
 </body>
-
-
-
 </html>
