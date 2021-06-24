@@ -22,7 +22,7 @@
 		<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 			<dl>
 				<dt>会員ID</dt>
-				<dd><input type="number"  maxlength="5" name="MemID" required></dd>
+				<dd><input type="number"  min="1" max="999999" name="MemID" required></dd>
 			</dl>
 			<div class="container next-button-placement">
 				<div class="button next-button">
