@@ -77,7 +77,11 @@ public class SearchMemberInfoServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
 			gotoPage(request, response, "/errMessage.jsp");
-		}
+		    }catch(NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("message", "数字を入力してください。");
+				gotoPage(request, response, "/errMessage.jsp");
+		    }
 	}
 
 	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)
