@@ -20,25 +20,25 @@
 
 	<div class="center-form">
 		<dl>
+			<dt>会員ID</dt>
+				<dd>${member.userId }</dd>
 			<dt>名前</dt>
-			<dd>${member.userId }</dd>
+				<dd>${member.userName }</dd>
 			<dt>住所</dt>
-			<dd>${member.address }</dd>
+				<dd>${member.address }</dd>
 			<dt>電話番号</dt>
-			<dd>${member.tel }</dd>
+				<dd>${member.tel }</dd>
 			<dt>E-Mail</dt>
-			<dd>${member.email }</dd>
+				<dd>${member.email }</dd>
 			<dt>生年月日</dt>
-			<dd>：${member.birth.toLocalDate().getYear() }年
-			${member.birth.toLocalDate().getMonthValue() }月
-			${member.birth.toLocalDate().getDayOfMonth() }日</dd>
+				<dd>${member.birth.toLocalDate().getYear() }年
+				${member.birth.toLocalDate().getMonthValue() }月
+				${member.birth.toLocalDate().getDayOfMonth() }日</dd>
 			<dt>入会年月日</dt>
-			<dd>${member.enterDay.toLocalDate().getYear() }年
-			${member.enterDay.toLocalDate().getMonthValue() }月
-			${member.enterDay.toLocalDate().getDayOfMonth() }日</dd>
+				<dd>${member.enterDay.toLocalDate().getYear() }年
+				${member.enterDay.toLocalDate().getMonthValue() }月
+				${member.enterDay.toLocalDate().getDayOfMonth() }日</dd>
 		</dl>
-
-		<%--検索をやり直すならココに --%>
 	</div>
 
 </article>
