@@ -7,31 +7,48 @@
 <head>
 <meta charset="UTF-8">
 <title>返却確認画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
-
-
-
 <body>
+
 <jsp:include page="header.jsp"/>
-<h1>返却情報確認</h1>
 
-会員ID：${lendingBeanForReturnBook.userId}
-会員名：${userNameForReturnBook}
-書籍ID：${lendingBeanForReturnBook.bookId}
-書籍名：${bookNameForReturnBook}
-返却期限：${lendingBeanForReturnBook.returnLimit}
-返却日：${lendingBeanForReturnBook.returnDay}
-備考：${lendingBeanForReturnBook.memo}
+<article>
 
-<form action="/LibrarySystem/ReturnBookServlet" method="post">
-<p style="text-align:center">
-<input type="submit" value="返却する">
-<input type="hidden" name="action" value="complete">
-</p><br>
-</form>
+	<h1>返却情報確認</h1>
+
+	<div class="center-form">
+		<dl>
+			<dt>会員ID</dt>
+			<dd>${lendingBeanForReturnBook.userId}</dd>
+			<dt>会員名</dt>
+			<dd>${userNameForReturnBook}</dd>
+			<dt>資料ID</dt>
+			<dd>${lendingBeanForReturnBook.bookId}</dd>
+			<dt>資料名</dt>
+			<dd>${bookNameForReturnBook}</dd>
+			<dt>返却期限</dt>
+			<dd>${lendingBeanForReturnBook.returnLimit}</dd>
+			<dt>返却日</dt>
+			<dd>${lendingBeanForReturnBook.returnDay}</dd>
+			<dt>備考</dt>
+			<dd>${lendingBeanForReturnBook.memo}</dd>
+		</dl>
+
+		<form action="/LibrarySystem/ReturnBookServlet" method="post">
+			<div class="container next-button-placement">
+				<div class="button next-button">
+					<input type="submit" value="返却する">
+					<input type="hidden" name="action" value="complete">
+				</div>
+			</div>
+		</form>
+	</div>
+
+</article>
+
 <jsp:include page="footer.jsp"/>
+
 </body>
-
-
 
 </html>

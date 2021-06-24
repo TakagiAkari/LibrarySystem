@@ -5,23 +5,38 @@
 <head>
 <meta charset="UTF-8">
 <title>貸出入力画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 
 <body>
 
 <jsp:include page="header.jsp"/>
 
-<h1>貸出情報入力</h1>
+<article>
 
-<form action="/LibrarySystem/LendingBookServlet" method="post">
-会員ID：<input type="number" name="userId" ><br>
-資料ID：<input type="number" name="bookId" ><br>
-備考：<input type="text" name="memo" ><br>
-<p style="text-align:center">
-<input type="submit" value="確認画面へ">
-<input type="hidden" name="action" value="check">
-</p><br>
-</form>
+	<h2>貸出情報入力</h2>
+
+		<div class="center-form">
+			<form action="/LibrarySystem/LendingBookServlet" method="post">
+				<dl>
+					<dt>会員ID</dt>
+					<dd><input type="number" name="userId" ></dd>
+					<dt>資料ID</dt>
+					<dd><input type="number" name="bookId" ></dd>
+					<dt>備考</dt>
+					<dd><input type="text" name="memo" ></dd>
+				</dl>
+
+				<div class="container next-button-placement">
+					<div class="button next-button">
+						<input type="submit" value="確認画面へ">
+						<input type="hidden" name="action" value="check">
+					</div>
+				</div>
+			</form>
+		</div>
+
+</article>
 
 <jsp:include page="footer.jsp"/>
 
