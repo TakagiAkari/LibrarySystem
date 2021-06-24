@@ -25,10 +25,10 @@
 			<dd>${PreviousMemberInfo.userName}</dd>
 			<dt>住所</dt>
 			<dd>${PreviousMemberInfo.address}</dd>
-			<dt>E-Mail</dt>
-			<dd>${PreviousMemberInfo.email}</dd>
 			<dt>電話番号</dt>
 			<dd>${PreviousMemberInfo.tel}</dd>
+			<dt>E-Mail</dt>
+			<dd>${PreviousMemberInfo.email}</dd>
 			<dt>生年月日</dt>
 			<dd>${PreviousMemberInfo.birth.toLocalDate().getYear()}年
 			${PreviousMemberInfo.birth.toLocalDate().getMonthValue()}月
@@ -41,10 +41,10 @@
 			<dd>${LaterMemberInfo.userName}</dd>
 			<dt>住所</dt>
 			<dd>${LaterMemberInfo.address}</dd>
-			<dt>E-Mail</dt>
-			<dd>${LaterMemberInfo.tel}</dd>
 			<dt>電話番号</dt>
 			<dd>${LaterMemberInfo.email}</dd>
+			<dt>E-Mail</dt>
+			<dd>${LaterMemberInfo.tel}</dd>
 			<dt>生年月日</dt>
 			<dd>${LaterMemberInfo.birth.toLocalDate().getYear()}年
 			${LaterMemberInfo.birth.toLocalDate().getMonthValue()}月

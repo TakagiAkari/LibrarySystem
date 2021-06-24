@@ -40,12 +40,18 @@
 			<td>${lending.lendDay.toLocalDate().getYear() }年
 				${lending.lendDay.toLocalDate().getMonthValue() }月
 				${lending.lendDay.toLocalDate().getDayOfMonth() }日</td>
-			<td>${lending.returnLimit.toLocalDate().getYear() }年$
-				{lending.returnLimit.toLocalDate().getMonthValue() }月
+			<td>${lending.returnLimit.toLocalDate().getYear() }年
+			${lending.returnLimit.toLocalDate().getMonthValue() }月
 				${lending.returnLimit.toLocalDate().getDayOfMonth() }日</td>
+			<c:if test="${lending.returnDay ne null }">
 			<td>${lending.returnDay.toLocalDate().getYear() }年
 				${lending.returnDay.toLocalDate().getMonthValue() }月
 				${lending.returnDay.toLocalDate().getDayOfMonth() }日</td>
+			</c:if>
+			<c:if test="${lending.returnDay eq null }">
+			<td>
+			</td>
+			</c:if>
 			<td>${lending.memo }</td>
 			</tr>
 		</c:forEach>

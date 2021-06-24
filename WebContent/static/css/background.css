@@ -39,10 +39,14 @@ a{
 /* article（メインコンテンツ) */
 h2{
 	/*border-bottom:3px #08d9d6 solid;*/
-	border-bottom:3px #DCD8D0 solid;
-	text-align: center;
+	border-bottom:3px #ACE8A0 solid;
+	text-align: left;
 	max-width:300px;
 }
+.center-title{
+	text-align: center;
+}
+
 
 h3{
 	text-align:center;

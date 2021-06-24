@@ -19,7 +19,7 @@
 
 	<div class="center-form">
 		<dl>
-			<dt>氏名</dt>
+			<dt>名前</dt>
 			<dd>${InputMemberInfo.name}</dd>
 			<dt>住所</dt>
 			<dd>${InputMemberInfo.address}</dd>
