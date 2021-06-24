@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>エラー画面</title>
+<jsp:include page="importLayout.jsp"/>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 
-	<h1>${message }</h1>
+	<p>${message }</p>
 
 	<jsp:include page="footer.jsp"/>
 </body>
