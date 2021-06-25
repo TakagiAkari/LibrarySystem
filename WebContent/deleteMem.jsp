@@ -53,7 +53,7 @@
 						なし<form action="/LibrarySystem/DeleteMemberInfoServlet" method="post">
 						<div class="container next-button-placement">
 							<div class="button next-button">
-								<input type="submit" value="削除する">
+								<input type="submit" value="退会する">
 								<input type="hidden" name="action" value="complete">
 								<input type="hidden" name="MemID" value="${member.userId }">
 							</div>
