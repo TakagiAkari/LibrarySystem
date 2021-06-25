@@ -21,7 +21,7 @@
 				<dt>題名</dt>
 				<dd><input type="text" name="title" required></dd>
 				<dt>分類コード</dt>
-				<dd><input type="number" maxlength="1" name="category" required></dd>
+				<dd><input type="number" min="0" max="9" name="category" required></dd>
 				<dt>著者</dt>
 				<dd><input type="text" name="author" required></dd>
 				<dt>出版社</dt>
