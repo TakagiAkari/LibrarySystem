@@ -19,37 +19,43 @@
 
 	<div class="center-form">
 
-	<h3>変更前</h3>
-		<dl>
-			<dt>名前</dt>
-			<dd>${PreviousMemberInfo.userName}</dd>
-			<dt>住所</dt>
-			<dd>${PreviousMemberInfo.address}</dd>
-			<dt>電話番号</dt>
-			<dd>${PreviousMemberInfo.tel}</dd>
-			<dt>E-Mail</dt>
-			<dd>${PreviousMemberInfo.email}</dd>
-			<dt>生年月日</dt>
-			<dd>${PreviousMemberInfo.birth.toLocalDate().getYear()}年
-			${PreviousMemberInfo.birth.toLocalDate().getMonthValue()}月
-			${PreviousMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
-		</dl>
-		<br>
-	<h3>変更後</h3>
-		<dl>
-			<dt>名前</dt>
-			<dd>${LaterMemberInfo.userName}</dd>
-			<dt>住所</dt>
-			<dd>${LaterMemberInfo.address}</dd>
-			<dt>電話番号</dt>
-			<dd>${LaterMemberInfo.email}</dd>
-			<dt>E-Mail</dt>
-			<dd>${LaterMemberInfo.tel}</dd>
-			<dt>生年月日</dt>
-			<dd>${LaterMemberInfo.birth.toLocalDate().getYear()}年
-			${LaterMemberInfo.birth.toLocalDate().getMonthValue()}月
-			${LaterMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
-		</dl>
+	<div class="container prepare-placement">
+		<div class="change-item">
+			<h3>変更前</h3>
+			<dl>
+				<dt>名前</dt>
+				<dd>${PreviousMemberInfo.userName}</dd>
+				<dt>住所</dt>
+				<dd>${PreviousMemberInfo.address}</dd>
+				<dt>電話番号</dt>
+				<dd>${PreviousMemberInfo.tel}</dd>
+				<dt>E-Mail</dt>
+				<dd>${PreviousMemberInfo.email}</dd>
+				<dt>生年月日</dt>
+				<dd>${PreviousMemberInfo.birth.toLocalDate().getYear()}年
+				${PreviousMemberInfo.birth.toLocalDate().getMonthValue()}月
+				${PreviousMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
+			</dl>
+			<br>
+		</div>
+		<div class="change-item">
+			<h3>変更後</h3>
+			<dl>
+				<dt>名前</dt>
+				<dd>${LaterMemberInfo.userName}</dd>
+				<dt>住所</dt>
+				<dd>${LaterMemberInfo.address}</dd>
+				<dt>電話番号</dt>
+				<dd>${LaterMemberInfo.tel}</dd>
+				<dt>E-Mail</dt>
+				<dd>${LaterMemberInfo.email}</dd>
+				<dt>生年月日</dt>
+				<dd>${LaterMemberInfo.birth.toLocalDate().getYear()}年
+				${LaterMemberInfo.birth.toLocalDate().getMonthValue()}月
+				${LaterMemberInfo.birth.toLocalDate().getDayOfMonth()}日</dd>
+			</dl>
+		</div>
+	</div>
 
 	<form action="/LibrarySystem/ChangeMemberInfoServlet" method="post">
 
