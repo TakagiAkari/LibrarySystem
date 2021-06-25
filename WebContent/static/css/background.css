@@ -160,6 +160,9 @@ input[type="text"],[type="password"],[type="email"],[type="number"]{
 a:visited{
 	color:black;
 }
+a:link{
+	color:black;
+}
 
 /* ------------------------ */
 
