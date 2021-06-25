@@ -45,7 +45,7 @@
 			</dl>
 			<div class="container next-button-placement">
 				<div class="button next-button">
-					<input type="submit" value="削除">
+					<input type="submit" value="退会">
 					<input type="hidden" name="action" value="delete">
 				</div>
 			</div>
