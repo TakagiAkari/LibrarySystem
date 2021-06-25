@@ -19,8 +19,8 @@
 
 <div class="center-form">
 	<dl>
-		<%-- <dt>資料ID</dt>
-		<dd>${recordBeanForRegisterBook.bookId}</dd>--%>
+		<dt>資料ID</dt>
+		<dd>${bookIdForRegisterBook}</dd>
 		<dt>ISBN番号</dt>
 		<dd>${recordBeanForRegisterBook.isbn}</dd>
 		<dt>題名</dt>

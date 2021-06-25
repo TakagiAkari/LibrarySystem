@@ -260,5 +260,52 @@ public class RecordDAO {
 			}
 		}
 	}
+	public int getNextBookId() throws DAOException{
+		// currvalで取得してきた値に1追加することで資料IDに追加されるはずのIDを取得してくる
+		// nextvalでシーケンスを更新しているわけではないため、同時更新が起きると取得してくる
+		// 値と実際にDBに挿入される値が異なる場合があることに注意。
+		// 表示のみ使用することを推奨
+
+		if(con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			//emailが一致する会員の検索
+			String sql = "SELECT MAX(book_id) FROM record";
+			//stオブジェクトの取得
+			st = con.prepareStatement(sql);
+			//資料IDの設定
+			//SQLの実行
+			rs = st.executeQuery();
+			//結果の取得と表示
+			if (rs.next()) {
+				//会員情報を返す
+				int nowBookId = rs.getInt("max");
+				return nowBookId + 1;
+			}
+			//資料ID該当なし
+			else {
+				// 起きないはず？
+				throw new DAOException("検索に失敗しました。");
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new DAOException("検索に失敗しました。");
+		}
+		finally {
+			try {
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			}
+			catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
+			}
+		}
+	}
 
 }
