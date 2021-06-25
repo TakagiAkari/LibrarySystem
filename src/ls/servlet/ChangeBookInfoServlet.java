@@ -117,7 +117,7 @@ public class ChangeBookInfoServlet extends HttpServlet {
 				RecordDAO Rdao = new RecordDAO();
 				CatalogDAO Cdao = new CatalogDAO();
 
-				if (LaterCatalogInfo == null) { //書籍変更情報がない
+				if (LaterCatalogInfo == null) { //資料変更情報がない
 					request.setAttribute("message", "正しく操作してください");
 					gotoPage(request, response, "/errMessage.jsp");
 					return;

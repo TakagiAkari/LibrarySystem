@@ -69,8 +69,8 @@ public class RegisterBookInfoServlet extends HttpServlet {
 					session.setAttribute("catalogBeanForRegisterBook", cBean);
 					gotoPage(request, response, "/checkBookInfo.jsp");
 				}else {
-					// isbnの検索結果が存在しないということは書籍情報が登録されていないということ
-					// 書籍情報を登録するところから始める
+					// isbnの検索結果が存在しないということは資料情報が登録されていないということ
+					// 資料情報を登録するところから始める
 					gotoPage(request, response, "/inputCatalog.jsp");
 				}
 			}else if(action.equals("registerCatalog")) {
@@ -111,7 +111,7 @@ public class RegisterBookInfoServlet extends HttpServlet {
 				catalogDao.addCatalogInfo(cBean);
 
 				recordDao.addRecordInfo(isbn, memo);
-				request.setAttribute("message", "書籍登録");
+				request.setAttribute("message", "資料登録");
 				gotoPage(request, response, "/complete.jsp");
 			}
 		}catch(DAOException e) {
