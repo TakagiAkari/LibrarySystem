@@ -64,6 +64,9 @@ public class RegisterBookInfoServlet extends HttpServlet {
 					// isbnの検索結果が存在する場合は既にある目録の情報から情報を登録する
 					//TODO:test
 					RecordBean rBean = new RecordBean(isbn, OperateDate.getDateNow(),memo);
+					String bookIdStr = String.valueOf(recordDao.getNextBookId());
+					System.out.println(bookIdStr);
+					session.setAttribute("bookIdForRegisterBook",bookIdStr);
 					session.setAttribute("recordBeanForRegisterBook", rBean);
 					CatalogBean cBean = catalogDao.getCatalogInfoByIsbn(isbn);
 					session.setAttribute("catalogBeanForRegisterBook", cBean);
@@ -90,10 +93,17 @@ public class RegisterBookInfoServlet extends HttpServlet {
 
 					String memo = (String) session.getAttribute("memoForRegisterBook");
 
-					// データベースに追加していないためまだ次の資料IDが分からない
 					RecordBean rBean = new RecordBean(isbn, OperateDate.getDateNow(),memo);
 
 					session.setAttribute("recordBeanForRegisterBook", rBean);
+
+					// データベースに追加していないためまだ次の資料IDが分からない
+					// RecordDAO.getNextBookId();
+					// 取得してきた値が確実に次の資料IDになるとは限らない不安定なメソッドのため
+					// book_idは別の属性に格納する
+					String bookIdStr = String.valueOf(recordDao.getNextBookId());
+					System.out.println(bookIdStr);
+					session.setAttribute("bookIdForRegisterBook",bookIdStr);
 
 					session.setAttribute("catalogBeanForRegisterBook", cBean);
 					gotoPage(request, response, "/checkBookInfo.jsp");
