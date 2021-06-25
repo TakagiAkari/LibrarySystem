@@ -88,24 +88,6 @@ public class LendingBookServlet extends HttpServlet {
 						request.setAttribute("message", "すでに貸出されています");
 						gotoPage(request, response, "/errMessage.jsp");
 					}
-
-					Date lendDay = OperateDate.getDateNow();
-					LendingBean lendingbean = new LendingBean(bookId, bookName, userId, userName,lendDay, memo);
-					session.setAttribute("displayInfo", lendingbean);
-					gotoPage(request, response, "/checkLending.jsp");
-				}else if(action.equals("complete")&&(session != null)) {
-			//貸出台帳に登録（INSERT）、貸出完了メッセージの送信、完了画面の表示
-					//sessionからBeanを取得、intId,memoの抽出
-					// TODO:displayInfoの命名を変える（被らないように）
-					LendingBean lendingbean = (LendingBean)session.getAttribute("displayInfo");
-					int userIdInsert = lendingbean.getUserId();
-					int bookIdInsert = lendingbean.getBookId();
-					String memoInsert = lendingbean.getMemo();
-
-					// bookIdから入荷日を取り出してくる return java.sql.Date
-
-					RecordDAO rDao = new RecordDAO();
-					RecordBean rBean = rDao.getRecordInfoByBookId(bookIdInsert);
 					Date stockDate = rBean.getStockDay();
 
 					// 入荷日が今日から三か月以内か確認する
@@ -113,6 +95,7 @@ public class LendingBookServlet extends HttpServlet {
 					int elapsedDay = OperateDate.calcElapsedDay(stockDate, today);
 
 					Date returnLimitDay;
+
 					// if 三か月以内
 					if(elapsedDay <= 90) {
 						// 10日足した日付を返却日時とする
@@ -123,6 +106,26 @@ public class LendingBookServlet extends HttpServlet {
 						// 15日足した日付を返却日時とする
 						returnLimitDay = OperateDate.plusDate(today, 15);
 					}
+
+					Date lendDay = OperateDate.getDateNow();
+					LendingBean lendingbean = new LendingBean(bookId, bookName, userId, userName,lendDay,returnLimitDay, memo);
+					session.setAttribute("lendingBeanForLendingBook", lendingbean);
+					gotoPage(request, response, "/checkLending.jsp");
+				}else if(action.equals("complete")&&(session != null)) {
+			//貸出台帳に登録（INSERT）、貸出完了メッセージの送信、完了画面の表示
+					//sessionからBeanを取得、intId,memoの抽出
+					// TODO:displayInfoの命名を変える（被らないように）
+					LendingBean lendingbean = (LendingBean)session.getAttribute("lendingBeanForLendingBook");
+					int userIdInsert = lendingbean.getUserId();
+					int bookIdInsert = lendingbean.getBookId();
+					String memoInsert = lendingbean.getMemo();
+					Date today = lendingbean.getLendDay();
+					Date returnLimitDay = lendingbean.getReturnLimit();
+
+
+
+					// bookIdから入荷日を取り出してくる return java.sql.Date
+
 
 
 					lendDao.addLending(userIdInsert, bookIdInsert, today, returnLimitDay, memoInsert);

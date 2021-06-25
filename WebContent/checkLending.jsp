@@ -19,15 +19,20 @@
 	<div class="center-form">
 		<dl>
 			<dt>会員ID</dt>
-			<dd>${displayInfo.userId}</dd>
+			<dd>${lendingBeanForLendingBook.userId}</dd>
 			<dt>会員名</dt>
-			<dd>${displayInfo.userName}</dd>
+			<dd>${lendingBeanForLendingBook.userName}</dd>
 			<dt>資料ID</dt>
-			<dd>${displayInfo.bookId}</dd>
+			<dd>${lendingBeanForLendingBook.bookId}</dd>
 			<dt>資料名</dt>
-			<dd>${displayInfo.bookName}</dd>
+			<dd>${lendingBeanForLendingBook.bookName}</dd>
 			<dt>返却期限</dt>
-			<dd>${displayInfo.returnLimit }</dd>
+			<dd>
+			${lendingBeanForLendingBook.returnLimit.toLocalDate().getYear()}年
+			${lendingBeanForLendingBook.returnLimit.toLocalDate().getMonthValue()}月
+			${lendingBeanForLendingBook.returnLimit.toLocalDate().getDayOfMonth()}日
+
+			</dd>
 		</dl>
 
 		<form action="/LibrarySystem/LendingBookServlet" method="post">
