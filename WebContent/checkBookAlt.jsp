@@ -41,7 +41,7 @@
 				${PreviousRecordInfo.stockDay.toLocalDate().getMonthValue()}月
 				${PreviousRecordInfo.stockDay.toLocalDate().getDayOfMonth()}日</dd>
 			<dt>備考</dt>
-			<dd></dd>
+			<dd>${PreviousRecordInfo.memo}</dd>
 		</dl>
 	<br>
 	</div>
@@ -69,7 +69,7 @@
 					${LaterRecordInfo.stockDay.toLocalDate().getMonthValue() }月
 					${LaterRecordInfo.stockDay.toLocalDate().getDayOfMonth() }日</dd>
 				<dt>備考</dt>
-				<dd></dd>
+				<dd>${LaterRecordInfo.memo}</dd>
 			</dl>
 			</div>
 		</div>
